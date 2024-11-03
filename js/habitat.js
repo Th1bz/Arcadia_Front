@@ -59,10 +59,7 @@ if (deleteModal) {
 
 
 //--------------EDIT ANIMAL-------------- 
-console.log('Initialisation de l\'édition');
-
 const editModal = document.getElementById('EditionCardModal');
-console.log('Modal d\'édition trouvé:', editModal);
 
 if (editModal) {
     // Quand le modal s'ouvre
@@ -207,7 +204,6 @@ function loadAnimals() {
     
     fetch(apiUrl + "animal/list")
         .then(response => {
-            console.log('Réponse reçue:', response);
             if (!response.ok) {
                 throw new Error('Erreur réseau: ' + response.status);
             }

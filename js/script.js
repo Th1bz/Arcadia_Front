@@ -16,40 +16,6 @@ function signout(){
     window.location.reload();
 }
 
-// function setToken(token){
-//     setCookie(tokenCookieName, token, 7);
-// }
-
-// function getToken(){
-//     return getCookie(tokenCookieName);
-// }
-
-// function setCookie(name,value,days) {
-//     let expires = "";
-//     if (days) {
-//         let date = new Date();
-//         date.setTime(date.getTime() + (days*24*60*60*1000));
-//         expires = "; expires=" + date.toUTCString();
-//     }
-//     document.cookie = name + "=" + (value || "")  + expires + "; path=/";
-// }
-
-// function getCookie(name) {
-//     let nameEQ = name + "=";
-//     let ca = document.cookie.split(';');
-//     for(const element of ca) {
-//         let c = element;
-//         while (c.startsWith(' ')) c = c.substring(1,c.length);
-//         if (c.startsWith(nameEQ))
-//             return c.substring(nameEQ.length,c.length);
-//         }
-//         return null;
-// }
-
-// function eraseCookie(name) {   
-//     document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-// }
-
 function isConnected(){
     return sessionStorage.getItem('user') !== null;
 }
@@ -64,7 +30,6 @@ function showAndHideElementsForRole(){
     // const roleId = user.roleId
     let roleId;
     if (user) roleId = user.roleId;
-    console.log(roleId);
 
     let allElementsToEdit = document.querySelectorAll('[data-show]');
 
@@ -98,31 +63,6 @@ function showAndHideElementsForRole(){
         }
     })
 
-    // allElementsToEdit.forEach((element) => {
-    //     if ((element.dataset.show === 'disconnected' && userConnected)) {
-    //         element.classList.add("d-none")
-    //     }
-    //     if ((element.dataset.show === 'connected' && !userConnected)) {
-    //         element.classList.add("d-none")
-    //     }
-    //     switch(element.dataset.show){
-    //         case '1':
-    //             if(!userConnected || roleId != "1"){
-    //                 element.classList.add("d-none")
-    //             }
-    //             break;
-    //         case '2':
-    //             if(!userConnected || roleId != "2" && roleId != "1"){
-    //                 element.classList.add("d-none")
-    //             }
-    //             break;
-    //         case '3':
-    //             if(!userConnected || roleId != "3" && roleId != "1"){
-    //                 element.classList.add("d-none")
-    //             }
-    //             break;
-    //     }
-    // })
 }
 
 // Sécurisation de la faille XSS ----------------------------
