@@ -1,0 +1,228 @@
+@import url(/node_modules/bootstrap-icons/font/bootstrap-icons.css);
+
+@import "custom";
+
+html {
+  position: relative;
+  min-height: 100%;
+  background-color: $body;
+}
+
+main {
+    margin-top: 56px;
+  margin-bottom: 263px;
+}
+
+footer.footer {
+  padding: 15px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.font-title {
+  font-family: $font-family-serif;
+  font-size: 5rem;
+}
+
+.p-font-title {
+    font-size: 1.5rem;
+}
+
+.font-subtitle {
+    font-family: $font-family-serif;
+    
+}
+
+.title-sub-section {
+    color: $secondary;
+    font-weight: 450;
+    text-shadow: 0 5px 3px #232826;
+}
+
+.navbar-brand {
+  font-family: $font-family-serif;
+  color: $secondary;
+}
+
+// HERO SCÈNE ------------------------------------------
+
+.hero-ban {
+    height: 400px !important;
+}
+
+.hero-scene {
+    position: relative;
+    
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(../Images/Zoo/foret-mousse.jpg);
+    background-size: cover;
+    filter: brightness(0.6);
+  }
+  *{
+      position: relative;
+  }
+}
+
+.hero-scene-content {
+    height: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+.hero-scene-title {
+    transition: all 0.3s;
+    overflow: hidden;
+}
+
+.hero-scene-title:hover {
+    transform: scale(200%);
+    overflow: hidden;
+}
+
+.article-bg {
+    background-color: $body;
+}
+
+.article-bg-2 {
+    // background-color: rgba($color: #226D68, $alpha: 1.0);
+    background: rgb(75,89,67);
+background: linear-gradient(145deg, rgba(75,89,67,1) 50%, rgba(220,223,218,1) 50%);
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+.cards-description {
+    transition: all 0.2S;
+}
+
+.cards-description:hover {
+    transform: scale(105%);
+    background-color: rgba($color: #232826, $alpha: 0.5);
+    box-shadow: 0 10px 7px 0 $dark;
+}
+
+.descritpion-habitat {
+    transition: all 0.2S;
+}
+
+.descritpion-habitat:hover {
+    transform: scale(105%);
+    // background-color: rgba($color: #232826, $alpha: 0.3);
+    // box-shadow: 0 4px 4px 0 $dark;
+}
+
+
+.img-cover-top {
+    object-position: 50% top;
+}
+
+.img-cover-bottom {
+    object-position: 50% 60%;
+}
+
+.img-card-h {
+    height: 159px;
+}
+
+.card {
+    background-color: $tertiary;
+    transition: all 0.3s;
+}
+
+.card:hover {
+    transform: scale(120%);
+}
+
+.p-profile {
+    width: 60px;
+    height: 60px;
+    border-radius: 50px;
+}
+
+.bg-avis {
+    background-color: $tertiary;
+}
+
+.line {
+    border: 3px $dark;
+    width: 500px;
+    height: 3px;
+    background: $dark;
+}
+
+
+.image-card{
+    position:relative;
+    &:hover{
+        .titre-image,
+        .action-image-buttons{
+            opacity: 1;
+        }
+    }
+
+
+    .action-image-buttons{
+        position : absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 5px;
+        display: flex;
+        justify-content: space-between;
+
+        opacity: 0;
+        transition: all 0.3s;
+    }
+}
+
+.circle-border {
+    border-radius: 50px;
+    width: 42px;
+    height: 42px;
+}
+
+.edit-card-home {
+    width: 35px;
+    height: 35px;
+    padding: 6px;
+    border-color: $dark;
+}
+
+.spinner-loader {
+    background-color: #232826;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 3S;
+}
+
+// Responsive Design ----------------------------------------------
+
+@media (max-width: 1000px) {
+    main {
+        margin-bottom: 275px;
+    }
+}
+
+@media (max-width: 768px) {
+    main {
+        margin-bottom: 572px;
+    }
+}
