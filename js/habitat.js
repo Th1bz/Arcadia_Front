@@ -8,7 +8,6 @@ if (deleteModal) {
     deleteModal.addEventListener('show.bs.modal', function(event) {
         const button = event.relatedTarget;
         habitatIdToDelete = button.getAttribute('data-habitat-id');
-        console.log('Modal ouvert pour l\'habitat ID:', habitatIdToDelete);
     });
 
     const habitatDeleteButton = document.getElementById('habitatDeleteButton');
@@ -29,7 +28,7 @@ if (deleteModal) {
 
                 if (!response.ok) {
                     const errorData = await response.json();
-                    throw new Error(errorData.error || 'Erreur lors de la suppression');
+                    throw new Error(errorData.error);
                 }
 
                 const modal = bootstrap.Modal.getInstance(deleteModal);
@@ -38,8 +37,8 @@ if (deleteModal) {
                 alert('Habitat supprimé avec succès !');
 
             } catch (error) {
-                console.error('Erreur:', error);
-                alert('Erreur lors de la suppression: ' + error.message);
+                console.error(error);
+                alert(error.message);
             }
         });
     }
@@ -135,14 +134,14 @@ function generateHabitatCard(habitat) {
                 <button type="button" class="btn btn-outline-light text-danger  edit-card-home" 
                             data-bs-toggle="modal"
                             data-bs-target="#deleteHabitatModal" 
-                            data-habitat-id="${habitat.id}">
+                            data-habitat-id="${habitat.id}" data-show="1">
                         <i class="bi bi-trash"></i>
                     </button>
                     ${habitat.name}
                     <button type="button" class="btn btn-outline-light text-info edit-card-home" 
                             data-bs-toggle="modal"
                             data-bs-target="#editHabitatModal" 
-                            data-habitat-id="${habitat.id}">
+                            data-habitat-id="${habitat.id}" data-show="connected">
                         <i class="bi bi-pencil-square"></i>
                     </button>
                     
@@ -257,3 +256,4 @@ function initializeAddHabitatForm() {
         });
     }
 })();
+

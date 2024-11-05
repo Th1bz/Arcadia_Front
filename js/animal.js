@@ -141,10 +141,94 @@ if (editModal) {
             }
         });
     }
-} else {
-    console.error('Modal d\'édition non trouvé');
 }
 //------------------------------------------  
+
+
+
+
+
+
+//--------------Fonction pour générer le HTML d'une section habitat--------------@
+function generateHabitatSection(habitat) {
+    const imageUrl = habitat.pictures && habitat.pictures.length > 0 
+        ? `http://127.0.0.1:8000${habitat.pictures[0].path}`
+        : '../Images/Zoo/mediumBrownArcadia.png';
+
+    return `
+    <article class="article-bg shadow">
+        <div>
+            <h2 id="${habitat.name.toLowerCase()}" class="text-center font-subtitle bg-dark text-primary p-4">
+                ${habitat.name}
+                <button type="button" class="btn btn-outline-light text-info" data-bs-toggle="modal"
+                    data-bs-target="#EditionHabitatModal" data-habitat-id="${habitat.id}" data-show="2" data-show="1">
+                    <i class="bi bi-pencil-square"></i>
+                </button>
+            </h2>
+
+            <div class="descritpion-habitat container">
+                <a class="m-0" data-bs-toggle="collapse" href="#collapse${habitat.id}" role="button" aria-expanded="false"
+                    aria-controls="collapse${habitat.id}">
+                    <img src="${imageUrl}"
+                        class="d-block w-100 object-fit-cover img-cover-bottom shadow rounded" 
+                        style="height: 350px"
+                        alt="${habitat.name}" 
+                        onerror="this.src='../Images/Zoo/mediumBrownArcadia.png'"/>
+                    <h3 class="text-center m-2 mb-0 pb-4">
+                        <i class="bi bi-arrow-down-square"></i> Développer
+                        <i class="bi bi-arrow-up-square"></i>
+                    </h3>
+                </a>
+            </div>
+
+            <div class="collapse" id="collapse${habitat.id}">
+                <div class="m-4">
+                    <div class="d-flex justify-content-center" data-show="1">
+                        <button type="button" data-bs-toggle="modal" data-bs-target="#addAnimalModal" class="btn btn-secondary m-3">
+                            Ajouter un Animal
+                        </button>
+                    </div>
+                    <div class="container d-flex justify-content-center text-justify text-primary">
+                        <p>${habitat.description || 'Description non disponible'}</p>
+                    </div>
+                    
+                    <div class="d-flex flex-row justify-content-evenly flex-wrap p-4" id="addCard${habitat.id}Animal">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>`;
+}
+
+// Modifier la fonction loadHabitats existante
+function loadHabitats() {
+    console.log('Début du chargement des habitats');
+    
+    fetch(apiUrl + "habitat/list")
+        .then(response => {
+            if (!response.ok) throw new Error('Erreur réseau: ' + response.status);
+            return response.json();
+        })
+        .then(habitats => {
+            console.log('Habitats reçus:', habitats);
+            const habitatContainer = document.getElementById('habitat-container');
+            if (!habitatContainer) throw new Error('Container habitat-container non trouvé');
+
+            habitatContainer.innerHTML = '';
+            habitats.forEach(habitat => {
+                console.log('Traitement habitat:', habitat);
+                const section = generateHabitatSection(habitat);
+                habitatContainer.insertAdjacentHTML('beforeend', section);
+            });
+            
+            showAndHideElementsForRole();
+        })
+        .catch(error => {
+            console.error('Erreur:', error);
+            console.error('Stack trace:', error.stack);
+        });
+}
+//------------------------------------------
 
 
 
@@ -201,7 +285,6 @@ function generateAnimalCard(animal) {
 
 //--------------Fonction pour charger et afficher tous les animaux--------------
 function loadAnimals() {
-    
     fetch(apiUrl + "animal/list")
         .then(response => {
             if (!response.ok) {
@@ -212,33 +295,36 @@ function loadAnimals() {
         .then(animals => {
             console.log('Animaux reçus:', animals);
             
-            // Récupérer les conteneurs
-            const savaneGallery = document.getElementById('addCardSavaneAnimal');
-            const jungleGallery = document.getElementById('addCardJungleAnimal');
-            const maraisGallery = document.getElementById('addCardMaraisAnimal');
-
-            // Vider les conteneurs
-            savaneGallery.innerHTML = '';
-            jungleGallery.innerHTML = '';
-            maraisGallery.innerHTML = '';
+            // Créer un objet pour stocker les conteneurs par habitat
+            const habitatGalleries = {};
+            
+            // Vider et initialiser tous les conteneurs d'habitat
+            animals.forEach(animal => {
+                const habitatId = animal.habitat.id;
+                const galleryId = `addCard${habitatId}Animal`;
+                
+                if (!habitatGalleries[habitatId]) {
+                    const gallery = document.getElementById(galleryId);
+                    if (gallery) {
+                        gallery.innerHTML = ''; // Vider le conteneur
+                        habitatGalleries[habitatId] = gallery;
+                    }
+                }
+            });
 
             // Afficher les animaux
             animals.forEach(animal => {
                 const card = generateAnimalCard(animal);
+                const habitatId = animal.habitat.id;
+                const gallery = habitatGalleries[habitatId];
                 
-                // Ajouter la carte dans le bon conteneur selon l'habitat
-                switch(animal.habitat.id) {
-                    case 1: // Savane
-                        savaneGallery.insertAdjacentHTML('beforeend', card);
-                        break;
-                    case 2: // Jungle
-                        jungleGallery.insertAdjacentHTML('beforeend', card);
-                        break;
-                    case 3: // Marais
-                        maraisGallery.insertAdjacentHTML('beforeend', card);
-                        break;
+                if (gallery) {
+                    gallery.insertAdjacentHTML('beforeend', card);
+                } else {
+                    console.warn(`Conteneur non trouvé pour l'habitat ID: ${habitatId}`);
                 }
             });
+            
             showAndHideElementsForRole();
         })
         .catch(error => {
@@ -334,6 +420,35 @@ function convertFileToBase64(file) {
 }
 //------------------------------------------
 
+//--------------Fonction pour remplir le select habitat--------------
+function listHabitatsSelect() {
+    fetch(apiUrl + "habitat/list")
+        .then(response => {
+            if (!response.ok) throw new Error('Erreur réseau: ' + response.status);
+            return response.json();
+        })
+        .then(habitats => {
+            const select = document.getElementById('habitatAnimalSelect');
+            if (!select) return;
+
+            // Garder l'option par défaut
+            const defaultOption = select.querySelector('option[value=""]');
+            select.innerHTML = '';
+            if (defaultOption) select.appendChild(defaultOption);
+
+            // Ajouter les options pour chaque habitat
+            habitats.forEach(habitat => {
+                const option = document.createElement('option');
+                option.value = habitat.id;
+                option.textContent = habitat.name;
+                select.appendChild(option);
+            });
+        })
+        .catch(error => {
+            console.error('Erreur lors du chargement des habitats:', error);
+        });
+}
+//------------------------------------------
 
 
 //--------------Fonction pour charger le script-------------- 
@@ -346,12 +461,16 @@ function convertFileToBase64(file) {
     // Si le DOM est déjà chargé
     if (document.readyState === 'complete' || document.readyState === 'interactive') {
         loadAnimals();
-        initializeAddForm(); // Initialiser le formulaire
+        loadHabitats();
+        initializeAddForm();
+        listHabitatsSelect();
     } else {
         // Sinon attendre le chargement du DOM
         document.addEventListener('DOMContentLoaded', () => {
             loadAnimals();
-            initializeAddForm(); // Initialiser le formulaire
+            loadHabitats();
+            initializeAddForm();
+            listHabitatsSelect();
         });
     }
 })();
