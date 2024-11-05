@@ -1,6 +1,8 @@
 let habitatIdToDelete = null;
 let habitatIdToEdit = null;
 
+const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB en octets
+
 //--------------DELETE HABITAT--------------
 const deleteModal = document.getElementById('deleteHabitatModal');
 
@@ -115,12 +117,11 @@ if (editModal) {
 
 //--------------Fonction pour générer le HTML d'une card habitat--------------
 function generateHabitatCard(habitat) {
-    console.log('Traitement habitat:', habitat);
+
     let imageUrl = '../Images/Zoo/mediumBrownArcadia.png';
 
     if (habitat.pictures && habitat.pictures.length > 0) {
         imageUrl = `http://127.0.0.1:8000${habitat.pictures[0].path}`;
-        console.log('URL de l\'image construite:', imageUrl);
     }
 
     const card = `
@@ -172,7 +173,6 @@ function loadHabitats() {
 
             habitatGallery.innerHTML = '';
             habitats.forEach(habitat => {
-                console.log('Traitement habitat:', habitat);
                 const card = generateHabitatCard(habitat);
                 habitatGallery.insertAdjacentHTML('beforeend', card);
             });
@@ -196,6 +196,7 @@ function convertFileToBase64(file) {
 }
 
 //--------------Fonction pour initialiser le formulaire d'ajout--------------
+
 function initializeAddHabitatForm() {
     const addForm = document.getElementById('addHabitatForm');
     if (addForm) {
@@ -212,6 +213,10 @@ function initializeAddHabitatForm() {
 
                 const pictureFile = formData.get('Image');
                 if (pictureFile && pictureFile.size > 0) {
+                    if (pictureFile.size > MAX_FILE_SIZE) {
+                        alert('L\'image est trop volumineuse. La taille maximale est de 2MB');
+                        return;
+                    }
                     const base64Picture = await convertFileToBase64(pictureFile);
                     habitatData.pictureData = base64Picture;
                 }

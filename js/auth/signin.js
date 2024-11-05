@@ -39,7 +39,7 @@ fetch(apiUrl+"login", requestOptions)
   sessionStorage.clear()
   sessionStorage.setItem('user', JSON.stringify(result.user));
 
-  alert("Bienvenue");
+  alert("Bienvenue " + result.user.username);
   window.location.replace("/");
 })
 .catch(error => console.log('error', error));

@@ -1,6 +1,7 @@
 let animalIdToDelete = null;
 let animalIdToEdit = null;
 
+const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB en octets
 
 const deleteModal = document.getElementById('deleteAnimalModal');
 
@@ -25,11 +26,15 @@ if (deleteModal) {
 
             try {
                 const response = await fetch(`${apiUrl}animal/delete/${animalIdToDelete}`, {
-                    method: 'DELETE'
+                    method: 'DELETE',
+                    headers: {
+                        'Accept': 'application/json',
+                    }
                 });
 
                 if (!response.ok) {
-                    throw new Error('Erreur lors de la suppression');
+                    const errorData = await response.json();
+                    throw new Error(errorData.error || 'Erreur lors de la suppression');
                 }
 
                 // Fermer le modal
@@ -37,6 +42,7 @@ if (deleteModal) {
                 modal.hide();
 
                 // Rafraîchir la liste
+                loadHabitats();
                 loadAnimals();
 
                 // Message de succès
@@ -44,7 +50,7 @@ if (deleteModal) {
 
             } catch (error) {
                 console.error('Erreur:', error);
-                alert('Erreur lors de la suppression: ' + error.message);
+                alert('Impossible de supprimer cet animal');
             }
         });
     } else {
@@ -107,8 +113,13 @@ if (editModal) {
 
                 // Gestion de la photo
                 const pictureFile = formData.get('picture');
+
+                // Vérification de la taille du fichier
                 if (pictureFile && pictureFile.size > 0) {
-                    console.log('Nouvelle image détectée');
+                    if (pictureFile.size > MAX_FILE_SIZE) {
+                        alert('L\'image est trop volumineuse. La taille maximale est de 2MB');
+                        return;
+                    }
                     const base64Picture = await convertFileToBase64(pictureFile);
                     animalData.pictureData = base64Picture;
                 }
@@ -216,7 +227,6 @@ function loadHabitats() {
 
             habitatContainer.innerHTML = '';
             habitats.forEach(habitat => {
-                console.log('Traitement habitat:', habitat);
                 const section = generateHabitatSection(habitat);
                 habitatContainer.insertAdjacentHTML('beforeend', section);
             });
@@ -356,6 +366,10 @@ function initializeAddForm() {
 
             // Si une image est sélectionnée
             if (pictureFile && pictureFile.size > 0) {
+                if (pictureFile.size > MAX_FILE_SIZE) {
+                    alert('L\'image est trop volumineuse. La taille maximale est de 2MB');
+                    return;
+                }
                 try {
                     const base64Picture = await convertFileToBase64(pictureFile);
                     animalData.pictureData = base64Picture;
@@ -473,6 +487,7 @@ function listHabitatsSelect() {
             listHabitatsSelect();
         });
     }
+    // () -> exucute imédiatement la fonction anonyme
 })();
 //------------------------------------------  
 
