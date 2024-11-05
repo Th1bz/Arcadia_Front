@@ -61,7 +61,7 @@
           <i class="bi bi-pencil-square"></i>
       </h2>
 
-      <div class="descritpion-habitat">
+      <div class="descritpion-habitat container">
         <a class="m-0" data-bs-toggle="collapse" href="#collapseSavane" role="button" aria-expanded="false"
           aria-controls="collapseSavane">
           <img src="../Images/Savane/sunset-savane.jpg"
@@ -78,7 +78,7 @@
       <div class="collapse" id="collapseSavane">
         <div class="m-4">
           <div class="d-flex justify-content-center" data-show="1">
-            <button type="button" data-bs-toggle="modal" data-bs-target="#addCardModal" class="btn btn-secondary m-3">
+            <button type="button" data-bs-toggle="modal" data-bs-target="#addAnimalModal" class="btn btn-secondary m-3">
               Ajouter un Animal
             </button>
           </div>
@@ -113,7 +113,7 @@
           <i class="bi bi-pencil-square"></i>
       </h2>
 
-      <div class="descritpion-habitat">
+      <div class="descritpion-habitat container">
         <a class="m-0" data-bs-toggle="collapse" href="#collapseJungle" role="button" aria-expanded="false"
           aria-controls="collapseJungle">
           <img src="../Images/Jungle/jungle.jpg" class="d-block w-100 object-fit-cover img-cover-bottom shadow rounded"
@@ -129,7 +129,7 @@
       <div class="collapse" id="collapseJungle">
         <div class="m-4">
           <div class="d-flex justify-content-center" data-show="1">
-            <button type="button" data-bs-toggle="modal" data-bs-target="#addCardModal" class="btn btn-secondary m-3">
+            <button type="button" data-bs-toggle="modal" data-bs-target="#addAnimalModal" class="btn btn-secondary m-3">
               Ajouter un Animal
             </button>
           </div>
@@ -163,7 +163,7 @@
           <i class="bi bi-pencil-square"></i>
       </h2>
 
-      <div class="descritpion-habitat">
+      <div class="descritpion-habitat container">
         <a class="m-0" data-bs-toggle="collapse" href="#collapseMarais" role="button" aria-expanded="false"
           aria-controls="collapseMarais">
           <img src="../Images/Marais/marais2.jpg" class="d-block w-100 object-fit-cover img-cover-bottom shadow rounded"
@@ -179,7 +179,7 @@
       <div class="collapse" id="collapseMarais">
         <div class="m-4">
           <div class="d-flex justify-content-center" data-show="1">
-            <button type="button" data-bs-toggle="modal" data-bs-target="#addCardModal" class="btn btn-secondary m-3">
+            <button type="button" data-bs-toggle="modal" data-bs-target="#addAnimalModal" class="btn btn-secondary m-3">
               Ajouter un Animal
             </button>
           </div>
@@ -202,12 +202,12 @@
     </div>
   </article>
 
-  <!-- Modal ajout d'une Card -->
-  <div class="modal fade" id="addCardModal" tabindex="-1" aria-labelledby="addCardModalLabel" aria-hidden="true">
+  <!-- Modal ajout d'une Card Animal -->
+  <div class="modal fade" id="addAnimalModal" tabindex="-1" aria-labelledby="addAnimalModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h2 class="modal-title fs-5" id="addCardModalLabel">
+          <h2 class="modal-title fs-5" id="addAnimalModalLabel">
             Ajouter une Carte Animal
           </h2>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -297,13 +297,13 @@
     </div>
   </div>
 
-  <!-- Modal edition Card -->
-  <div class="modal fade" id="EditionCardModal" tabindex="-1" aria-labelledby="EditionCardModalLabel"
+  <!-- Modal edition Card Animal -->
+  <div class="modal fade" id="editAnimalModal" tabindex="-1" aria-labelledby="editAnimalModalLabel"
     aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h2 class="modal-title fs-5" id="EditionCardModalLabel">
+          <h2 class="modal-title fs-5" id="editAnimalModalLabel">
             Modification de l'animal
           </h2>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -386,12 +386,12 @@
     </div>
   </div>
 
-  <!-- Modal Suppression Card -->
-  <div class="modal fade" id="DeleteCardModal" tabindex="-1" aria-labelledby="DeleteCardModalLabel" aria-hidden="true">
+  <!-- Modal Suppression Card Animal -->
+  <div class="modal fade" id="deleteAnimalModal" tabindex="-1" aria-labelledby="deleteAnimalModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h2 class="modal-title fs-5" id="DeleteCardModalLabel">
+          <h2 class="modal-title fs-5" id="deleteAnimalModalLabel">
             Suppression Carte Animal
           </h2>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

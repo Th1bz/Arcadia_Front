@@ -20,7 +20,7 @@
         </div>
 
         <div class="col-12 col-md-4">
-          <img class="w-100 shadow rounded" src="../Images/Zoo/chemin-foret.jpg" alt="Chemin de forêt" />
+          <img class="w-100 shadow rounded" src="../Images/Zoo/smallGreenArcadia.png" alt="Chemin de forêt" />
         </div>
       </div>
 
@@ -45,72 +45,21 @@
   <article class="article-bg-2 shadow">
     <h2 class="font-subtitle text-center text-secondary bg-dark p-2 shadow">
       Découvrez nos habitats
+      <button type="button" class="btn btn-outline-light text-info  edit-card-home" data-bs-toggle="modal"
+        data-bs-target="#addHabitatModal"><i class="bi bi-plus"></i></button>
     </h2>
 
-    <div class="d-flex flex-row justify-content-evenly flex-wrap p-4">
-      <!-- Card 1 -->
-      <div class="text-decoration-none">
-        <div class="card p-0 m-4 shadow rounded-4" style="width: 15rem">
-          <img src="../Images/Savane/savane.jpg" class="card-img-top img-card-h rounded-top-4" alt="Savane" />
-          <h5 class="card-title font-subtitle text-center text-secondary bg-dark">
-            La Savane
-            <button type="button" class="btn btn-outline-light text-info edit-card-home" data-bs-toggle="modal"
-            data-bs-target="#EditionCardHabitatModal" data-show="2" data-show="1">
-            <i class="bi bi-pencil-square"></i>
-          </h5>
-          <div class="card-body">
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-          </div>
-        </div>
-      </div>
-      <!-- Card 2 -->
-      <div class="text-decoration-none">
-        <div class="card p-0 m-4 shadow rounded-4" style="width: 15rem">
-          <img src="../Images/Jungle/jungle2.jpg" class="card-img-top img-card-h rounded-top-4" alt="Jungle" />
-          <h5 class="card-title font-subtitle text-center text-secondary bg-dark">
-            La Jungle
-            <button type="button" class="btn btn-outline-light text-info edit-card-home" data-bs-toggle="modal"
-            data-bs-target="#EditionCardHabitatModal" data-show="2" data-show="1">
-            <i class="bi bi-pencil-square"></i>
-          </h5>
-          <div class="card-body">
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Card 3 -->
-      <div class="text-decoration-none">
-        <div class="card p-0 m-4 shadow rounded-4" style="width: 15rem">
-          <img src="../Images/Marais/marais.jpg" class="card-img-top img-card-h rounded-top-4" alt="Marais" />
-          <h5 class="card-title font-subtitle text-center text-secondary bg-dark">
-            Le Marais
-            <button type="button" class="btn btn-outline-light text-info edit-card-home" data-bs-toggle="modal"
-            data-bs-target="#EditionCardHabitatModal" data-show="2" data-show="1">
-            <i class="bi bi-pencil-square"></i>
-          </h5>
-          <div class="card-body">
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-          </div>
-        </div>
-      </div>
+    <div class="d-flex flex-row justify-content-evenly flex-wrap p-4" id="addCardHabitat">
+
     </div>
+
   </article>
 
   <!-- Présentation des services -->
   <article class="article-bg shadow">
     <h2 class="font-subtitle text-center text-secondary bg-dark p-2 shadow">
       Découvrez nos services
-      <button type="button" class="btn btn-outline-light text-info" data-bs-toggle="modal"
+      <button type="button" class="btn btn-outline-light text-info edit-card-home" data-bs-toggle="modal"
         data-bs-target="#EditionServiceModal" data-show="3" data-show="1">
         <i class="bi bi-pencil-square"></i>
       </button>
@@ -184,7 +133,7 @@
 
 
   <!-- Avis en attente de Validation-->
-  <article class="article-bg bg-primary"  data-show="3" data-show="1">
+  <article class="article-bg bg-primary" data-show="3" data-show="1">
     <h2 class="font-subtitle text-center text-secondary bg-dark p-2 shadow">
       Avis en attentes de validation
     </h2>
@@ -195,11 +144,11 @@
       <div class="d-flex justify-content-start align-items-center rounded-4 bg-avis shadow m-4 ps-2">
 
         <button type="button" class="btn btn-outline-danger circle-border text-primary me-2" data-bs-toggle="modal"
-        data-bs-target="#deleteAvisModal">
-        <i class="bi bi-x-circle"></i>
-      </button>
+          data-bs-target="#deleteAvisModal">
+          <i class="bi bi-x-circle"></i>
+        </button>
 
-        <img src="../Images/Zoo/portrait-1.jpg" class="p-profile object-fit-cover" alt="profile de l'avis"/>
+        <img src="../Images/Zoo/portrait-1.jpg" class="p-profile object-fit-cover" alt="profile de l'avis" />
         <div class="p-2 ps-4">
           <h3>Justine Poitoux</h3>
           <div>
@@ -213,8 +162,8 @@
         </div>
 
         <button type="button" class="btn btn-outline-success circle-border text-primary me-2" data-bs-toggle="modal"
-        data-bs-target="#addAvisModal">
-        <i class="bi bi-plus-circle"></i>
+          data-bs-target="#addAvisModal">
+          <i class="bi bi-plus-circle"></i>
         </button>
 
       </div>
@@ -223,9 +172,9 @@
       <div class="d-flex justify-content-start align-items-center rounded-4 bg-avis shadow m-4 ps-2">
 
         <button type="button" class="btn btn-outline-danger circle-border text-primary me-2" data-bs-toggle="modal"
-        data-bs-target="#deleteAvisModal">
-        <i class="bi bi-x-circle"></i>
-      </button>
+          data-bs-target="#deleteAvisModal">
+          <i class="bi bi-x-circle"></i>
+        </button>
 
         <img src="../Images/Zoo/portrait-1.jpg" class="p-profile object-fit-cover" alt="Photo de profile de l'avis" />
         <div class="p-2 ps-4">
@@ -241,8 +190,8 @@
         </div>
 
         <button type="button" class="btn btn-outline-success circle-border text-primary me-2" data-bs-toggle="modal"
-        data-bs-target="#addAvisModal">
-        <i class="bi bi-plus-circle"></i>
+          data-bs-target="#addAvisModal">
+          <i class="bi bi-plus-circle"></i>
         </button>
 
       </div>
@@ -251,9 +200,9 @@
       <div class="d-flex justify-content-start align-items-center rounded-4 bg-avis shadow m-4 ps-2">
 
         <button type="button" class="btn btn-outline-danger circle-border text-primary me-2" data-bs-toggle="modal"
-        data-bs-target="#deleteAvisModal">
-        <i class="bi bi-x-circle"></i>
-      </button>
+          data-bs-target="#deleteAvisModal">
+          <i class="bi bi-x-circle"></i>
+        </button>
 
         <img src="../Images/Zoo/portrait-1.jpg" class="p-profile object-fit-cover" alt="Photo de profile de l'avis" />
         <div class="p-2 ps-4">
@@ -269,8 +218,8 @@
         </div>
 
         <button type="button" class="btn btn-outline-success circle-border text-primary me-2" data-bs-toggle="modal"
-        data-bs-target="#addAvisModal">
-        <i class="bi bi-plus-circle"></i>
+          data-bs-target="#addAvisModal">
+          <i class="bi bi-plus-circle"></i>
         </button>
 
       </div>
@@ -279,9 +228,9 @@
       <div class="d-flex justify-content-start align-items-center rounded-4 bg-avis shadow m-4 ps-2">
 
         <button type="button" class="btn btn-outline-danger circle-border text-primary me-2" data-bs-toggle="modal"
-        data-bs-target="#deleteAvisModal">
-        <i class="bi bi-x-circle"></i>
-      </button>
+          data-bs-target="#deleteAvisModal">
+          <i class="bi bi-x-circle"></i>
+        </button>
 
         <img src="../Images/Zoo/portrait-1.jpg" class="p-profile object-fit-cover" alt="Photo de profile de l'avis" />
         <div class="p-2 ps-4">
@@ -297,8 +246,8 @@
         </div>
 
         <button type="button" class="btn btn-outline-success circle-border text-primary me-2" data-bs-toggle="modal"
-        data-bs-target="#addAvisModal">
-        <i class="bi bi-plus-circle"></i>
+          data-bs-target="#addAvisModal">
+          <i class="bi bi-plus-circle"></i>
         </button>
 
       </div>
@@ -307,9 +256,9 @@
       <div class="d-flex justify-content-start align-items-center rounded-4 bg-avis shadow m-4 ps-2">
 
         <button type="button" class="btn btn-outline-danger circle-border text-primary me-2" data-bs-toggle="modal"
-        data-bs-target="#deleteAvisModal">
-        <i class="bi bi-x-circle"></i>
-      </button>
+          data-bs-target="#deleteAvisModal">
+          <i class="bi bi-x-circle"></i>
+        </button>
 
         <img src="../Images/Zoo/portrait-1.jpg" class="p-profile object-fit-cover" alt="Photo de profile de l'avis" />
         <div class="p-2 ps-4">
@@ -325,8 +274,8 @@
         </div>
 
         <button type="button" class="btn btn-outline-success circle-border text-primary me-2" data-bs-toggle="modal"
-        data-bs-target="#addAvisModal">
-        <i class="bi bi-plus-circle"></i>
+          data-bs-target="#addAvisModal">
+          <i class="bi bi-plus-circle"></i>
         </button>
 
       </div>
@@ -363,72 +312,70 @@
   </div>
 
 
-<!-- Modal suppression avis -->
-<div class="modal fade" id="deleteAvisModal" tabindex="-1" aria-labelledby="deleteAvisModalLabel"
-aria-hidden="true">
-<div class="modal-dialog">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h2 class="modal-title fs-5" id="deleteAvisModalLabel">
-        Suppression de l'avis ?
-      </h2>
-      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-    </div>
-    <div class="modal-body">
-      <form>
-
-        <div class="mb-3">
-          <P>Êtes vous sur de vouloir supprimer ce commentaire ?</p>
+  <!-- Modal suppression avis -->
+  <div class="modal fade" id="deleteAvisModal" tabindex="-1" aria-labelledby="deleteAvisModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title fs-5" id="deleteAvisModalLabel">
+            Suppression de l'avis ?
+          </h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+        <div class="modal-body">
+          <form>
 
-        <div class="text-center">
-          <button type="button" class="btn btn-danger">
-            Supprimer
-          </button>
-          <button type="button" class="btn btn-secondary"  data-bs-dismiss="modal">
-            Annuler
-          </button>
+            <div class="mb-3">
+              <P>Êtes vous sur de vouloir supprimer ce commentaire ?</p>
+            </div>
+
+            <div class="text-center">
+              <button type="button" class="btn btn-danger">
+                Supprimer
+              </button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                Annuler
+              </button>
+            </div>
+          </form>
         </div>
-      </form>
-    </div>
-  </div>
-</div>
-</div>
-
-<!-- Modal add avis -->
-<div class="modal fade" id="addAvisModal" tabindex="-1" aria-labelledby="addAvisModalLabel"
-aria-hidden="true">
-<div class="modal-dialog">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h2 class="modal-title fs-5" id="addAvisModalLabel">
-        Valider le commentaire ?
-      </h2>
-      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-    </div>
-    <div class="modal-body">
-      <form>
-
-        <div class="mb-3">
-          <P>Êtes vous sur de vouloir ajouter ce commentaire ?</p>
-        </div>
-
-        <div class="text-center">
-          <button type="button" class="btn btn-secondary">
-            Ajouter
-          </button>
-          <button type="button" class="btn btn-danger"  data-bs-dismiss="modal">
-            Annuler
-          </button>
-        </div>
-      </form>
+      </div>
     </div>
   </div>
-</div>
-</div>
 
-<!-- Modal edition Services -->
-<div class="modal fade" id="EditionServiceModal" tabindex="-1" aria-labelledby="EditionServiceModalLabel"
+  <!-- Modal add avis -->
+  <div class="modal fade" id="addAvisModal" tabindex="-1" aria-labelledby="addAvisModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title fs-5" id="addAvisModalLabel">
+            Valider le commentaire ?
+          </h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+
+            <div class="mb-3">
+              <P>Êtes vous sur de vouloir ajouter ce commentaire ?</p>
+            </div>
+
+            <div class="text-center">
+              <button type="button" class="btn btn-secondary">
+                Ajouter
+              </button>
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                Annuler
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal edition Services -->
+  <div class="modal fade" id="EditionServiceModal" tabindex="-1" aria-labelledby="EditionServiceModalLabel"
     aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -464,39 +411,45 @@ aria-hidden="true">
         </div>
       </div>
     </div>
-</div>
+  </div>
 
-<!-- Modal edition card Habitat -->
-<div class="modal fade" id="EditionCardHabitatModal" tabindex="-1" aria-labelledby="EditionCardHabitatModalLabel"
+
+
+
+<!-- MODAL GESTION DES HABITATS -->
+
+<!-- Modal add Habitat -->
+<div class="modal fade" id="addHabitatModal" tabindex="-1" aria-labelledby="addHabitatModalLabel"
 aria-hidden="true">
 <div class="modal-dialog">
   <div class="modal-content">
     <div class="modal-header">
-      <h2 class="modal-title fs-5" id="EditionCardHabitatModalLabel">
-        Edition de l'habitat
+      <h2 class="modal-title fs-5" id="addHabitatModalLabel">
+        Création d'un habitat
       </h2>
       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
     <div class="modal-body">
-      <form>
+      <form id="addHabitatForm">
+
         <div class="mb-3" data-show="1">
           <label for="illustrationInput" class="form-label">Photo</label>
-          <input type="file" class="form-control" id="illustrationInput" name="Image" />
+          <input type="file" class="form-control" id="illustrationInput" name="Image" accept="image/*"/>
         </div>
 
         <div class="mb-3" data-show="1">
           <label for="nomHabitatInput" class="form-label">Nom de l'habitat</label>
-          <input type="text" class="form-control" id="nomHabitatInput" placeholder="ex: Savane" />
+          <input type="text" class="form-control" id="nomHabitatInput" name="name" placeholder="ex: Savane" required/>
         </div>
 
         <div class="mb-3">
           <label for="descriptionHabitatInput" class="form-label">Description de l'habitat</label>
-          <input type="text" class="form-control" id="descriptionHabitatInput" />
+          <textarea class="form-control" id="descriptionHabitatInput" name="description"></textarea>
         </div>
 
         <div class="text-center">
-          <button type="button" class="btn btn-secondary">
-            Enregistrer
+          <button type="submit" class="btn btn-secondary">
+            Ajouter
           </button>
           <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
             Annuler
@@ -507,4 +460,83 @@ aria-hidden="true">
   </div>
 </div>
 </div>
+
+
+
+  <!-- Modal edit Habitat -->
+  <div class="modal fade" id="editHabitatModal" tabindex="-1" aria-labelledby="editHabitatModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title fs-5" id="editHabitatModalLabel">
+            Modification d'un habitat
+          </h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="editHabitatForm">
+
+             <!-- Ajout d'un champ caché pour l'ID -->
+             <input type="hidden" id="editHabitatId" name="id">
+
+            <div class="mb-3" data-show="1">
+              <label for="editImageInput" class="form-label">Photo</label>
+              <input type="file" class="form-control" id="editImageInput" name="Image" accept="image/*"/>
+            </div>
+
+            <div class="mb-3" data-show="1">
+              <label for="editNameInput" class="form-label">Nom de l'habitat</label>
+              <input type="text" class="form-control" id="editNameInput" name="name" placeholder="ex: Savane" />
+            </div>
+
+            <div class="mb-3">
+              <label for="editDescriptionInput" class="form-label">Description de l'habitat</label>
+              <textarea type="text" class="form-control" id="editDescriptionInput" name="description" required></textarea>
+            </div>
+
+            <div class="text-center">
+              <button type="submit" class="btn btn-secondary">
+                Modifier
+              </button>
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                Annuler
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Modal Suppression Habitat -->
+  <div class="modal fade" id="deleteHabitatModal" tabindex="-1" aria-labelledby="deleteHabitatModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title fs-5" id="deleteHabitatModalLabel">
+            Supprimer cet Habitat ? 
+          </h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="mb-3">
+              <P>Attention cette suppression sera définitive </p>
+            </div>
+
+            <div class="text-center">
+              <button type="button" class="btn btn-danger" id="habitatDeleteButton">Supprimer</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                Annuler
+              </button>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+    
+
 </section>
