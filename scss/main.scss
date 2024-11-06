@@ -90,12 +90,25 @@ footer.footer {
 
 .article-bg {
     background-color: $body;
+    position: relative;
+    background-image: url(../Images/Zoo/background_image-Arcadia.webp);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+    z-index: 100;
 }
 
+
 .article-bg-2 {
-    // background-color: rgba($color: #226D68, $alpha: 1.0);
-    background: rgb(75,89,67);
-background: linear-gradient(145deg, rgba(75,89,67,1) 50%, rgba(220,223,218,1) 50%);
+    background-color: $body;
+    position: relative;
+    background-image: url(../Images/Zoo/background_image-3-Arcadia.webp);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+    z-index: 100;
 }
 
 .text-justify {
@@ -141,8 +154,35 @@ background: linear-gradient(145deg, rgba(75,89,67,1) 50%, rgba(220,223,218,1) 50
 }
 
 .card:hover {
-    transform: scale(120%);
+    transform: scale(130%);
 }
+
+.img-zoom-container {
+    overflow:hidden
+}
+
+.img-zoom-container img {
+    transition: transform 0.3S ease;
+}
+
+.img-zoom-container img:hover {
+    transform: scale(1.43);
+}
+
+
+.img-dezoom-container {
+    overflow:hidden
+}
+
+.img-dezoom-container img {
+    transform: scale(1.3);
+    transition: transform 0.3S ease;
+}
+
+.img-dezoom-container img:hover {
+    transform: scale(1);
+}
+
 
 .p-profile {
     width: 60px;

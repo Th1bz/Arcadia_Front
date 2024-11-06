@@ -101,4 +101,4 @@ function getInfosUser(){
   .catch(error =>{
     console.error("erreur lors de la récupération des données utilisateur", error);
   });
-  }
+}

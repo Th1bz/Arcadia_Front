@@ -32,6 +32,13 @@
       </div>
     </div>
 
+    <button type="button"
+      class="btn btn-outline-light text-info container d-flex justify-content-center align-items-center"
+      style="width: 200px;" data-bs-toggle="modal" data-bs-target="#addHabitatModal" data-show="1">
+      Ajouter un Habitat
+      <i class="bi bi-plus ps-2 pe-0" style="font-size: 1.5rem;"></i>
+    </button>
+
     <!-- Line -->
     <div class="container d-flex justify-content-center">
       <div class="line rounded shadow m-4"></div>
@@ -46,7 +53,7 @@
       </ul>
     </div>
   </article>
-  
+
 </section>
 
 
@@ -55,7 +62,7 @@
     Regardons y de plus près :
   </h2>
   <div id="habitat-container">
-    
+
     <!-- Insertion des habitats -->
 
   </div>
@@ -63,251 +70,330 @@
 
 
 
-  <!-- Modal ajout d'une Card Animal -->
-  <div class="modal fade" id="addAnimalModal" tabindex="-1" aria-labelledby="addAnimalModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h2 class="modal-title fs-5" id="addAnimalModalLabel">
-            Ajouter une Carte Animal
-          </h2>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<!-- Modal ajout d'une Card Animal -->
+<div class="modal fade" id="addAnimalModal" tabindex="-1" aria-labelledby="addAnimalModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title fs-5" id="addAnimalModalLabel">
+          Ajouter une Carte Animal
+        </h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="formAddAnimal">
+          <div class="mb-3">
+            <label for="NameAnimalInput" class="form-label">Nom de l'animal</label>
+            <input type="text" class="form-control" id="NameAnimalInput" placeholder="ex: Tierry" name="firstName"
+              required />
+          </div>
+
+          <div class="mb-3">
+            <label for="PhotoInput" class="form-label">Photo</label>
+            <input type="file" class="form-control" id="PhotoInput" name="Image" />
+          </div>
+
+          <div class="mb-3">
+            <label for="RaceAnimalInput">Définissez une race :</label>
+            <select class="form-control" id="RaceAnimalInput" name="race" required>
+              <option value="">...</option>
+              <optgroup label="Savane">
+                <option value="1">Lion</option>
+                <option value="2">Éléphant d'Afrique</option>
+                <option value="3">Girafe</option>
+                <option value="4">Zèbre</option>
+                <option value="5">Guépard</option>
+                <option value="6">Hyène</option>
+                <option value="7">Antilope (Impala, Gazelle de Thomson)</option>
+                <option value="8">Rhinocéros</option>
+                <option value="9">Buffle d'Afrique</option>
+                <option value="10">Autruche</option>
+              </optgroup>
+
+              <optgroup label="Jungle">
+                <option value="11">Tigre</option>
+                <option value="12">Léopard</option>
+                <option value="13">Gorille</option>
+                <option value="14">Chimpanzé</option>
+                <option value="15">Jaguar</option>
+                <option value="16">Paresseux</option>
+                <option value="17">Anaconda</option>
+                <option value="18">Ara bleu (perroquet)</option>
+                <option value="19">Boa constricteur</option>
+                <option value="20">Tapir</option>
+              </optgroup>
+
+              <optgroup label="Marais">
+                <option value="21">Alligator</option>
+                <option value="22">Crocodile du Nil</option>
+                <option value="23">Hippopotame</option>
+                <option value="24">Flamant rose</option>
+                <option value="25">Grenouille géante</option>
+                <option value="26">Ibis rouge</option>
+                <option value="27">Caïman</option>
+                <option value="28">Tortue des marais</option>
+                <option value="29">Serpent d'eau</option>
+                <option value="30">Loutre</option>
+              </optgroup>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="habitatAnimalSelect" class="form-label">Habitat</label>
+            <select class="form-control" id="habitatAnimalSelect" name="habitat" required>
+              <option value="">Sélectionnez un habitat</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="statusAnimalInput" class="form-label">État de santé</label>
+            <input type="text" class="form-control" id="statusAnimalInput" placeholder="ex: En bonne Santé"
+              name="status" required />
+          </div>
+
+          <div class="text-center">
+            <button type="submit" class="btn btn-secondary" id="btn-add-animal">
+              Ajouter
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal edition Card Animal -->
+<div class="modal fade" id="editAnimalModal" tabindex="-1" aria-labelledby="editAnimalModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title fs-5" id="editAnimalModalLabel">
+          Modification de l'animal
+        </h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="formEditAnimal">
+          <input type="hidden" id="editAnimalId" name="id">
+
+          <div class="mb-3">
+            <label for="editNameInput" class="form-label">Nom de l'animal</label>
+            <input type="text" class="form-control" id="editNameInput" name="firstName" required />
+          </div>
+
+          <div class="mb-3">
+            <label for="editPhotoInput" class="form-label">Photo</label>
+            <input type="file" class="form-control" id="editPhotoInput" name="picture" />
+          </div>
+
+          <div class="mb-3">
+            <label for="editRaceInput" class="form-label">Race</label>
+            <select class="form-control" id="editRaceInput" name="race" required>
+              <option value="">...</option>
+              <optgroup label="Savane">
+                <option value="1">Lion</option>
+                <option value="2">Éléphant d'Afrique</option>
+                <option value="3">Girafe</option>
+                <option value="4">Zèbre</option>
+                <option value="5">Guépard</option>
+                <option value="6">Hyène</option>
+                <option value="7">Antilope (Impala, Gazelle de Thomson)</option>
+                <option value="8">Rhinocéros</option>
+                <option value="9">Buffle d'Afrique</option>
+                <option value="10">Autruche</option>
+              </optgroup>
+
+              <optgroup label="Jungle">
+                <option value="11">Tigre</option>
+                <option value="12">Léopard</option>
+                <option value="13">Gorille</option>
+                <option value="14">Chimpanzé</option>
+                <option value="15">Jaguar</option>
+                <option value="16">Paresseux</option>
+                <option value="17">Anaconda</option>
+                <option value="18">Ara bleu (perroquet)</option>
+                <option value="19">Boa constricteur</option>
+                <option value="20">Tapir</option>
+              </optgroup>
+
+              <optgroup label="Marais">
+                <option value="21">Alligator</option>
+                <option value="22">Crocodile du Nil</option>
+                <option value="23">Hippopotame</option>
+                <option value="24">Flamant rose</option>
+                <option value="25">Grenouille géante</option>
+                <option value="26">Ibis rouge</option>
+                <option value="27">Caïman</option>
+                <option value="28">Tortue des marais</option>
+                <option value="29">Serpent d'eau</option>
+                <option value="30">Loutre</option>
+              </optgroup>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="editStatusInput" class="form-label">État de santé</label>
+            <input type="text" class="form-control" id="editStatusInput" name="status" required />
+          </div>
+
+          <div class="text-center">
+            <button type="submit" class="btn btn-secondary">
+              Enregistrer
+            </button>
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+              Annuler
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Suppression Card Animal -->
+<div class="modal fade" id="deleteAnimalModal" tabindex="-1" aria-labelledby="deleteAnimalModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title fs-5" id="deleteAnimalModalLabel">
+          Suppression Carte Animal
+        </h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <P>Êtes vous sur de vouloir supprimer cette carte Animal ?</p>
         </div>
-        <div class="modal-body">
-          <form id="formAddAnimal">
-            <div class="mb-3">
-              <label for="NameAnimalInput" class="form-label">Nom de l'animal</label>
-              <input type="text" class="form-control" id="NameAnimalInput" placeholder="ex: Tierry" name="firstName"
-                required />
-            </div>
 
-            <div class="mb-3">
-              <label for="PhotoInput" class="form-label">Photo</label>
-              <input type="file" class="form-control" id="PhotoInput" name="Image" />
-            </div>
-
-            <div class="mb-3">
-              <label for="RaceAnimalInput">Définissez une race :</label>
-              <select class="form-control" id="RaceAnimalInput" name="race" required>
-                <option value="">...</option>
-                <optgroup label="Savane">
-                  <option value="1">Lion</option>
-                  <option value="2">Éléphant d'Afrique</option>
-                  <option value="3">Girafe</option>
-                  <option value="4">Zèbre</option>
-                  <option value="5">Guépard</option>
-                  <option value="6">Hyène</option>
-                  <option value="7">Antilope (Impala, Gazelle de Thomson)</option>
-                  <option value="8">Rhinocéros</option>
-                  <option value="9">Buffle d'Afrique</option>
-                  <option value="10">Autruche</option>
-                </optgroup>
-
-                <optgroup label="Jungle">
-                  <option value="11">Tigre</option>
-                  <option value="12">Léopard</option>
-                  <option value="13">Gorille</option>
-                  <option value="14">Chimpanzé</option>
-                  <option value="15">Jaguar</option>
-                  <option value="16">Paresseux</option>
-                  <option value="17">Anaconda</option>
-                  <option value="18">Ara bleu (perroquet)</option>
-                  <option value="19">Boa constricteur</option>
-                  <option value="20">Tapir</option>
-                </optgroup>
-
-                <optgroup label="Marais">
-                  <option value="21">Alligator</option>
-                  <option value="22">Crocodile du Nil</option>
-                  <option value="23">Hippopotame</option>
-                  <option value="24">Flamant rose</option>
-                  <option value="25">Grenouille géante</option>
-                  <option value="26">Ibis rouge</option>
-                  <option value="27">Caïman</option>
-                  <option value="28">Tortue des marais</option>
-                  <option value="29">Serpent d'eau</option>
-                  <option value="30">Loutre</option>
-                </optgroup>
-              </select>
-            </div>
-
-            <div class="mb-3">
-              <label for="habitatAnimalSelect" class="form-label">Habitat</label>
-              <select class="form-control" id="habitatAnimalSelect" name="habitat" required>
-                <option value="">Sélectionnez un habitat</option>
-              </select>
-            </div>
-
-            <div class="mb-3">
-              <label for="statusAnimalInput" class="form-label">État de santé</label>
-              <input type="text" class="form-control" id="statusAnimalInput" placeholder="ex: En bonne Santé"
-                name="status" required />
-            </div>
-
-            <div class="text-center">
-              <button type="submit" class="btn btn-secondary" id="btn-add-animal">
-                Ajouter
-              </button>
-            </div>
-          </form>
+        <div class="text-center">
+          <button type="button" class="btn btn-danger" id="confirmDeleteButton">Supprimer</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            Annuler
+          </button>
         </div>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- Modal edition Card Animal -->
-  <div class="modal fade" id="editAnimalModal" tabindex="-1" aria-labelledby="editAnimalModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h2 class="modal-title fs-5" id="editAnimalModalLabel">
-            Modification de l'animal
-          </h2>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+<!-- MODAL GESTION DES HABITATS -->
+
+<!-- Modal add Habitat -->
+<div class="modal fade" id="addHabitatModal" tabindex="-1" aria-labelledby="addHabitatModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title fs-5" id="addHabitatModalLabel">
+          Création d'un habitat
+        </h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="addHabitatForm">
+
+          <div class="mb-3" data-show="1">
+            <label for="illustrationInput" class="form-label">Photo</label>
+            <input type="file" class="form-control" id="illustrationInput" name="Image" accept="image/*" />
+          </div>
+
+          <div class="mb-3" data-show="1">
+            <label for="nomHabitatInput" class="form-label">Nom de l'habitat</label>
+            <input type="text" class="form-control" id="nomHabitatInput" name="name" placeholder="ex: Savane"
+              required />
+          </div>
+
+          <div class="mb-3">
+            <label for="descriptionHabitatInput" class="form-label">Description de l'habitat</label>
+            <textarea class="form-control" id="descriptionHabitatInput" name="description"></textarea>
+          </div>
+
+          <div class="text-center">
+            <button type="submit" class="btn btn-secondary">
+              Ajouter
+            </button>
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+              Annuler
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal edit Habitat -->
+<div class="modal fade" id="editHabitatModal" tabindex="-1" aria-labelledby="editHabitatModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title fs-5" id="editHabitatModalLabel">
+          Modification d'un habitat
+        </h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="editHabitatForm">
+
+          <!-- Ajout d'un champ caché pour l'ID -->
+          <input type="hidden" id="editHabitatId" name="id">
+
+          <div class="mb-3" data-show="1">
+            <label for="editImageInput" class="form-label">Photo</label>
+            <input type="file" class="form-control" id="editImageInput" name="Image" accept="image/*" />
+          </div>
+
+          <div class="mb-3" data-show="1">
+            <label for="editNameInput" class="form-label">Nom de l'habitat</label>
+            <input type="text" class="form-control" id="editNameHabitat" name="name" placeholder="ex: Savane" />
+          </div>
+
+          <div class="mb-3">
+            <label for="editDescriptionInput" class="form-label">Description de l'habitat</label>
+            <textarea type="text" class="form-control" id="editDescriptionInput" name="description" required></textarea>
+          </div>
+
+          <div class="text-center">
+            <button type="submit" class="btn btn-secondary">
+              Modifier
+            </button>
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+              Annuler
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal Suppression Habitat -->
+<div class="modal fade" id="deleteHabitatModal" tabindex="-1" aria-labelledby="deleteHabitatModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title fs-5" id="deleteHabitatModalLabel">
+          Supprimer cet Habitat ?
+        </h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <P>Attention cette suppression sera définitive </p>
         </div>
-        <div class="modal-body">
-          <form id="formEditAnimal">
-            <input type="hidden" id="editAnimalId" name="id">
-            
-            <div class="mb-3">
-              <label for="editNameInput" class="form-label">Nom de l'animal</label>
-              <input type="text" class="form-control" id="editNameInput" name="firstName" required />
-            </div>
 
-            <div class="mb-3">
-              <label for="editPhotoInput" class="form-label">Photo</label>
-              <input type="file" class="form-control" id="editPhotoInput" name="picture" />
-            </div>
-           
-            <div class="mb-3">
-              <label for="editRaceInput" class="form-label">Race</label>
-              <select class="form-control" id="editRaceInput" name="race" required>
-                <option value="">...</option>
-                <optgroup label="Savane">
-                  <option value="1">Lion</option>
-                  <option value="2">Éléphant d'Afrique</option>
-                  <option value="3">Girafe</option>
-                  <option value="4">Zèbre</option>
-                  <option value="5">Guépard</option>
-                  <option value="6">Hyène</option>
-                  <option value="7">Antilope (Impala, Gazelle de Thomson)</option>
-                  <option value="8">Rhinocéros</option>
-                  <option value="9">Buffle d'Afrique</option>
-                  <option value="10">Autruche</option>
-                </optgroup>
-
-                <optgroup label="Jungle">
-                  <option value="11">Tigre</option>
-                  <option value="12">Léopard</option>
-                  <option value="13">Gorille</option>
-                  <option value="14">Chimpanzé</option>
-                  <option value="15">Jaguar</option>
-                  <option value="16">Paresseux</option>
-                  <option value="17">Anaconda</option>
-                  <option value="18">Ara bleu (perroquet)</option>
-                  <option value="19">Boa constricteur</option>
-                  <option value="20">Tapir</option>
-                </optgroup>
-
-                <optgroup label="Marais">
-                  <option value="21">Alligator</option>
-                  <option value="22">Crocodile du Nil</option>
-                  <option value="23">Hippopotame</option>
-                  <option value="24">Flamant rose</option>
-                  <option value="25">Grenouille géante</option>
-                  <option value="26">Ibis rouge</option>
-                  <option value="27">Caïman</option>
-                  <option value="28">Tortue des marais</option>
-                  <option value="29">Serpent d'eau</option>
-                  <option value="30">Loutre</option>
-                </optgroup>
-              </select>
-            </div>
-
-            <div class="mb-3">
-              <label for="editStatusInput" class="form-label">État de santé</label>
-              <input type="text" class="form-control" id="editStatusInput" name="status" required />
-            </div>
-
-            <div class="text-center">
-              <button type="submit" class="btn btn-secondary">
-                Enregistrer
-              </button>
-              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
-                Annuler
-              </button>
-            </div>
-          </form>
+        <div class="text-center">
+          <button type="button" class="btn btn-danger" id="habitatDeleteButton">Supprimer</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            Annuler
+          </button>
         </div>
       </div>
     </div>
   </div>
-
-  <!-- Modal Suppression Card Animal -->
-  <div class="modal fade" id="deleteAnimalModal" tabindex="-1" aria-labelledby="deleteAnimalModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h2 class="modal-title fs-5" id="deleteAnimalModalLabel">
-            Suppression Carte Animal
-          </h2>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <div class="mb-3">
-              <P>Êtes vous sur de vouloir supprimer cette carte Animal ?</p>
-            </div>
-
-            <div class="text-center">
-              <button type="button" class="btn btn-danger" id="confirmDeleteButton">Supprimer</button>
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                Annuler
-              </button>
-            </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal edition Habitat -->
-  <div class="modal fade" id="EditionHabitatModal" tabindex="-1" aria-labelledby="EditionHabitatModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h2 class="modal-title fs-5" id="EditionHabitatModalLabel">
-            Edition de l'habitat
-          </h2>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form>
-            <div class="mb-3" data-show="1">
-              <label for="illustrationInput" class="form-label">Photo</label>
-              <input type="file" class="form-control" id="illustrationInput" name="Image" />
-            </div>
-
-            <div class="mb-3" data-show="1">
-              <label for="nomHabitatInput" class="form-label">Nom de l'habitat</label>
-              <input type="text" class="form-control" id="nomHabitatInput" placeholder="ex: Savane" />
-            </div>
-
-            <div class="mb-3">
-              <label for="descriptionHabitatInput" class="form-label">Description de l'habitat</label>
-              <input type="text" class="form-control" id="descriptionHabitatInput" />
-            </div>
-
-            <div class="text-center">
-              <button type="button" class="btn btn-secondary">
-                Enregistrer
-              </button>
-              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
-                Annuler
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
+</div>
