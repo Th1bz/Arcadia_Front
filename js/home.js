@@ -1,6 +1,8 @@
 
 //--------------Fonction pour générer le HTML d'une card habitat--------------
 function generateHabitatCard(habitat) {
+    let description = habitat.description.replace(/\n/g, '<br>');
+  description = description.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
 
     let imageUrl = '../Images/Zoo/mediumBrownArcadia.png';
 
@@ -17,13 +19,12 @@ function generateHabitatCard(habitat) {
                     alt="${habitat.name}"
                     onerror="this.src='../Images/Zoo/mediumBrownArcadia.png'" />
             </a>
-                <h5 class="card-title font-subtitle text-center text-secondary bg-dark">
+                <h5 class="card-title font-subtitle text-center text-secondary bg-dark mb-0">
                     ${habitat.name}
                 </h5>
-                <div class="card-body">
-                    <p class="card-text">${habitat.description}</p>
+                <div class="card-body" style="height: 150px; overflow-y: auto;">
+                    <p class="card-text">${description}</p>
                 </div>
-            </div>
         </div>
     `;
     

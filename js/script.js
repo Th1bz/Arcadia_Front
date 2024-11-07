@@ -102,3 +102,14 @@ function getInfosUser(){
     console.error("erreur lors de la récupération des données utilisateur", error);
   });
 }
+
+
+//--------------Fonction pour convertir un fichier en base64--------------
+function convertFileToBase64(file) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+        reader.readAsDataURL(file);
+    });
+}

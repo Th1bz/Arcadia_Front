@@ -12062,12 +12062,13 @@ footer.footer {
 .article-bg-2 {
   background-color: #4B5943;
   position: relative;
-  background-image: url(../Images/Zoo/background_image-3-Arcadia.webp);
+  background-image: url(../Images/Zoo/vue-aerienne-arcadia.webp);
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   position: relative;
   z-index: 100;
+  padding-bottom: 10px;
 }
 
 .text-justify {
@@ -12080,7 +12081,7 @@ footer.footer {
 
 .cards-description:hover {
   transform: scale(105%);
-  background-color: rgba(35, 40, 38, 0.5);
+  background-color: rgba(35, 40, 38, 0.9);
   box-shadow: 0 10px 7px 0 #232826;
 }
 
@@ -12109,10 +12110,12 @@ footer.footer {
 .card {
   background-color: #99B5AC;
   transition: all 0.3s;
+  scrollbar-color: #99B5AC #99B5AC;
 }
 
 .card:hover {
   transform: scale(130%);
+  scrollbar-color: #232826 #99B5AC;
 }
 
 .img-zoom-container {
@@ -12138,6 +12141,19 @@ footer.footer {
 
 .img-dezoom-container img:hover {
   transform: scale(1);
+}
+
+.custom-btn {
+  color: turquoise;
+  border: 2px solid #232826;
+  background-color: #232826;
+  transition: all 0.3s ease;
+}
+
+.custom-btn:hover {
+  color: #232826;
+  font-weight: 550;
+  background-color: #8FB43A;
 }
 
 .p-profile {
@@ -12201,6 +12217,12 @@ footer.footer {
   justify-content: center;
   align-items: center;
   transition: all 3S;
+}
+
+.text-important-textarea {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--bs-secondary);
 }
 
 @media (max-width: 1000px) {

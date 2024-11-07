@@ -103,12 +103,13 @@ footer.footer {
 .article-bg-2 {
     background-color: $body;
     position: relative;
-    background-image: url(../Images/Zoo/background_image-3-Arcadia.webp);
+    background-image: url(../Images/Zoo/vue-aerienne-arcadia.webp);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     position: relative;
     z-index: 100;
+    padding-bottom: 10px;
 }
 
 .text-justify {
@@ -121,7 +122,7 @@ footer.footer {
 
 .cards-description:hover {
     transform: scale(105%);
-    background-color: rgba($color: #232826, $alpha: 0.5);
+    background-color: rgba($color: #232826, $alpha: 0.9);
     box-shadow: 0 10px 7px 0 $dark;
 }
 
@@ -151,11 +152,14 @@ footer.footer {
 .card {
     background-color: $tertiary;
     transition: all 0.3s;
+    scrollbar-color: $tertiary $tertiary;
 }
 
 .card:hover {
     transform: scale(130%);
+    scrollbar-color: $dark $tertiary;
 }
+
 
 .img-zoom-container {
     overflow:hidden
@@ -181,6 +185,20 @@ footer.footer {
 
 .img-dezoom-container img:hover {
     transform: scale(1);
+}
+
+
+.custom-btn {
+    color: turquoise;
+    border: 2px solid $dark;
+    background-color: $dark;
+    transition: all 0.3s ease;
+}
+
+.custom-btn:hover {
+    color: $dark;
+    font-weight: 550;
+    background-color: $secondary;
 }
 
 
@@ -252,6 +270,13 @@ footer.footer {
     align-items: center;
     transition: all 3S;
 }
+
+.text-important-textarea {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--bs-secondary);
+}
+
 
 // Responsive Design ----------------------------------------------
 

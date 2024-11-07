@@ -104,7 +104,7 @@ if (editModalHabitat) {
 
                 const imageFile = formData.get('Image');
                 if (imageFile && imageFile.size > 0) {
-                    const base64Image = await convertFileToBase64Habitat(imageFile);
+                    const base64Image = await convertFileToBase64(imageFile);
                     habitatData.pictureData = base64Image;
                 }
 
@@ -259,7 +259,7 @@ if (editModalAnimal) {
             );
             return;
           }
-          const base64Picture = await convertFileToBase64(pictureFile);
+          const base64Picture = await convertFileToBase64Animal(pictureFile);
           animalData.pictureData = base64Picture;
         }
 
@@ -293,8 +293,10 @@ if (editModalAnimal) {
 }
 //------------------------------------------
 
-//--------------Fonction pour générer le HTML d'une section habitat--------------@
+//--------------Fonction pour générer le HTML d'un Article habitat--------------
 function generateHabitatSection(habitat) {
+  let description = habitat.description.replace(/\n/g, '<br>');
+  description = description.replace(/\*\*(.*?)\*\*/g, '<strong class="text-important-textarea">$1</strong>');
   const imageUrl =
     habitat.pictures && habitat.pictures.length > 0
       ? `${apiUrl}${habitat.pictures[0].path}`
@@ -343,8 +345,8 @@ function generateHabitatSection(habitat) {
                             Ajouter un Animal
                         </button>
                     </div>
-                    <div class="container d-flex justify-content-center text-justify text-primary">
-                        <p>${habitat.description}</p>
+                    <div class="container text-center text-primary pb-3" style="height: auto; overflow: visible; font-size: 1.2rem">
+                        <p>${description}</p>
                     </div>
                     
                     <div class="d-flex flex-row justify-content-evenly flex-wrap p-4" id="addCard${
@@ -356,6 +358,8 @@ function generateHabitatSection(habitat) {
         </div>
     </article>`;
 }
+//-----------------------------
+
 
 //--------------Fonction pour charger et afficher tous les habitats--------------
 function loadHabitats() {
@@ -387,11 +391,6 @@ function loadHabitats() {
     });
 }
 //------------------------------------------
-
-
-
-
-
 
 
 //--------------Fonction pour générer le HTML d'une card animal--------------
@@ -515,7 +514,7 @@ function initializeAddHabitatForm() {
                         alert('L\'image est trop volumineuse. La taille maximale est de 2MB');
                         return;
                     }
-                    const base64Picture = await convertFileToBase64Habitat(pictureFile);
+                    const base64Picture = await convertFileToBase64(pictureFile);
                     habitatData.pictureData = base64Picture;
                 }
 
@@ -584,7 +583,7 @@ function initializeAddAnimalForm() {
                         alert("L'image est trop volumineuse. La taille maximale est de 2MB");
                         return;
                     }
-                    const base64Picture = await convertFileToBase64(pictureFile);
+                    const base64Picture = await convertFileToBase64Animal(pictureFile);
                     animalData.pictureData = base64Picture;
                 }
 
@@ -625,7 +624,7 @@ function initializeAddAnimalForm() {
 //------------------------------------------
 
 //--------------Fonction pour convertir un fichier en base64--------------
-function convertFileToBase64(file) {
+function convertFileToBase64Animal(file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.onload = () => resolve(reader.result.split(",")[1]);
@@ -634,17 +633,6 @@ function convertFileToBase64(file) {
   });
 }
 //------------------------------------------
-
-
-//--------------Fonction pour convertir un fichier en base64--------------
-function convertFileToBase64Habitat(file) {
-    return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = () => resolve(reader.result);
-        reader.onerror = error => reject(error);
-        reader.readAsDataURL(file);
-    });
-}
 
 
 //--------------Fonction pour remplir le select habitat--------------
