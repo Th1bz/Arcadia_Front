@@ -12225,6 +12225,10 @@ footer.footer {
   color: var(--bs-secondary);
 }
 
+.form-group {
+  width: 600px;
+}
+
 @media (max-width: 1000px) {
   main {
     margin-bottom: 275px;

@@ -635,39 +635,6 @@ function convertFileToBase64Animal(file) {
 //------------------------------------------
 
 
-//--------------Fonction pour remplir le select habitat--------------
-function listHabitatsSelect() {
-    fetch(apiUrl + "habitat/list")
-        .then(response => {
-            if (!response.ok) throw new Error("Erreur réseau: " + response.status);
-            return response.json();
-        })
-        .then(habitats => {
-            const select = document.getElementById("habitatAnimalSelect");
-            if (!select) {
-                console.error("Select habitat non trouvé");
-                return;
-            }
-
-      // Garder l'option par défaut
-      const defaultOption = select.querySelector('option[value=""]');
-      select.innerHTML = "";
-      if (defaultOption) select.appendChild(defaultOption);
-
-            // Ajouter les options pour chaque habitat
-            habitats.forEach(habitat => {
-                const option = document.createElement("option");
-                option.value = habitat.id;
-                option.textContent = habitat.name;
-                select.appendChild(option);
-            });
-        })
-        .catch(error => {
-            console.error("Erreur lors du chargement des habitats:", error);
-        });
-}
-//------------------------------------------
-
 //--------------Fonction pour charger le script--------------
 (function () {
   if (typeof loadAnimals === "undefined") {
