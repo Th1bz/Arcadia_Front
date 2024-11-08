@@ -12230,16 +12230,27 @@ footer.footer {
   width: 600px;
 }
 
-.table-likes {
+.table-custom {
   border: 3px solid #232826;
   border-radius: 10px;
   padding-bottom: 5px;
 }
 
-.table-likes-body {
+.table-custom-body {
   max-height: 400px;
   overflow-y: auto;
   scrollbar-color: #8FB43A #232826;
+}
+
+.rapport-veto {
+  border: 3px solid #232826;
+  border-radius: 10px;
+  padding-bottom: 5px;
+  background-color: whitesmoke;
+}
+
+.rapport-veto-body {
+  padding: 10px;
 }
 
 .click-heart {
@@ -12274,5 +12285,10 @@ footer.footer {
 @media (max-width: 768px) {
   main {
     margin-bottom: 572px;
+  }
+}
+@media (max-width: 991.98px) {
+  .table-responsive {
+    max-height: 400px !important;
   }
 }/*# sourceMappingURL=main.css.map */

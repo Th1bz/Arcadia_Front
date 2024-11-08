@@ -26,17 +26,26 @@
         </div>
 
         <div class="col-12 col-md-4">
-          <img class="d-block w-100 object-fit-cover shadow rounded" style="height: 350px"
-            src="../Images/Savane/giraffes.jpg" alt="Enclot à girafes" />
+          <img
+            class="d-block w-100 object-fit-cover shadow rounded"
+            style="height: 350px"
+            src="../Images/Savane/giraffes.jpg"
+            alt="Enclot à girafes"
+          />
         </div>
       </div>
     </div>
 
-    <button type="button"
+    <button
+      type="button"
       class="btn custom-btn container d-flex justify-content-center align-items-center"
-      style="width: 200px;" data-bs-toggle="modal" data-bs-target="#addHabitatModal" data-show="1">
+      style="width: 200px"
+      data-bs-toggle="modal"
+      data-bs-target="#addHabitatModal"
+      data-show="1"
+    >
       Ajouter un Habitat
-      <i class="bi bi-plus ps-2 pe-0" style="font-size: 1.5rem;"></i>
+      <i class="bi bi-plus ps-2 pe-0" style="font-size: 1.5rem"></i>
     </button>
 
     <!-- Line -->
@@ -53,49 +62,125 @@
       </ul>
     </div>
   </article>
-
 </section>
-
 
 <section class="bg-dark">
   <h2 class="font-subtitle text-center text-secondary bg-dark mb-0 p-2 shadow">
     Regardons y de plus près :
   </h2>
   <div id="habitat-container">
-
     <!-- Insertion des habitats -->
-
   </div>
 </section>
 
-
+<!-- Modal Dernier rapport vétérinaire -->
+<div class="modal fade" id="vetReportModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-dark text-secondary">
+        <h5 class="modal-title">
+          <i class="bi bi-clipboard2-pulse"></i> Dernier rapport vétérinaire
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+        ></button>
+      </div>
+      <div class="modal-body" id="vetReportContent">
+        <div class="container">
+          <div class="row mb-3">
+            <div class="col-12">
+              <h4 class="border-bottom pb-2" id="vetReportAnimalName"></h4>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <p id="vetReportVisitDate"></p>
+            </div>
+            <div class="col-md-6">
+              <p id="vetReportVetName"></p>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-12">
+              <h5 class="border-bottom pb-2">
+                <i class="bi bi-cup-hot"></i> Alimentation
+              </h5>
+              <p id="vetReportFeedType"></p>
+              <p id="vetReportFeedQuantity"></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <h5 class="border-bottom pb-2">
+                <i class="bi bi-chat-text"></i> Commentaire
+              </h5>
+              <p id="vetReportComment"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!---------------------------------------->
 
 <!-- Modal ajout d'une Card Animal -->
-<div class="modal fade" id="addAnimalModal" tabindex="-1" aria-labelledby="addAnimalModalLabel" aria-hidden="true">
+<div
+  class="modal fade"
+  id="addAnimalModal"
+  tabindex="-1"
+  aria-labelledby="addAnimalModalLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h2 class="modal-title fs-5" id="addAnimalModalLabel">
           Ajouter une Carte Animal
         </h2>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
       <div class="modal-body">
         <form id="formAddAnimal">
           <div class="mb-3">
-            <label for="NameAnimalInput" class="form-label">Nom de l'animal</label>
-            <input type="text" class="form-control" id="NameAnimalInput" placeholder="ex: Tierry" name="firstName"
-              required />
+            <label for="NameAnimalInput" class="form-label"
+              >Nom de l'animal</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="NameAnimalInput"
+              placeholder="ex: Tierry"
+              name="firstName"
+              required
+            />
           </div>
 
           <div class="mb-3">
             <label for="PhotoInput" class="form-label">Photo</label>
-            <input type="file" class="form-control" id="PhotoInput" name="Image" />
+            <input
+              type="file"
+              class="form-control"
+              id="PhotoInput"
+              name="Image"
+            />
           </div>
 
           <div class="mb-3">
             <label for="RaceAnimalInput">Définissez une race :</label>
-            <select class="form-control" id="RaceAnimalInput" name="race" required>
+            <select
+              class="form-control"
+              id="RaceAnimalInput"
+              name="race"
+              required
+            >
               <option value="">...</option>
               <optgroup label="Savane">
                 <option value="1">Lion</option>
@@ -140,15 +225,28 @@
 
           <div class="mb-3">
             <label for="habitatAnimalSelect" class="form-label">Habitat</label>
-            <select class="form-control" id="habitatAnimalSelect" name="habitat" required>
+            <select
+              class="form-control"
+              id="habitatAnimalSelect"
+              name="habitat"
+              required
+            >
               <option value="">Sélectionnez un habitat</option>
             </select>
           </div>
 
           <div class="mb-3">
-            <label for="statusAnimalInput" class="form-label">État de santé</label>
-            <input type="text" class="form-control" id="statusAnimalInput" placeholder="ex: En bonne Santé"
-              name="status" required />
+            <label for="statusAnimalInput" class="form-label"
+              >État de santé</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="statusAnimalInput"
+              placeholder="ex: En bonne Santé"
+              name="status"
+              required
+            />
           </div>
 
           <div class="text-center">
@@ -163,32 +261,61 @@
 </div>
 
 <!-- Modal edition Card Animal -->
-<div class="modal fade" id="editAnimalModal" tabindex="-1" aria-labelledby="editAnimalModalLabel" aria-hidden="true">
+<div
+  class="modal fade"
+  id="editAnimalModal"
+  tabindex="-1"
+  aria-labelledby="editAnimalModalLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h2 class="modal-title fs-5" id="editAnimalModalLabel">
           Modification de l'animal
         </h2>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
       <div class="modal-body">
         <form id="formEditAnimal">
-          <input type="hidden" id="editAnimalId" name="id">
+          <input type="hidden" id="editAnimalId" name="id" />
 
           <div class="mb-3">
-            <label for="editNameInput" class="form-label">Nom de l'animal</label>
-            <input type="text" class="form-control" id="editNameInput" name="firstName" required />
+            <label for="editNameInput" class="form-label"
+              >Nom de l'animal</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="editNameInput"
+              name="firstName"
+              required
+            />
           </div>
 
           <div class="mb-3">
             <label for="editPhotoInput" class="form-label">Photo</label>
-            <input type="file" class="form-control" id="editPhotoInput" name="picture" />
+            <input
+              type="file"
+              class="form-control"
+              id="editPhotoInput"
+              name="picture"
+            />
           </div>
 
           <div class="mb-3">
             <label for="editRaceInput" class="form-label">Race</label>
-            <select class="form-control" id="editRaceInput" name="race" required>
+            <select
+              class="form-control"
+              id="editRaceInput"
+              name="race"
+              required
+            >
               <option value="">...</option>
               <optgroup label="Savane">
                 <option value="1">Lion</option>
@@ -232,15 +359,25 @@
           </div>
 
           <div class="mb-3">
-            <label for="editStatusInput" class="form-label">État de santé</label>
-            <input type="text" class="form-control" id="editStatusInput" name="status" required />
+            <label for="editStatusInput" class="form-label"
+              >État de santé</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="editStatusInput"
+              name="status"
+              required
+            />
           </div>
 
           <div class="text-center">
-            <button type="submit" class="btn btn-secondary">
-              Enregistrer
-            </button>
-            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+            <button type="submit" class="btn btn-secondary">Enregistrer</button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              data-bs-dismiss="modal"
+            >
               Annuler
             </button>
           </div>
@@ -251,24 +388,40 @@
 </div>
 
 <!-- Modal Suppression Card Animal -->
-<div class="modal fade" id="deleteAnimalModal" tabindex="-1" aria-labelledby="deleteAnimalModalLabel"
-  aria-hidden="true">
+<div
+  class="modal fade"
+  id="deleteAnimalModal"
+  tabindex="-1"
+  aria-labelledby="deleteAnimalModalLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h2 class="modal-title fs-5" id="deleteAnimalModalLabel">
           Suppression Carte Animal
         </h2>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
       <div class="modal-body">
         <div class="mb-3">
-          <P>Êtes vous sur de vouloir supprimer cette carte Animal ?</p>
+          <p>Êtes vous sur de vouloir supprimer cette carte Animal ?</p>
         </div>
 
         <div class="text-center">
-          <button type="button" class="btn btn-danger" id="confirmDeleteButton">Supprimer</button>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          <button type="button" class="btn btn-danger" id="confirmDeleteButton">
+            Supprimer
+          </button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
             Annuler
           </button>
         </div>
@@ -277,43 +430,77 @@
   </div>
 </div>
 
-
 <!-- MODAL GESTION DES HABITATS -->
 
 <!-- Modal add Habitat -->
-<div class="modal fade" id="addHabitatModal" tabindex="-1" aria-labelledby="addHabitatModalLabel" aria-hidden="true">
+<div
+  class="modal fade"
+  id="addHabitatModal"
+  tabindex="-1"
+  aria-labelledby="addHabitatModalLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h2 class="modal-title fs-5" id="addHabitatModalLabel">
           Création d'un habitat
         </h2>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
       <div class="modal-body">
         <form id="addHabitatForm">
-
           <div class="mb-3" data-show="1">
             <label for="illustrationInput" class="form-label">Photo</label>
-            <input type="file" class="form-control" id="illustrationInput" name="Image" accept="image/*" />
+            <input
+              type="file"
+              class="form-control"
+              id="illustrationInput"
+              name="Image"
+              accept="image/*"
+            />
           </div>
 
           <div class="mb-3" data-show="1">
-            <label for="nomHabitatInput" class="form-label">Nom de l'habitat</label>
-            <input type="text" class="form-control" id="nomHabitatInput" name="name" placeholder="ex: Savane"
-              required />
+            <label for="nomHabitatInput" class="form-label"
+              >Nom de l'habitat</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="nomHabitatInput"
+              name="name"
+              placeholder="ex: Savane"
+              required
+            />
           </div>
 
           <div class="mb-3">
-            <label for="descriptionHabitatInput" class="form-label">Description de l'habitat <span class="small">(utiliser : **votre texte** pour mettre en gras)</span></label>
-            <textarea class="form-control" id="descriptionHabitatInput" name="description"></textarea>
+            <label for="descriptionHabitatInput" class="form-label"
+              >Description de l'habitat
+              <span class="small"
+                >(utiliser : **votre texte** pour mettre en gras)</span
+              ></label
+            >
+            <textarea
+              class="form-control"
+              id="descriptionHabitatInput"
+              name="description"
+            ></textarea>
           </div>
 
           <div class="text-center">
-            <button type="submit" class="btn btn-secondary">
-              Ajouter
-            </button>
-            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+            <button type="submit" class="btn btn-secondary">Ajouter</button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              data-bs-dismiss="modal"
+            >
               Annuler
             </button>
           </div>
@@ -323,44 +510,79 @@
   </div>
 </div>
 
-
-
 <!-- Modal edit Habitat -->
-<div class="modal fade" id="editHabitatModal" tabindex="-1" aria-labelledby="editHabitatModalLabel" aria-hidden="true">
+<div
+  class="modal fade"
+  id="editHabitatModal"
+  tabindex="-1"
+  aria-labelledby="editHabitatModalLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h2 class="modal-title fs-5" id="editHabitatModalLabel">
           Modification d'un habitat
         </h2>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
       <div class="modal-body">
         <form id="editHabitatForm">
-
           <!-- Ajout d'un champ caché pour l'ID -->
-          <input type="hidden" id="editHabitatId" name="id">
+          <input type="hidden" id="editHabitatId" name="id" />
 
           <div class="mb-3" data-show="1">
             <label for="editImageInput" class="form-label">Photo</label>
-            <input type="file" class="form-control" id="editImageInput" name="Image" accept="image/*" />
+            <input
+              type="file"
+              class="form-control"
+              id="editImageInput"
+              name="Image"
+              accept="image/*"
+            />
           </div>
 
           <div class="mb-3" data-show="1">
-            <label for="editNameInput" class="form-label">Nom de l'habitat</label>
-            <input type="text" class="form-control" id="editNameHabitat" name="name" placeholder="ex: Savane" />
+            <label for="editNameInput" class="form-label"
+              >Nom de l'habitat</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="editNameHabitat"
+              name="name"
+              placeholder="ex: Savane"
+            />
           </div>
 
           <div class="mb-3">
-            <label for="editDescriptionInput" class="form-label">Description de l'habitat <span class="small">(utiliser : **votre texte** pour mettre en gras)</span></label>
-            <textarea type="text" class="form-control" id="editDescriptionInput" name="description" required></textarea>
+            <label for="editDescriptionInput" class="form-label"
+              >Description de l'habitat
+              <span class="small"
+                >(utiliser : **votre texte** pour mettre en gras)</span
+              ></label
+            >
+            <textarea
+              type="text"
+              class="form-control"
+              id="editDescriptionInput"
+              name="description"
+              required
+            ></textarea>
           </div>
 
           <div class="text-center">
-            <button type="submit" class="btn btn-secondary">
-              Modifier
-            </button>
-            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+            <button type="submit" class="btn btn-secondary">Modifier</button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              data-bs-dismiss="modal"
+            >
               Annuler
             </button>
           </div>
@@ -370,26 +592,41 @@
   </div>
 </div>
 
-
 <!-- Modal Suppression Habitat -->
-<div class="modal fade" id="deleteHabitatModal" tabindex="-1" aria-labelledby="deleteHabitatModalLabel"
-  aria-hidden="true">
+<div
+  class="modal fade"
+  id="deleteHabitatModal"
+  tabindex="-1"
+  aria-labelledby="deleteHabitatModalLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h2 class="modal-title fs-5" id="deleteHabitatModalLabel">
           Supprimer cet Habitat ?
         </h2>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
       <div class="modal-body">
         <div class="mb-3">
-          <P>Attention cette suppression sera définitive </p>
+          <p>Attention cette suppression sera définitive</p>
         </div>
 
         <div class="text-center">
-          <button type="button" class="btn btn-danger" id="habitatDeleteButton">Supprimer</button>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          <button type="button" class="btn btn-danger" id="habitatDeleteButton">
+            Supprimer
+          </button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
             Annuler
           </button>
         </div>

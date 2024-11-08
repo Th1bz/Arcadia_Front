@@ -1,0 +1,141 @@
+<div class="hero-scene text-center hero-ban shadow">
+  <div class="hero-scene-content text-secondary hero-ban">
+    <h1 class="hero-scene-title font-title">Espace Vétérinaire</h1>
+  </div>
+</div>
+
+<div class="container-fluid bg-primary p-4">
+  <div class="row justify-content-center">
+    <!-- Colonne du formulaire -->
+    <div class="col-lg-6 mb-4 mb-lg-0">
+      <div class="rapport-veto shadow h-100">
+        <div class="bg-dark text-secondary">
+          <h3 class="mb-0 p-2">
+            <i class="bi bi-clipboard2-pulse"></i> Rapport de visite
+          </h3>
+        </div>
+        <div class="rapport-veto-body">
+          <form id="formAnimal">
+            <!-- Sélection de l'animal -->
+            <div class="row mb-4">
+              <div class="col-md-6 mb-3">
+                <label for="habitatAnimalSelect" class="form-label"
+                  >Habitat</label
+                >
+                <select class="form-select" id="habitatAnimalSelect" required>
+                  <option value="" selected>Choisir un habitat</option>
+                </select>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="animalSelect" class="form-label">Animal</label>
+                <select class="form-select" id="animalSelect" required>
+                  <option value="" selected>Choisir un animal</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Date et Commentaire -->
+            <div class="row mb-4">
+              <div class="col-md-6 mb-3">
+                <label for="vetoDate" class="form-label">Date de visite</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  id="vetoDate"
+                  max=""
+                  required
+                />
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="vetoComment" class="form-label">Commentaire</label>
+                <textarea
+                  class="form-control"
+                  id="vetoComment"
+                  rows="1"
+                  required
+                ></textarea>
+              </div>
+            </div>
+
+            <!-- Alimentation -->
+            <div class="row mb-4">
+              <div class="col-md-12 mb-3">
+                <h5 class="border-bottom pb-2">
+                  <i class="bi bi-cup-hot"></i> Alimentation
+                </h5>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="feedInput" class="form-label"
+                  >Type de nourriture</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="feedInput"
+                  required
+                />
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="feedWeight" class="form-label">Quantité</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="feedWeight"
+                  required
+                />
+              </div>
+              <div class="col-md-2 mb-3">
+                <label for="feedUnit" class="form-label">Unité</label>
+                <select class="form-select" id="feedUnit" required>
+                  <option value="" selected>Unité</option>
+                  <option value="g">g</option>
+                  <option value="kg">kg</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Bouton de soumission -->
+            <div class="text-end">
+              <button type="submit" class="btn btn-secondary">
+                <i class="bi bi-save"></i> Enregistrer
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Colonne du tableau -->
+    <div class="col-lg-6">
+      <div class="table-custom rapport-veto shadow h-100">
+        <div class="card-header bg-dark text-secondary">
+          <h3 class="mb-0 p-2">
+            <i class="bi bi-journal-medical"></i> Mes Rapports
+          </h3>
+        </div>
+        <div class="card-body table-custom-body">
+          <div
+            class="table-responsive mb-0"
+            style="max-height: calc(100vh - 300px); overflow-y: auto"
+          >
+            <table class="table table-hover">
+              <thead class="table-dark sticky-top">
+                <tr>
+                  <th>Date</th>
+                  <th>Animal</th>
+                  <th>Race</th>
+                  <th>Alimentation</th>
+                  <th>Quantité</th>
+                  <th>Commentaire</th>
+                </tr>
+              </thead>
+              <tbody id="reportsTableBody">
+                <!-- Les rapports seront insérés ici -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
