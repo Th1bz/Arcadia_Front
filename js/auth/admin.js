@@ -79,6 +79,86 @@ function listAnimalsSelect(habitatId = null) {
   }
 }
 
+// Fonction pour récupérer tous les likes des animaux
+async function getAllAnimalsWithLikes() {
+  try {
+    // Récupérer tous les animaux
+    const animalsResponse = await fetch(`${apiUrl}animal/list`);
+    if (!animalsResponse.ok)
+      throw new Error("Erreur lors de la récupération des animaux");
+    const animals = await animalsResponse.json();
+
+    // Récupérer les likes pour chaque animal
+    const animalsWithLikes = await Promise.all(
+      animals.map(async (animal) => {
+        const likes = await getAnimalLikes(animal.id);
+        return {
+          ...animal,
+          likes: likes,
+        };
+      })
+    );
+
+    // Trier par nombre de likes décroissant
+    return animalsWithLikes.sort((a, b) => b.likes - a.likes);
+  } catch (error) {
+    console.error("Erreur:", error);
+    return [];
+  }
+}
+//------------------------------------------
+
+// Fonction pour mettre à jour le tableau de classement
+async function updateRankingTable() {
+  const tableBody = document.getElementById("rankingTableBody");
+  if (!tableBody) return;
+
+  try {
+    const animalsWithLikes = await getAllAnimalsWithLikes();
+    tableBody.innerHTML = "";
+
+    animalsWithLikes.forEach((animal, index) => {
+      const row = document.createElement("tr");
+
+      // Définir la classe de la médaille selon le rang
+      let rankDisplay;
+      if (index === 0) {
+        rankDisplay = '<i class="bi bi-trophy-fill text-warning"></i>';
+      } else if (index === 1) {
+        rankDisplay = '<i class="bi bi-trophy-fill text-secondary"></i>';
+      } else if (index === 2) {
+        rankDisplay = '<i class="bi bi-trophy-fill text-danger"></i>';
+      } else {
+        rankDisplay = index + 1;
+      }
+
+      row.innerHTML = `
+              <td class="align-middle">${rankDisplay}</td>
+              <td class="align-middle">${animal.firstName}</td>
+              <td class="align-middle">${animal.race.label}</td>
+              <td class="align-middle">${animal.habitat.name}</td>
+              <td class="align-middle">
+                  <span class="badge bg-primary rounded-pill">
+                      ${animal.likes}
+                      <i class="bi bi-heart-fill text-danger ms-1"></i>
+                  </span>
+              </td>
+          `;
+      tableBody.appendChild(row);
+    });
+  } catch (error) {
+    console.error("Erreur lors de la mise à jour du classement:", error);
+    tableBody.innerHTML = `
+          <tr>
+              <td colspan="5" class="text-center text-danger">
+                  Erreur lors du chargement du classement
+              </td>
+          </tr>
+      `;
+  }
+}
+//------------------------------------------
+
 // Ajouter un écouteur d'événements sur le select d'habitat
 document
   .getElementById("habitatAnimalSelect")
@@ -93,9 +173,11 @@ if (
 ) {
   listHabitatsSelect();
   listAnimalsSelect();
+  updateRankingTable();
 } else {
   document.addEventListener("DOMContentLoaded", () => {
     listHabitatsSelect();
     listAnimalsSelect();
+    updateRankingTable();
   });
 }

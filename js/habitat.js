@@ -12,6 +12,10 @@ const editModalHabitat = document.getElementById("editHabitatModal");
 const deleteModalAnimal = document.getElementById("deleteAnimalModal");
 const editModalAnimal = document.getElementById("editAnimalModal");
 
+// Variable pour stocker les timestamps des derniers clics par animal
+const lastClickTimestamps = new Map();
+const CLICK_COOLDOWN = 2000; // Délai de 2 secondes entre chaque like
+
 //--------------DELETE HABITAT--------------
 
 if (deleteModalHabitat) {
@@ -440,10 +444,6 @@ function generateAnimalCard(animal) {
 }
 //------------------------------------------
 
-// Variable pour stocker les timestamps des derniers clics par animal
-const lastClickTimestamps = new Map();
-const CLICK_COOLDOWN = 2000; // Délai de 2 secondes entre chaque like
-
 function initializeAnimalLikeHandlers() {
   document.addEventListener("click", async function (e) {
     if (e.target.closest(".animal-click")) {
@@ -457,13 +457,16 @@ function initializeAnimalLikeHandlers() {
 
       if (lastClick && now - lastClick < CLICK_COOLDOWN) {
         console.log("Veuillez patienter avant de liker à nouveau");
-        return;
+        return; // Sortir de la fonction si le cooldown est actif
       }
 
-      // Mise à jour du timestamp du dernier clic
-      lastClickTimestamps.set(animalId, now);
-
       try {
+        // Créer l'animation avant la requête
+        createClickAnimation(e.clientX, e.clientY);
+
+        // Mise à jour du timestamp du dernier clic
+        lastClickTimestamps.set(animalId, now);
+
         const response = await fetch(`${apiUrl}animal/like/${animalId}`, {
           method: "POST",
           headers: {
@@ -484,6 +487,24 @@ function initializeAnimalLikeHandlers() {
     }
   });
 }
+//------------------------------------------
+
+//--------------Fonction pour créer l'animation du clic--------------
+function createClickAnimation(x, y) {
+  const heart = document.createElement("div");
+  heart.innerHTML = '<i class="bi bi-hearts"></i>';
+  heart.className = "click-heart";
+  heart.style.left = `${x}px`;
+  heart.style.top = `${y}px`;
+  document.body.appendChild(heart);
+
+  // Supprimer l'élément après l'animation
+  heart.addEventListener("animationend", () => {
+    document.body.removeChild(heart);
+  });
+}
+
+//------------------------------------------
 
 //--------------Fonction pour charger et afficher tous les animaux--------------
 function loadAnimals() {

@@ -10,7 +10,7 @@ html {
 }
 
 main {
-    margin-top: 56px;
+  margin-top: 56px;
   margin-bottom: 263px;
 }
 
@@ -27,18 +27,17 @@ footer.footer {
 }
 
 .p-font-title {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 
 .font-subtitle {
-    font-family: $font-family-serif;
-    
+  font-family: $font-family-serif;
 }
 
 .title-sub-section {
-    color: $secondary;
-    font-weight: 450;
-    text-shadow: 0 5px 3px #232826;
+  color: $secondary;
+  font-weight: 450;
+  text-shadow: 0 5px 3px #232826;
 }
 
 .navbar-brand {
@@ -49,12 +48,12 @@ footer.footer {
 // HERO SCÈNE ------------------------------------------
 
 .hero-ban {
-    height: 400px !important;
+  height: 400px !important;
 }
 
 .hero-scene {
-    position: relative;
-    
+  position: relative;
+
   &::before {
     content: "";
     position: absolute;
@@ -66,231 +65,263 @@ footer.footer {
     background-size: cover;
     filter: brightness(0.6);
   }
-  *{
-      position: relative;
+  * {
+    position: relative;
   }
 }
 
 .hero-scene-content {
-    height: 900px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    
+  height: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .hero-scene-title {
-    transition: all 0.3s;
-    overflow: hidden;
+  transition: all 0.3s;
+  overflow: hidden;
 }
 
 .hero-scene-title:hover {
-    transform: scale(200%);
-    overflow: hidden;
+  transform: scale(200%);
+  overflow: hidden;
 }
 
 .article-bg {
-    background-color: $body;
-    position: relative;
-    background-image: url(../Images/Zoo/background_image-Arcadia.webp);
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    position: relative;
-    z-index: 100;
+  background-color: $body;
+  position: relative;
+  background-image: url(../Images/Zoo/background_image-Arcadia.webp);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+  z-index: 100;
 }
 
-
 .article-bg-2 {
-    background-color: $body;
-    position: relative;
-    background-image: url(../Images/Zoo/vue-aerienne-arcadia.webp);
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    position: relative;
-    z-index: 100;
-    padding-bottom: 10px;
+  background-color: $body;
+  position: relative;
+  background-image: url(../Images/Zoo/vue-aerienne-arcadia.webp);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+  z-index: 100;
+  padding-bottom: 10px;
 }
 
 .text-justify {
-    text-align: justify;
+  text-align: justify;
 }
 
 .cards-description {
-    transition: all 0.2S;
+  transition: all 0.2s;
 }
 
 .cards-description:hover {
-    transform: scale(105%);
-    background-color: rgba($color: #232826, $alpha: 0.9);
-    box-shadow: 0 10px 7px 0 $dark;
+  transform: scale(105%);
+  background-color: rgba($color: #232826, $alpha: 0.9);
+  box-shadow: 0 10px 7px 0 $dark;
 }
 
 .descritpion-habitat {
-    transition: all 0.2S;
+  transition: all 0.2s;
 }
 
 .descritpion-habitat:hover {
-    transform: scale(105%);
+  transform: scale(105%);
 }
 
-
 .img-cover-top {
-    object-position: 50% top;
+  object-position: 50% top;
 }
 
 .img-cover-bottom {
-    object-position: 50% 60%;
+  object-position: 50% 60%;
 }
 
 .img-card-h {
-    height: 159px;
+  height: 159px;
 }
 
 .card {
-    background-color: $tertiary;
-    transition: all 0.3s;
-    scrollbar-color: $tertiary $tertiary;
+  background-color: $tertiary;
+  transition: all 0.3s;
+  scrollbar-color: $tertiary $tertiary;
 }
 
 .card:hover {
-    transform: scale(130%);
-    scrollbar-color: $dark $tertiary;
+  transform: scale(130%);
+  scrollbar-color: $dark $tertiary;
 }
 
-
 .img-zoom-container {
-    overflow:hidden
+  overflow: hidden;
 }
 
 .img-zoom-container img {
-    transition: transform 0.3S ease;
+  transition: transform 0.3s ease;
 }
 
 .img-zoom-container img:hover {
-    transform: scale(1.43);
+  transform: scale(1.43);
 }
 
-
 .img-dezoom-container {
-    overflow:hidden
+  overflow: hidden;
 }
 
 .img-dezoom-container img {
-    transform: scale(1.3);
-    transition: transform 0.3S ease;
+  transform: scale(1.3);
+  transition: transform 0.3s ease;
 }
 
 .img-dezoom-container img:hover {
-    transform: scale(1);
+  transform: scale(1);
 }
 
-
 .custom-btn {
-    color: turquoise;
-    border: 2px solid $dark;
-    background-color: $dark;
-    transition: all 0.3s ease;
+  color: turquoise;
+  border: 2px solid $dark;
+  background-color: $dark;
+  transition: all 0.3s ease;
 }
 
 .custom-btn:hover {
-    color: $dark;
-    font-weight: 550;
-    background-color: $secondary;
+  color: $dark;
+  font-weight: 550;
+  background-color: $secondary;
 }
 
-
 .p-profile {
-    width: 60px;
-    height: 60px;
-    border-radius: 50px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50px;
 }
 
 .bg-avis {
-    background-color: $tertiary;
+  background-color: $tertiary;
 }
 
 .line {
-    border: 3px $dark;
-    width: 500px;
-    height: 3px;
-    background: $dark;
+  border: 3px $dark;
+  width: 500px;
+  height: 3px;
+  background: $dark;
 }
 
-
-.image-card{
-    position:relative;
-    &:hover{
-        .titre-image,
-        .action-image-buttons{
-            opacity: 1;
-        }
+.image-card {
+  position: relative;
+  &:hover {
+    .titre-image,
+    .action-image-buttons {
+      opacity: 1;
     }
+  }
 
-
-    .action-image-buttons{
-        position : absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        padding: 5px;
-        display: flex;
-        justify-content: space-between;
-
-        opacity: 0;
-        transition: all 0.3s;
-    }
-}
-
-.circle-border {
-    border-radius: 50px;
-    width: 42px;
-    height: 42px;
-}
-
-.edit-card-home {
-    width: 35px;
-    height: 35px;
-    padding: 6px;
-    border-color: $dark;
-}
-
-.spinner-loader {
-    background-color: #232826;
-    position: fixed;
+  .action-image-buttons {
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    z-index: 9999;
+    padding: 5px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: all 3S;
+    justify-content: space-between;
+
+    opacity: 0;
+    transition: all 0.3s;
+  }
+}
+
+.circle-border {
+  border-radius: 50px;
+  width: 42px;
+  height: 42px;
+}
+
+.edit-card-home {
+  width: 35px;
+  height: 35px;
+  padding: 6px;
+  border-color: $dark;
+}
+
+.spinner-loader {
+  background-color: #232826;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 3s;
 }
 
 .text-important-textarea {
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: var(--bs-secondary);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--bs-secondary);
 }
 
 .form-group {
-    width: 600px;
+  width: 600px;
 }
 
+// Table Likes ----------------------------------------------------
+.table-likes {
+  border: 3px solid $dark;
+  border-radius: 10px;
+  padding-bottom: 5px;
+}
+
+.table-likes-body {
+  max-height: 400px;
+  overflow-y: auto;
+  scrollbar-color: $secondary $dark;
+}
+// ---------------------------------------------------------------
+
+// Click Heart Animation ------------------------------------------
+.click-heart {
+  position: fixed;
+  color: red;
+  font-size: 2rem;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  animation: clickHeart 0.6s ease-out forwards;
+  z-index: 9999;
+}
+
+@keyframes clickHeart {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -80%) scale(1.2);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -130%) scale(1.5);
+  }
+}
+//-----------------------------------------------------------------
 
 // Responsive Design ----------------------------------------------
 
 @media (max-width: 1000px) {
-    main {
-        margin-bottom: 275px;
-    }
+  main {
+    margin-bottom: 275px;
+  }
 }
 
 @media (max-width: 768px) {
-    main {
-        margin-bottom: 572px;
-    }
+  main {
+    margin-bottom: 572px;
+  }
 }
+// ---------------------------------------------------------------
