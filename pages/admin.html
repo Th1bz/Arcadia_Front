@@ -1,23 +1,42 @@
 <div class="hero-scene text-center hero-ban shadow">
-    <div class="hero-scene-content text-secondary hero-ban">
-      <h1 class="hero-scene-title font-title">Espace Administrateur</h1>
-    </div>
+  <div class="hero-scene-content text-secondary hero-ban">
+    <h1 class="hero-scene-title font-title">Espace Administrateur</h1>
+  </div>
 </div>
 
-<section class="container-fluid d-flex justify-content-center align-items-center p-3">
-  
-    <form id="formAnimal" class="row justify-content-center">
-      <div class="form-group col-md-8 d-flex gap-3">
-        <select class="form-select form-select-sm" id="habitatAnimalSelect" aria-label="Sélectionner un habitat">
-          <option value="" selected>Choisir un habitat</option>
-          <!-- Les options seront ajoutées dynamiquement -->
-        </select>
+<section
+  class="container-fluid bg-primary d-flex justify-content-center align-items-center p-3"
+>
+  <form id="formAnimal" class="row justify-content-center">
+    <div class="form-group col-md-8 d-flex gap-3">
+      <select
+        class="form-select form-select-sm"
+        id="habitatAnimalSelect"
+        aria-label="Sélectionner un habitat"
+      >
+        <option value="" selected>Choisir un habitat</option>
+        <!-- Les options seront ajoutées dynamiquement -->
+      </select>
 
-        <select class="form-select form-select-sm" id="animalSelect" aria-label="Sélectionner un animal">
-          <option value="" selected>Choisir un animal</option>
-          <!-- Les options seront ajoutées dynamiquement -->
-        </select>
-      </div>
-    </form>
- 
+      <select
+        class="form-select form-select-sm"
+        id="animalSelect"
+        aria-label="Sélectionner un animal"
+      >
+        <option value="" selected>Choisir un animal</option>
+        <!-- Les options seront ajoutées dynamiquement -->
+      </select>
+    </div>
+  </form>
 </section>
+
+<div
+  class="container-fluid bg-primary d-flex justify-content-center align-items-center p-3"
+>
+  <div class="d-flex justify-content-center">
+    <div id="likesInfo" class="alert alert-info d-none">
+      Nombre de likes :
+      <span id="likesCount">0</span><i class="bi bi-heart-fill text-danger"></i>
+    </div>
+  </div>
+</div>
