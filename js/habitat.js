@@ -6,141 +6,139 @@ let animalIdToEdit = null;
 
 const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB en octets
 
-
-const deleteModalHabitat = document.getElementById('deleteHabitatModal');
-const editModalHabitat = document.getElementById('editHabitatModal');
+const deleteModalHabitat = document.getElementById("deleteHabitatModal");
+const editModalHabitat = document.getElementById("editHabitatModal");
 
 const deleteModalAnimal = document.getElementById("deleteAnimalModal");
 const editModalAnimal = document.getElementById("editAnimalModal");
 
-
-
 //--------------DELETE HABITAT--------------
 
 if (deleteModalHabitat) {
-    deleteModalHabitat.addEventListener('show.bs.modal', function(event) {
-        const button = event.relatedTarget;
-        habitatIdToDelete = button.getAttribute('data-habitat-id');
+  deleteModalHabitat.addEventListener("show.bs.modal", function (event) {
+    const button = event.relatedTarget;
+    habitatIdToDelete = button.getAttribute("data-habitat-id");
+  });
+
+  const habitatDeleteButton = document.getElementById("habitatDeleteButton");
+  if (habitatDeleteButton) {
+    habitatDeleteButton.addEventListener("click", async function () {
+      if (!habitatIdToDelete) {
+        console.error("ID de l'habitat manquant");
+        return;
+      }
+
+      try {
+        const response = await fetch(
+          `${apiUrl}habitat/delete/${habitatIdToDelete}`,
+          {
+            method: "DELETE",
+            headers: {
+              Accept: "application/json",
+            },
+          }
+        );
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.error);
+        }
+
+        const modal = bootstrap.Modal.getInstance(deleteModalHabitat);
+        modal.hide();
+        loadHabitats();
+        alert("Habitat supprimé avec succès !");
+      } catch (error) {
+        console.error(error);
+        alert(error.message);
+      }
     });
-
-    const habitatDeleteButton = document.getElementById('habitatDeleteButton');
-    if (habitatDeleteButton) {
-        habitatDeleteButton.addEventListener('click', async function() {
-            if (!habitatIdToDelete) {
-                console.error('ID de l\'habitat manquant');
-                return;
-            }
-
-            try {
-                const response = await fetch(`${apiUrl}habitat/delete/${habitatIdToDelete}`, {
-                    method: 'DELETE',
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-
-                if (!response.ok) {
-                    const errorData = await response.json();
-                    throw new Error(errorData.error);
-                }
-
-                const modal = bootstrap.Modal.getInstance(deleteModalHabitat);
-                modal.hide();
-                loadHabitats();
-                alert('Habitat supprimé avec succès !');
-
-            } catch (error) {
-                console.error(error);
-                alert(error.message);
-            }
-        });
-    }
+  }
 }
 //---------------------------------------
-
 
 //--------------EDIT HABITAT--------------
 
 if (editModalHabitat) {
-    editModalHabitat.addEventListener('show.bs.modal', function(event) {
-        const button = event.relatedTarget;
-        habitatIdToEdit = button.getAttribute('data-habitat-id');
-        console.log('Modal ouvert pour éditer l\'habitat ID:', habitatIdToEdit);
+  editModalHabitat.addEventListener("show.bs.modal", function (event) {
+    const button = event.relatedTarget;
+    habitatIdToEdit = button.getAttribute("data-habitat-id");
+    console.log("Modal ouvert pour éditer l'habitat ID:", habitatIdToEdit);
 
-        fetch(`${apiUrl}habitat/${habitatIdToEdit}`)
-            .then(response => {
-                if (!response.ok) {
-                    console.error('Status:', response.status);
-                    return response.text().then(text => {
-                        console.error('Réponse:', text);
-                        throw new Error('Erreur lors de la récupération des données');
-                    });
-                }
-                return response.json();
-            })
-            .then(habitat => {
-                console.log('Données de l\'habitat récupérées:', habitat);
-                document.getElementById('editHabitatId').value = habitat.id;
-                document.getElementById('editNameHabitat').value = habitat.name;
-                document.getElementById('editDescriptionInput').value = habitat.description;
-            })
-            .catch(error => {
-                console.error('Erreur détaillée:', error);
-                alert('Erreur lors de la récupération des données de l\'habitat');
-            });
+    fetch(`${apiUrl}habitat/${habitatIdToEdit}`)
+      .then((response) => {
+        if (!response.ok) {
+          console.error("Status:", response.status);
+          return response.text().then((text) => {
+            console.error("Réponse:", text);
+            throw new Error("Erreur lors de la récupération des données");
+          });
+        }
+        return response.json();
+      })
+      .then((habitat) => {
+        console.log("Données de l'habitat récupérées:", habitat);
+        document.getElementById("editHabitatId").value = habitat.id;
+        document.getElementById("editNameHabitat").value = habitat.name;
+        document.getElementById("editDescriptionInput").value =
+          habitat.description;
+      })
+      .catch((error) => {
+        console.error("Erreur détaillée:", error);
+        alert("Erreur lors de la récupération des données de l'habitat");
+      });
+  });
+
+  const editForm = document.getElementById("editHabitatForm");
+  if (editForm) {
+    editForm.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      try {
+        const formData = new FormData(this);
+        const habitatData = {
+          name: formData.get("name"),
+          description: formData.get("description"),
+        };
+
+        const imageFile = formData.get("Image");
+        if (imageFile && imageFile.size > 0) {
+          const base64Image = await convertFileToBase64(imageFile);
+          habitatData.pictureData = base64Image;
+        }
+
+        const response = await fetch(
+          `${apiUrl}habitat/edit/${habitatIdToEdit}`,
+          {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(habitatData),
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("Erreur lors de la modification");
+        }
+
+        const modal = bootstrap.Modal.getInstance(editModalHabitat);
+        modal.hide();
+
+        // Rafraîchir la liste des habitats si la fonction existe
+        if (typeof loadHabitats === "function") {
+          loadHabitats();
+        }
+
+        alert("Habitat modifié avec succès !");
+      } catch (error) {
+        console.error("Erreur:", error);
+        alert("Erreur lors de la modification de l'habitat");
+      }
     });
-
-    const editForm = document.getElementById('editHabitatForm');
-    if (editForm) {
-        editForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            try {
-                const formData = new FormData(this);
-                const habitatData = {
-                    name: formData.get('name'),
-                    description: formData.get('description')
-                };
-
-                const imageFile = formData.get('Image');
-                if (imageFile && imageFile.size > 0) {
-                    const base64Image = await convertFileToBase64(imageFile);
-                    habitatData.pictureData = base64Image;
-                }
-
-                const response = await fetch(`${apiUrl}habitat/edit/${habitatIdToEdit}`, {
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(habitatData)
-                });
-
-                if (!response.ok) {
-                    throw new Error('Erreur lors de la modification');
-                }
-
-                const modal = bootstrap.Modal.getInstance(editModalHabitat);
-                modal.hide();
-
-                // Rafraîchir la liste des habitats si la fonction existe
-                if (typeof loadHabitats === 'function') {
-                    loadHabitats();
-                }
-                
-                alert('Habitat modifié avec succès !');
-
-            } catch (error) {
-                console.error('Erreur:', error);
-                alert('Erreur lors de la modification de l\'habitat');
-            }
-        });
-    }
+  }
 }
 //-------------------------------------------
-
-
-
 
 //--------------DELETE ANIMAL--------------
 if (deleteModalAnimal) {
@@ -199,8 +197,6 @@ if (deleteModalAnimal) {
   console.error("Modal de suppression non trouvé");
 }
 //------------------------------------------
-
-
 
 //--------------EDIT ANIMAL--------------
 
@@ -295,8 +291,11 @@ if (editModalAnimal) {
 
 //--------------Fonction pour générer le HTML d'un Article habitat--------------
 function generateHabitatSection(habitat) {
-  let description = habitat.description.replace(/\n/g, '<br>');
-  description = description.replace(/\*\*(.*?)\*\*/g, '<strong class="text-important-textarea">$1</strong>');
+  let description = habitat.description.replace(/\n/g, "<br>");
+  description = description.replace(
+    /\*\*(.*?)\*\*/g,
+    '<strong class="text-important-textarea">$1</strong>'
+  );
   const imageUrl =
     habitat.pictures && habitat.pictures.length > 0
       ? `${apiUrl}${habitat.pictures[0].path}`
@@ -360,7 +359,6 @@ function generateHabitatSection(habitat) {
 }
 //-----------------------------
 
-
 //--------------Fonction pour charger et afficher tous les habitats--------------
 function loadHabitats() {
   console.log("Début du chargement des habitats");
@@ -392,7 +390,6 @@ function loadHabitats() {
 }
 //------------------------------------------
 
-
 //--------------Fonction pour générer le HTML d'une card animal--------------
 function generateAnimalCard(animal) {
   // Déterminer l'URL de l'image
@@ -406,11 +403,13 @@ function generateAnimalCard(animal) {
 
   const card = `
         <div class="image-card card p-0 m-4 shadow rounded-4 img-dezoom-container" style="width: 15rem">
+          <a href="#" class="text-decoration-none animal-click" data-animal-id="${animal.id}">
             <img src="${imageUrl}" 
                  class="card-img-top object-fit-cover img-card-h rounded-top-4" 
                  alt="${animal.firstName}" />
-            <h5 class="card-title font-subtitle text-center text-secondary bg-dark">
-                ${animal.firstName}
+          </a>
+          <h5 class="card-title font-subtitle text-center text-secondary bg-dark">
+              ${animal.firstName}
             </h5>
             <div class="action-image-buttons">
                 <button type="button" class="btn btn-outline-light text-info" 
@@ -440,6 +439,51 @@ function generateAnimalCard(animal) {
   return card;
 }
 //------------------------------------------
+
+// Variable pour stocker les timestamps des derniers clics par animal
+const lastClickTimestamps = new Map();
+const CLICK_COOLDOWN = 2000; // Délai de 2 secondes entre chaque like
+
+function initializeAnimalLikeHandlers() {
+  document.addEventListener("click", async function (e) {
+    if (e.target.closest(".animal-click")) {
+      e.preventDefault();
+      const link = e.target.closest(".animal-click");
+      const animalId = link.getAttribute("data-animal-id");
+
+      // Vérification du délai depuis le dernier clic
+      const lastClick = lastClickTimestamps.get(animalId);
+      const now = Date.now();
+
+      if (lastClick && now - lastClick < CLICK_COOLDOWN) {
+        console.log("Veuillez patienter avant de liker à nouveau");
+        return;
+      }
+
+      // Mise à jour du timestamp du dernier clic
+      lastClickTimestamps.set(animalId, now);
+
+      try {
+        const response = await fetch(`${apiUrl}animal/like/${animalId}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error("Erreur lors de l'ajout du like");
+        }
+
+        console.log("Like ajouté avec succès");
+      } catch (error) {
+        console.error("Erreur:", error);
+        // En cas d'erreur, on réinitialise le timestamp pour permettre un nouvel essai
+        lastClickTimestamps.delete(animalId);
+      }
+    }
+  });
+}
 
 //--------------Fonction pour charger et afficher tous les animaux--------------
 function loadAnimals() {
@@ -491,135 +535,139 @@ function loadAnimals() {
 }
 //------------------------------------------
 
-
 //--------------Fonction pour initialiser le formulaire d'ajout Habitat--------------
 
 function initializeAddHabitatForm() {
-    const addForm = document.getElementById('addHabitatForm');
-    if (addForm) {
-        addForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            console.log('Soumission du formulaire');
+  const addForm = document.getElementById("addHabitatForm");
+  if (addForm) {
+    addForm.addEventListener("submit", async function (e) {
+      e.preventDefault();
+      console.log("Soumission du formulaire");
 
-            try {
-                const formData = new FormData(this);
-                const habitatData = {
-                    name: formData.get('name'),
-                    description: formData.get('description')
-                };
+      try {
+        const formData = new FormData(this);
+        const habitatData = {
+          name: formData.get("name"),
+          description: formData.get("description"),
+        };
 
-                const pictureFile = formData.get('Image');
-                if (pictureFile && pictureFile.size > 0) {
-                    if (pictureFile.size > MAX_FILE_SIZE) {
-                        alert('L\'image est trop volumineuse. La taille maximale est de 2MB');
-                        return;
-                    }
-                    const base64Picture = await convertFileToBase64(pictureFile);
-                    habitatData.pictureData = base64Picture;
-                }
+        const pictureFile = formData.get("Image");
+        if (pictureFile && pictureFile.size > 0) {
+          if (pictureFile.size > MAX_FILE_SIZE) {
+            alert(
+              "L'image est trop volumineuse. La taille maximale est de 2MB"
+            );
+            return;
+          }
+          const base64Picture = await convertFileToBase64(pictureFile);
+          habitatData.pictureData = base64Picture;
+        }
 
-                const response = await fetch(apiUrl + 'habitat/new', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify(habitatData)
-                });
-
-                if (!response.ok) {
-                    const errorData = await response.json();
-                    throw new Error(errorData.error || 'Erreur lors de la création');
-                }
-
-                const modal = bootstrap.Modal.getInstance(document.getElementById('addHabitatModal'));
-                modal.hide();
-
-                await loadHabitats();
-                await listHabitatsSelect();
-
-                alert('Habitat créé avec succès !');
-                this.reset();
-
-            } catch (error) {
-                console.error('Erreur:', error);
-                alert(error.message);
-            }
+        const response = await fetch(apiUrl + "habitat/new", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify(habitatData),
         });
-    }
-}
 
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.error || "Erreur lors de la création");
+        }
+
+        const modal = bootstrap.Modal.getInstance(
+          document.getElementById("addHabitatModal")
+        );
+        modal.hide();
+
+        await loadHabitats();
+        await listHabitatsSelect();
+
+        alert("Habitat créé avec succès !");
+        this.reset();
+      } catch (error) {
+        console.error("Erreur:", error);
+        alert(error.message);
+      }
+    });
+  }
+}
 
 //--------------Fonction pour initialiser le formulaire d'ajout Animal--------------
 function initializeAddAnimalForm() {
-    const addForm = document.getElementById("formAddAnimal");
-    if (addForm) {
-        addForm.addEventListener("submit", async function (e) {
-            e.preventDefault();
-            console.log("Soumission du formulaire");
+  const addForm = document.getElementById("formAddAnimal");
+  if (addForm) {
+    addForm.addEventListener("submit", async function (e) {
+      e.preventDefault();
+      console.log("Soumission du formulaire");
 
-            try {
-                const formData = new FormData(this);
-                
-                // Récupérer et vérifier l'habitat_id
-                const habitatId = formData.get("habitat");
-                if (!habitatId) {
-                    throw new Error("Veuillez sélectionner un habitat");
-                }
+      try {
+        const formData = new FormData(this);
 
-                const animalData = {
-                    firstName: formData.get("firstName"),
-                    race: parseInt(formData.get("race")),
-                    habitat: parseInt(habitatId), // Assurez-vous que c'est un nombre
-                    status: formData.get("status")
-                };
+        // Récupérer et vérifier l'habitat_id
+        const habitatId = formData.get("habitat");
+        if (!habitatId) {
+          throw new Error("Veuillez sélectionner un habitat");
+        }
 
-                // Debug - vérifier les données avant envoi
-                console.log("Données à envoyer:", animalData);
+        const animalData = {
+          firstName: formData.get("firstName"),
+          race: parseInt(formData.get("race")),
+          habitat: parseInt(habitatId), // Assurez-vous que c'est un nombre
+          status: formData.get("status"),
+        };
 
-                const pictureFile = formData.get("Image");
-                if (pictureFile && pictureFile.size > 0) {
-                    if (pictureFile.size > MAX_FILE_SIZE) {
-                        alert("L'image est trop volumineuse. La taille maximale est de 2MB");
-                        return;
-                    }
-                    const base64Picture = await convertFileToBase64Animal(pictureFile);
-                    animalData.pictureData = base64Picture;
-                }
+        // Debug - vérifier les données avant envoi
+        console.log("Données à envoyer:", animalData);
 
-                const response = await fetch(apiUrl + "animal/add", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Accept": "application/json"
-                    },
-                    body: JSON.stringify(animalData)
-                });
+        const pictureFile = formData.get("Image");
+        if (pictureFile && pictureFile.size > 0) {
+          if (pictureFile.size > MAX_FILE_SIZE) {
+            alert(
+              "L'image est trop volumineuse. La taille maximale est de 2MB"
+            );
+            return;
+          }
+          const base64Picture = await convertFileToBase64Animal(pictureFile);
+          animalData.pictureData = base64Picture;
+        }
 
-                if (!response.ok) {
-                    const errorData = await response.json();
-                    throw new Error(errorData.message || "Erreur lors de la création");
-                }
-
-                // Fermer le modal
-                const modal = bootstrap.Modal.getInstance(document.getElementById("addAnimalModal"));
-                modal.hide();
-
-                // Rafraîchir la liste
-                await loadAnimals();
-
-                // Message de succès
-                alert("Animal créé avec succès !");
-
-                // Réinitialiser le formulaire
-                this.reset();
-
-            } catch (error) {
-                console.error("Erreur complète:", error);
-                alert("Erreur lors de la création: " + error.message);
-            }
+        const response = await fetch(apiUrl + "animal/add", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify(animalData),
         });
-    }
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.message || "Erreur lors de la création");
+        }
+
+        // Fermer le modal
+        const modal = bootstrap.Modal.getInstance(
+          document.getElementById("addAnimalModal")
+        );
+        modal.hide();
+
+        // Rafraîchir la liste
+        await loadAnimals();
+
+        // Message de succès
+        alert("Animal créé avec succès !");
+
+        // Réinitialiser le formulaire
+        this.reset();
+      } catch (error) {
+        console.error("Erreur complète:", error);
+        alert("Erreur lors de la création: " + error.message);
+      }
+    });
+  }
 }
 //------------------------------------------
 
@@ -634,7 +682,6 @@ function convertFileToBase64Animal(file) {
 }
 //------------------------------------------
 
-
 //--------------Fonction pour charger le script--------------
 (function () {
   if (typeof loadAnimals === "undefined") {
@@ -647,18 +694,19 @@ function convertFileToBase64Animal(file) {
     document.readyState === "complete" ||
     document.readyState === "interactive"
   ) {
+    initializeAddHabitatForm();
+    listHabitatsSelect();
+    initializeAddAnimalForm();
+    loadHabitats();
+    initializeAnimalLikeHandlers();
+  } else {
+    // Sinon attendre le chargement du DOM
+    document.addEventListener("DOMContentLoaded", () => {
       initializeAddHabitatForm();
       listHabitatsSelect();
       initializeAddAnimalForm();
       loadHabitats();
-  } else {
-    // Sinon attendre le chargement du DOM
-    document.addEventListener("DOMContentLoaded", () => {
-        
-        initializeAddHabitatForm();
-        listHabitatsSelect();
-        initializeAddAnimalForm();
-        loadHabitats();
+      initializeAnimalLikeHandlers();
     });
   }
   // () -> exucute imédiatement la fonction anonyme

@@ -11970,6 +11970,7 @@ html {
   position: relative;
   min-height: 100%;
   background-color: #4B5943;
+  scrollbar-width: none;
 }
 
 main {
