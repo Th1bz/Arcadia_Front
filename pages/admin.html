@@ -1,42 +1,193 @@
 <div class="hero-scene text-center hero-ban shadow">
   <div class="hero-scene-content text-secondary hero-ban">
-    <h1 class="hero-scene-title font-title">Espace Administrateur</h1>
+    <h1 class="font-title fs-1">Espace Administrateur</h1>
   </div>
 </div>
 
-<section
-  class="container-fluid bg-primary d-flex justify-content-center align-items-center p-3"
->
-  <form id="formAnimal" class="row justify-content-center">
-    <div class="form-group col-md-8 d-flex gap-3">
-      <select
-        class="form-select form-select-sm"
-        id="habitatAnimalSelect"
-        aria-label="Sélectionner un habitat"
-      >
-        <option value="" selected>Choisir un habitat</option>
-        <!-- Les options seront ajoutées dynamiquement -->
-      </select>
+<section class="container-fluid bg-primary p-3">
+  <form id="formAnimal">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-8">
+        <div class="row g-3">
+          <!-- Select Habitat -->
+          <div class="col-12 col-sm-6">
+            <select
+              class="form-select"
+              id="habitatAnimalSelect"
+              aria-label="Sélectionner un habitat"
+            >
+              <option value="" selected>Choisir un habitat</option>
+              <!-- Les options seront ajoutées dynamiquement -->
+            </select>
+          </div>
 
-      <select
-        class="form-select form-select-sm"
-        id="animalSelect"
-        aria-label="Sélectionner un animal"
-      >
-        <option value="" selected>Choisir un animal</option>
-        <!-- Les options seront ajoutées dynamiquement -->
-      </select>
+          <!-- Select Animal -->
+          <div class="col-12 col-sm-6">
+            <select
+              class="form-select"
+              id="animalSelect"
+              aria-label="Sélectionner un animal"
+            >
+              <option value="" selected>Choisir un animal</option>
+              <!-- Les options seront ajoutées dynamiquement -->
+            </select>
+          </div>
+        </div>
+      </div>
     </div>
   </form>
 </section>
 
-<div
-  class="container-fluid bg-primary d-flex justify-content-center align-items-center p-3"
->
-  <div class="d-flex justify-content-center">
-    <div id="likesInfo" class="alert alert-info d-none">
-      Nombre de likes :
-      <span id="likesCount">0</span><i class="bi bi-heart-fill text-danger"></i>
+<div class="container-fluid bg-primary p-4">
+  <!-- Section des informations de l'animal sélectionné -->
+  <div class="row justify-content-center mb-4">
+    <div class="col-12 text-center">
+      <div id="likesInfo" class="alert alert-info d-none d-inline-block">
+        Nombre de likes :
+        <span id="likesCount">0</span>
+        <i class="bi bi-heart-fill text-danger"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section des derniers rapports -->
+  <div class="row">
+    <!-- Dernier rapport vétérinaire -->
+    <div class="col-xl-6 mb-4">
+      <div
+        class="table-custom rapport-veto shadow h-100 d-none"
+        id="lastVetoReport"
+      >
+        <div class="card-header bg-dark text-secondary">
+          <h3 class="mb-0 p-2">
+            <i class="bi bi-journal-medical"></i> Dernier Rapport Vétérinaire
+          </h3>
+        </div>
+        <div class="card-body table-custom-body">
+          <div class="table-responsive mb-0">
+            <table class="table table-hover">
+              <thead class="table-dark sticky-top">
+                <tr>
+                  <th>Date</th>
+                  <th>Animal</th>
+                  <th>Race</th>
+                  <th>Alimentation</th>
+                  <th>Quantité</th>
+                  <th>Commentaire</th>
+                  <th>Vétérinaire</th>
+                </tr>
+              </thead>
+              <tbody id="reportsVetoSelectedTableBody">
+                <!-- Les rapports vétérinaires seront insérés ici -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dernier rapport employé -->
+    <div class="col-xl-6 mb-4">
+      <div
+        class="table-custom rapport-veto shadow h-100 d-none"
+        id="lastEmployeReport"
+      >
+        <div class="card-header bg-dark text-secondary">
+          <h3 class="mb-0 p-2">
+            <i class="bi bi-journal-medical"></i> Dernier Rapport Employé
+          </h3>
+        </div>
+        <div class="card-body table-custom-body">
+          <div class="table-responsive mb-0">
+            <table class="table table-hover">
+              <thead class="table-dark sticky-top">
+                <tr>
+                  <th>Date</th>
+                  <th>Animal</th>
+                  <th>Race</th>
+                  <th>Alimentation</th>
+                  <th>Quantité</th>
+                  <th>Employé</th>
+                </tr>
+              </thead>
+              <tbody id="reportsEmployeSelectedTableBody">
+                <!-- Les rapports employés seront insérés ici -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid bg-primary p-4">
+  <div class="row">
+    <!-- Tableau des rapports vétérinaires -->
+    <div class="col-xl-6 mb-4">
+      <div class="table-custom rapport-veto shadow h-100">
+        <div class="card-header bg-dark text-secondary">
+          <h3 class="mb-0 p-2">
+            <i class="bi bi-journal-medical"></i> Rapports Vétérinaires
+          </h3>
+        </div>
+        <div class="card-body table-custom-body">
+          <div
+            class="table-responsive mb-0"
+            style="max-height: calc(100vh - 300px); overflow-y: auto"
+          >
+            <table class="table table-hover">
+              <thead class="table-dark sticky-top">
+                <tr>
+                  <th>Date</th>
+                  <th>Animal</th>
+                  <th>Race</th>
+                  <th>Alimentation</th>
+                  <th>Quantité</th>
+                  <th>Commentaire</th>
+                  <th>Vétérinaire</th>
+                </tr>
+              </thead>
+              <tbody id="reportsTableBody">
+                <!-- Les rapports vétérinaires seront insérés ici -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tableau des rapports employés -->
+    <div class="col-xl-6 mb-4">
+      <div class="table-custom rapport-veto shadow h-100">
+        <div class="card-header bg-dark text-secondary">
+          <h3 class="mb-0 p-2">
+            <i class="bi bi-journal-medical"></i> Rapports Employés
+          </h3>
+        </div>
+        <div class="card-body table-custom-body">
+          <div
+            class="table-responsive mb-0"
+            style="max-height: calc(100vh - 300px); overflow-y: auto"
+          >
+            <table class="table table-hover">
+              <thead class="table-dark sticky-top">
+                <tr>
+                  <th>Date</th>
+                  <th>Animal</th>
+                  <th>Race</th>
+                  <th>Alimentation</th>
+                  <th>Quantité</th>
+                  <th>Employé</th>
+                </tr>
+              </thead>
+              <tbody id="employeReportsTableBody">
+                <!-- Les rapports employés seront insérés ici -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

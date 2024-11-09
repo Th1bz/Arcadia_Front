@@ -1,21 +1,5 @@
 console.log("Hello Véto !");
 
-// Fonction pour formater la date en YYYY-MM-DD -----------------
-function formatDate(date) {
-  return date.toISOString().split("T")[0];
-}
-
-// Fonction pour définir la date maximale selectionnable dans le Rapport du véto
-function setMaxDate() {
-  const today = new Date();
-  const maxDate = formatDate(today);
-  document.getElementById("vetoDate").setAttribute("max", maxDate);
-
-  // Date par défaut
-  document.getElementById("vetoDate").value = maxDate;
-}
-// ---------------------------------------------------------------
-
 // Form Animal ----------------------------------------------------
 document
   .getElementById("formAnimal")
@@ -45,7 +29,7 @@ document
       if (!response.ok) {
         throw new Error("Erreur lors de l'enregistrement du rapport");
       } else {
-        loadUserReports();
+        loadUserVetoReports();
       }
 
       alert("Rapport enregistré avec succès !");
@@ -57,7 +41,7 @@ document
   });
 
 // Fonction pour charger les rapports
-async function loadUserReports() {
+async function loadUserVetoReports() {
   const user = getUser();
   if (!user || !user.username) return;
 
@@ -113,12 +97,12 @@ if (
   listHabitatsSelect();
   listAnimalsSelect();
   setMaxDate();
-  loadUserReports();
+  loadUserVetoReports();
 } else {
   document.addEventListener("DOMContentLoaded", () => {
     listHabitatsSelect();
     listAnimalsSelect();
     setMaxDate();
-    loadUserReports();
+    loadUserVetoReports();
   });
 }

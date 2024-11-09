@@ -192,3 +192,25 @@ function listAnimalsSelect(habitatId = null) {
       });
   }
 }
+
+// Fonction pour formater la date en YYYY-MM-DD -----------------
+function formatDate(date) {
+  return date.toISOString().split("T")[0];
+}
+// Fonction pour définir la date maximale selectionnable dans le Rapport
+function setMaxDate() {
+  const today = new Date();
+  const maxDate = formatDate(today);
+
+  const vetoDateInput = document.getElementById("vetoDate");
+  const employeDateInput = document.getElementById("employeDate");
+
+  if (vetoDateInput) {
+    vetoDateInput.setAttribute("max", maxDate);
+    vetoDateInput.value = maxDate;
+  } else if (employeDateInput) {
+    employeDateInput.setAttribute("max", maxDate);
+    employeDateInput.value = maxDate;
+  }
+}
+// ---------------------------------------------------------------
