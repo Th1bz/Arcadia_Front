@@ -322,6 +322,92 @@ async function loadAllEmployeReports() {
 }
 //------------------------------------------
 
+// Fonction pour initialiser le formulaire des horaires
+function initHoursForm() {
+  const hoursForm = document.getElementById("hoursForm");
+
+  if (hoursForm) {
+    // Charger les horaires existants
+    loadHours();
+
+    // Gérer la soumission du formulaire
+    hoursForm.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const hoursData = {
+        hours: {
+          week: {
+            opening: document.getElementById("weekOpening").value,
+            closing: document.getElementById("weekClosing").value,
+          },
+          weekend: {
+            opening: document.getElementById("weekendOpening").value,
+            closing: document.getElementById("weekendClosing").value,
+          },
+        },
+      };
+
+      console.log("Données envoyées:", hoursData);
+
+      try {
+        const response = await fetch(`${apiUrl}api/hours`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(hoursData),
+        });
+
+        const responseData = await response.json();
+        console.log("Réponse reçue:", responseData);
+
+        if (response.ok) {
+          alert("Horaires mis à jour avec succès");
+          await loadHours();
+        } else {
+          throw new Error(
+            responseData.message || "Erreur lors de la mise à jour"
+          );
+        }
+      } catch (error) {
+        alert("Erreur lors de la sauvegarde: " + error.message);
+        console.error("Erreur:", error);
+      }
+    });
+  }
+}
+
+//------------------------------------------
+
+// Fonction pour charger les horaires
+async function loadHours() {
+  try {
+    const response = await fetch(`${apiUrl}api/hours`);
+    const data = await response.json();
+
+    // Mettre à jour les inputs du formulaire
+    document.getElementById("weekOpening").value = data.hours.week.opening;
+    document.getElementById("weekClosing").value = data.hours.week.closing;
+    document.getElementById("weekendOpening").value =
+      data.hours.weekend.opening;
+    document.getElementById("weekendClosing").value =
+      data.hours.weekend.closing;
+
+    // Mettre à jour l'affichage des horaires
+    document.getElementById(
+      "weekHours"
+    ).textContent = `De ${data.hours.week.opening} à ${data.hours.week.closing}`;
+    document.getElementById(
+      "weekendHours"
+    ).textContent = `De ${data.hours.weekend.opening} à ${data.hours.weekend.closing}`;
+  } catch (error) {
+    console.error("Erreur de chargement:", error);
+  }
+}
+//------------------------------------------
+
+//------------------------------------------
+
 // Ajouter un écouteur d'événements sur le select d'habitat
 document
   .getElementById("habitatAnimalSelect")
@@ -339,6 +425,7 @@ if (
   updateRankingTable();
   loadAllVetoReports();
   loadAllEmployeReports();
+  initHoursForm();
 } else {
   document.addEventListener("DOMContentLoaded", () => {
     listHabitatsSelect();
@@ -346,5 +433,6 @@ if (
     updateRankingTable();
     loadAllVetoReports();
     loadAllEmployeReports();
+    initHoursForm();
   });
 }
