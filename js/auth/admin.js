@@ -379,35 +379,6 @@ function initHoursForm() {
 
 //------------------------------------------
 
-// Fonction pour charger les horaires
-async function loadHours() {
-  try {
-    const response = await fetch(`${apiUrl}api/hours`);
-    const data = await response.json();
-
-    // Mettre à jour les inputs du formulaire
-    document.getElementById("weekOpening").value = data.hours.week.opening;
-    document.getElementById("weekClosing").value = data.hours.week.closing;
-    document.getElementById("weekendOpening").value =
-      data.hours.weekend.opening;
-    document.getElementById("weekendClosing").value =
-      data.hours.weekend.closing;
-
-    // Mettre à jour l'affichage des horaires
-    document.getElementById(
-      "weekHours"
-    ).textContent = `De ${data.hours.week.opening} à ${data.hours.week.closing}`;
-    document.getElementById(
-      "weekendHours"
-    ).textContent = `De ${data.hours.weekend.opening} à ${data.hours.weekend.closing}`;
-  } catch (error) {
-    console.error("Erreur de chargement:", error);
-  }
-}
-//------------------------------------------
-
-//------------------------------------------
-
 // Ajouter un écouteur d'événements sur le select d'habitat
 document
   .getElementById("habitatAnimalSelect")

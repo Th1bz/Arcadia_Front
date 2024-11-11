@@ -7,50 +7,94 @@
 
 <section>
   <!-- Présentation du zoo -->
-  <article class="article-bg shadow">
-    <div class="container p-4">
-      <div class="cards-description row align-items-center m-4 rounded-4">
-        <div class="col-12 col-md-8">
-          <p class="text-justify text-primary">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed
-            repellendus accusamus laborum assumenda dicta voluptates nihil quia
-            distinctio enim, odit rem doloribus recusandae neque atque,
-            perferendis tempora nesciunt magni nam.
+  <!-- Section Introduction -->
+  <article class="article-bg shadow py-5">
+    <div class="container pb-5">
+      <!-- Première carte : Présentation -->
+      <div class="cards-description row align-items-center mb-3 rounded-4 p-4">
+        <div class="col-12 col-md-8 mb-4 mb-md-0">
+          <h2 class="font-subtitle text-secondary mb-4">
+            Bienvenue au Zoo d'Arcadia
+          </h2>
+          <p class="text-justify text-primary mb-4">
+            Bienvenue au Zoo d'Arcadia, un lieu unique niché au cœur de la
+            mystérieuse forêt de Brocéliande, en Bretagne. Ici, la nature et la
+            magie se rencontrent pour offrir une expérience inoubliable.
+            Découvrez une grande diversité d'animaux venus des quatre coins du
+            monde dans un cadre enchanteur où respect de la faune et
+            préservation de l'environnement sont nos priorités.
           </p>
+
+          <!-- Horaires -->
+          <div class="bg-dark p-3 rounded shadow-sm">
+            <h3 class="font-subtitle text-secondary h5 mb-3">Nos Horaires</h3>
+            <div
+              class="d-flex flex-column flex-md-row justify-content-around gap-2"
+            >
+              <p class="weekHours text-secondary mb-0"></p>
+              <p class="weekendHours text-secondary mb-0"></p>
+            </div>
+          </div>
         </div>
 
         <div class="col-12 col-md-4">
-          <img class="w-100 shadow rounded" src="../Images/Zoo/smallGreenArcadia.png" alt="Chemin de forêt" />
+          <img
+            class="w-100 shadow rounded"
+            src="../Images/Zoo/smallGreenArcadia.png"
+            alt="Chemin de forêt"
+          />
         </div>
       </div>
 
-      <div class="cards-description row align-items-center m-4 rounded-4">
-        <div class="col-12 col-md-4">
-          <img class="w-100 shadow rounded" src="../Images/Zoo/village-bretagne.jpg" alt="Village de Bretagne" />
+      <!-- Deuxième carte : Histoire -->
+      <div class="cards-description row align-items-center rounded-4 p-4">
+        <div class="col-12 col-md-4 mb-4 mb-md-0 order-md-2">
+          <img
+            class="w-100 shadow rounded"
+            src="../Images/Zoo/fleche-histoire-arcadia.webp"
+            alt="Village de Bretagne"
+          />
         </div>
 
-        <div class="col-12 col-md-8">
-          <p class="text-justify text-primary">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed
-            repellendus accusamus laborum assumenda dicta voluptates nihil quia
-            distinctio enim, odit rem doloribus recusandae neque atque,
-            perferendis tempora nesciunt magni nam.
-          </p>
+        <div class="col-12 col-md-8 order-md-1">
+          <h2 class="font-subtitle text-secondary mb-4">Notre Histoire</h2>
+          <div class="text-justify text-primary">
+            <p class="mb-3">
+              Le Zoo d'Arcadia a vu le jour en 1995, lorsqu'un groupe de
+              passionnés de nature et d'animaux a décidé de créer un refuge
+              unique au cœur de la forêt mythique de Brocéliande, en Bretagne.
+            </p>
+
+            <p class="mb-3">
+              En 2003, le parc s'est agrandi pour accueillir des espèces rares
+              et menacées, devenant un acteur important de la conservation
+              animale en France. En 2010, le zoo a lancé son premier programme
+              de réintroduction d'espèces locales dans la forêt environnante.
+            </p>
+
+            <p class="mb-0">
+              Aujourd'hui, le Zoo d'Arcadia est bien plus qu'un simple lieu
+              d'observation animale. Grâce à des initiatives éducatives et à des
+              espaces immersifs inaugurés en 2018, il invite chaque visiteur à
+              découvrir la richesse de la biodiversité.
+            </p>
+          </div>
         </div>
       </div>
     </div>
   </article>
 
+  <!-- Section Habitats -->
   <!-- Présentation des card habitats -->
   <article class="article-bg-2 shadow">
     <h2 class="font-subtitle text-center text-secondary bg-dark p-2 shadow">
       Découvrez nos habitats
     </h2>
 
-    <div class="d-flex flex-row justify-content-evenly flex-wrap p-4" id="addCardHabitat">
-
-    </div>
-
+    <div
+      class="d-flex flex-row justify-content-evenly flex-wrap p-4"
+      id="addCardHabitat"
+    ></div>
   </article>
 
   <!-- Présentation des services -->
@@ -59,7 +103,10 @@
       Découvrez nos services
     </h2>
     <div class="container position-relative p-4">
-      <a href="/services" class="text-decoration-none cards-description row align-items-center rounded-4">
+      <a
+        href="/services"
+        class="text-decoration-none cards-description row align-items-center rounded-4"
+      >
         <div class="col-8">
           <p class="text-justify text-primary">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed
@@ -69,7 +116,11 @@
           </p>
         </div>
         <div class="col-4">
-          <img class="w-100 shadow rounded" src="../Images/Zoo/terrasse-ruelle.jpg" alt="Chemin de forêt" />
+          <img
+            class="w-100 shadow rounded"
+            src="../Images/Zoo/terrasse-ruelle.jpg"
+            alt="Chemin de forêt"
+          />
         </div>
       </a>
     </div>
@@ -82,32 +133,44 @@
     </h2>
 
     <div class="container pt-5 pb-5">
-
       <!-- Avis 1 -->
-      <div class="d-flex justify-content-start align-items-center rounded-4 bg-avis shadow m-4 ps-5">
-        <img src="../Images/Zoo/portrait-1.jpg" class="p-profile object-fit-cover" alt="Photo de profile de l'avis" />
+      <div
+        class="d-flex justify-content-start align-items-center rounded-4 bg-avis shadow m-4 ps-5"
+      >
+        <img
+          src="../Images/Zoo/portrait-1.jpg"
+          class="p-profile object-fit-cover"
+          alt="Photo de profile de l'avis"
+        />
         <div class="p-2 ps-4">
           <h3>Justine Poitoux</h3>
           <div>
-            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-              class="bi bi-star-fill"></i><i class="bi bi-star"></i>
+            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
+            ><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
+            ><i class="bi bi-star"></i>
           </div>
           <p>
-            Une super journée, les Zoo c'est trop bien mais celui là est
-            parfait ! Surtout sont site internet qui est très beau et intuif
+            Une super journée, les Zoo c'est trop bien mais celui là est parfait
+            ! Surtout sont site internet qui est très beau et intuif
           </p>
         </div>
       </div>
 
       <!-- Avis 2 -->
-      <div class="d-flex justify-content-start align-items-center rounded-4 bg-avis shadow m-4 ps-5">
-        <img src="../Images/Zoo/portrait-chat.jpg" class="p-profile object-fit-cover"
-          alt="Photo de profile de l'avis" />
+      <div
+        class="d-flex justify-content-start align-items-center rounded-4 bg-avis shadow m-4 ps-5"
+      >
+        <img
+          src="../Images/Zoo/portrait-chat.jpg"
+          class="p-profile object-fit-cover"
+          alt="Photo de profile de l'avis"
+        />
         <div class="p-2 ps-4">
           <h3>Hansy Müller</h3>
           <div>
-            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-              class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
+            ><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
+            ><i class="bi bi-star-fill"></i>
           </div>
           <p>
             Un moment convivial avec mes enfants, excellente journée de détente
@@ -115,16 +178,19 @@
           </p>
         </div>
       </div>
-
     </div>
 
     <div class="d-flex justify-content-center" data-show="disconnected">
-      <button type="button" class="btn btn-secondary m-3" data-bs-toggle="modal" data-bs-target="#avisModal">Laissez
-        nous un commentaire</button>
+      <button
+        type="button"
+        class="btn btn-secondary m-3"
+        data-bs-toggle="modal"
+        data-bs-target="#avisModal"
+      >
+        Laissez nous un commentaire
+      </button>
     </div>
-
   </article>
-
 
   <!-- Avis en attente de Validation-->
   <article class="article-bg bg-primary" data-show="3" data-show="1">
@@ -133,171 +199,253 @@
     </h2>
 
     <div class="container pt-5 pb-5">
-
       <!-- Avis 1 -->
-      <div class="d-flex justify-content-start align-items-center rounded-4 bg-avis shadow m-4 ps-2">
-
-        <button type="button" class="btn btn-outline-danger circle-border text-primary me-2" data-bs-toggle="modal"
-          data-bs-target="#deleteAvisModal">
+      <div
+        class="d-flex justify-content-start align-items-center rounded-4 bg-avis shadow m-4 ps-2"
+      >
+        <button
+          type="button"
+          class="btn btn-outline-danger circle-border text-primary me-2"
+          data-bs-toggle="modal"
+          data-bs-target="#deleteAvisModal"
+        >
           <i class="bi bi-x-circle"></i>
         </button>
 
-        <img src="../Images/Zoo/portrait-1.jpg" class="p-profile object-fit-cover" alt="profile de l'avis" />
+        <img
+          src="../Images/Zoo/portrait-1.jpg"
+          class="p-profile object-fit-cover"
+          alt="profile de l'avis"
+        />
         <div class="p-2 ps-4">
           <h3>Justine Poitoux</h3>
           <div>
-            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-              class="bi bi-star-fill"></i><i class="bi bi-star"></i>
+            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
+            ><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
+            ><i class="bi bi-star"></i>
           </div>
           <p>
-            Une super journée, les Zoo c'est trop bien mais celui là est
-            parfait ! Surtout sont site internet qui est très beau et intuif
+            Une super journée, les Zoo c'est trop bien mais celui là est parfait
+            ! Surtout sont site internet qui est très beau et intuif
           </p>
         </div>
 
-        <button type="button" class="btn btn-outline-success circle-border text-primary me-2" data-bs-toggle="modal"
-          data-bs-target="#addAvisModal">
+        <button
+          type="button"
+          class="btn btn-outline-success circle-border text-primary me-2"
+          data-bs-toggle="modal"
+          data-bs-target="#addAvisModal"
+        >
           <i class="bi bi-plus-circle"></i>
         </button>
-
       </div>
 
       <!-- Avis 2 -->
-      <div class="d-flex justify-content-start align-items-center rounded-4 bg-avis shadow m-4 ps-2">
-
-        <button type="button" class="btn btn-outline-danger circle-border text-primary me-2" data-bs-toggle="modal"
-          data-bs-target="#deleteAvisModal">
+      <div
+        class="d-flex justify-content-start align-items-center rounded-4 bg-avis shadow m-4 ps-2"
+      >
+        <button
+          type="button"
+          class="btn btn-outline-danger circle-border text-primary me-2"
+          data-bs-toggle="modal"
+          data-bs-target="#deleteAvisModal"
+        >
           <i class="bi bi-x-circle"></i>
         </button>
 
-        <img src="../Images/Zoo/portrait-1.jpg" class="p-profile object-fit-cover" alt="Photo de profile de l'avis" />
+        <img
+          src="../Images/Zoo/portrait-1.jpg"
+          class="p-profile object-fit-cover"
+          alt="Photo de profile de l'avis"
+        />
         <div class="p-2 ps-4">
           <h3>Justine Poitoux</h3>
           <div>
-            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-              class="bi bi-star-fill"></i><i class="bi bi-star"></i>
+            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
+            ><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
+            ><i class="bi bi-star"></i>
           </div>
           <p>
-            Une super journée, les Zoo c'est trop bien mais celui là est
-            parfait ! Surtout sont site internet qui est très beau et intuif
+            Une super journée, les Zoo c'est trop bien mais celui là est parfait
+            ! Surtout sont site internet qui est très beau et intuif
           </p>
         </div>
 
-        <button type="button" class="btn btn-outline-success circle-border text-primary me-2" data-bs-toggle="modal"
-          data-bs-target="#addAvisModal">
+        <button
+          type="button"
+          class="btn btn-outline-success circle-border text-primary me-2"
+          data-bs-toggle="modal"
+          data-bs-target="#addAvisModal"
+        >
           <i class="bi bi-plus-circle"></i>
         </button>
-
       </div>
 
       <!-- Avis 3 -->
-      <div class="d-flex justify-content-start align-items-center rounded-4 bg-avis shadow m-4 ps-2">
-
-        <button type="button" class="btn btn-outline-danger circle-border text-primary me-2" data-bs-toggle="modal"
-          data-bs-target="#deleteAvisModal">
+      <div
+        class="d-flex justify-content-start align-items-center rounded-4 bg-avis shadow m-4 ps-2"
+      >
+        <button
+          type="button"
+          class="btn btn-outline-danger circle-border text-primary me-2"
+          data-bs-toggle="modal"
+          data-bs-target="#deleteAvisModal"
+        >
           <i class="bi bi-x-circle"></i>
         </button>
 
-        <img src="../Images/Zoo/portrait-1.jpg" class="p-profile object-fit-cover" alt="Photo de profile de l'avis" />
+        <img
+          src="../Images/Zoo/portrait-1.jpg"
+          class="p-profile object-fit-cover"
+          alt="Photo de profile de l'avis"
+        />
         <div class="p-2 ps-4">
           <h3>Justine Poitoux</h3>
           <div>
-            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-              class="bi bi-star-fill"></i><i class="bi bi-star"></i>
+            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
+            ><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
+            ><i class="bi bi-star"></i>
           </div>
           <p>
-            Une super journée, les Zoo c'est trop bien mais celui là est
-            parfait ! Surtout sont site internet qui est très beau et intuif
+            Une super journée, les Zoo c'est trop bien mais celui là est parfait
+            ! Surtout sont site internet qui est très beau et intuif
           </p>
         </div>
 
-        <button type="button" class="btn btn-outline-success circle-border text-primary me-2" data-bs-toggle="modal"
-          data-bs-target="#addAvisModal">
+        <button
+          type="button"
+          class="btn btn-outline-success circle-border text-primary me-2"
+          data-bs-toggle="modal"
+          data-bs-target="#addAvisModal"
+        >
           <i class="bi bi-plus-circle"></i>
         </button>
-
       </div>
 
       <!-- Avis 4 -->
-      <div class="d-flex justify-content-start align-items-center rounded-4 bg-avis shadow m-4 ps-2">
-
-        <button type="button" class="btn btn-outline-danger circle-border text-primary me-2" data-bs-toggle="modal"
-          data-bs-target="#deleteAvisModal">
+      <div
+        class="d-flex justify-content-start align-items-center rounded-4 bg-avis shadow m-4 ps-2"
+      >
+        <button
+          type="button"
+          class="btn btn-outline-danger circle-border text-primary me-2"
+          data-bs-toggle="modal"
+          data-bs-target="#deleteAvisModal"
+        >
           <i class="bi bi-x-circle"></i>
         </button>
 
-        <img src="../Images/Zoo/portrait-1.jpg" class="p-profile object-fit-cover" alt="Photo de profile de l'avis" />
+        <img
+          src="../Images/Zoo/portrait-1.jpg"
+          class="p-profile object-fit-cover"
+          alt="Photo de profile de l'avis"
+        />
         <div class="p-2 ps-4">
           <h3>Justine Poitoux</h3>
           <div>
-            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-              class="bi bi-star-fill"></i><i class="bi bi-star"></i>
+            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
+            ><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
+            ><i class="bi bi-star"></i>
           </div>
           <p>
-            Une super journée, les Zoo c'est trop bien mais celui là est
-            parfait ! Surtout sont site internet qui est très beau et intuif
+            Une super journée, les Zoo c'est trop bien mais celui là est parfait
+            ! Surtout sont site internet qui est très beau et intuif
           </p>
         </div>
 
-        <button type="button" class="btn btn-outline-success circle-border text-primary me-2" data-bs-toggle="modal"
-          data-bs-target="#addAvisModal">
+        <button
+          type="button"
+          class="btn btn-outline-success circle-border text-primary me-2"
+          data-bs-toggle="modal"
+          data-bs-target="#addAvisModal"
+        >
           <i class="bi bi-plus-circle"></i>
         </button>
-
       </div>
 
       <!-- Avis 5 -->
-      <div class="d-flex justify-content-start align-items-center rounded-4 bg-avis shadow m-4 ps-2">
-
-        <button type="button" class="btn btn-outline-danger circle-border text-primary me-2" data-bs-toggle="modal"
-          data-bs-target="#deleteAvisModal">
+      <div
+        class="d-flex justify-content-start align-items-center rounded-4 bg-avis shadow m-4 ps-2"
+      >
+        <button
+          type="button"
+          class="btn btn-outline-danger circle-border text-primary me-2"
+          data-bs-toggle="modal"
+          data-bs-target="#deleteAvisModal"
+        >
           <i class="bi bi-x-circle"></i>
         </button>
 
-        <img src="../Images/Zoo/portrait-1.jpg" class="p-profile object-fit-cover" alt="Photo de profile de l'avis" />
+        <img
+          src="../Images/Zoo/portrait-1.jpg"
+          class="p-profile object-fit-cover"
+          alt="Photo de profile de l'avis"
+        />
         <div class="p-2 ps-4">
           <h3>Justine Poitoux</h3>
           <div>
-            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-              class="bi bi-star-fill"></i><i class="bi bi-star"></i>
+            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
+            ><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
+            ><i class="bi bi-star"></i>
           </div>
           <p>
-            Une super journée, les Zoo c'est trop bien mais celui là est
-            parfait ! Surtout sont site internet qui est très beau et intuif
+            Une super journée, les Zoo c'est trop bien mais celui là est parfait
+            ! Surtout sont site internet qui est très beau et intuif
           </p>
         </div>
 
-        <button type="button" class="btn btn-outline-success circle-border text-primary me-2" data-bs-toggle="modal"
-          data-bs-target="#addAvisModal">
+        <button
+          type="button"
+          class="btn btn-outline-success circle-border text-primary me-2"
+          data-bs-toggle="modal"
+          data-bs-target="#addAvisModal"
+        >
           <i class="bi bi-plus-circle"></i>
         </button>
-
       </div>
-
     </div>
-
   </article>
 
   <!-- Avis Modal -->
-  <div class="modal fade" id="avisModal" tabindex="-1" aria-labelledby="avisModalLabel" aria-hidden="true">
+  <div
+    class="modal fade"
+    id="avisModal"
+    tabindex="-1"
+    aria-labelledby="avisModalLabel"
+    aria-hidden="true"
+  >
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h2 class="modal-title fs-5" id="avisModalLabel">Déposer un avis</h2>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
         </div>
         <div class="modal-body">
           <form>
             <div class="mb-3">
               <label for="nom" class="form-label">Votre Nom</label>
-              <input type="text" class="form-control" id="nom" placeholder="Exemple: Justine Poitoux">
+              <input
+                type="text"
+                class="form-control"
+                id="nom"
+                placeholder="Exemple: Justine Poitoux"
+              />
             </div>
             <div class="mb-3">
-              <label for="commentaire" class="form-label">Votre commentaire</label>
-              <input type="text-area" class="form-control" id="commentaire">
+              <label for="commentaire" class="form-label"
+                >Votre commentaire</label
+              >
+              <input type="text-area" class="form-control" id="commentaire" />
             </div>
             <div class="text-center">
-              <button type="button" class="btn btn-secondary">Enregistrer</button>
+              <button type="button" class="btn btn-secondary">
+                Enregistrer
+              </button>
             </div>
           </form>
         </div>
@@ -305,29 +453,40 @@
     </div>
   </div>
 
-
   <!-- Modal suppression avis -->
-  <div class="modal fade" id="deleteAvisModal" tabindex="-1" aria-labelledby="deleteAvisModalLabel" aria-hidden="true">
+  <div
+    class="modal fade"
+    id="deleteAvisModal"
+    tabindex="-1"
+    aria-labelledby="deleteAvisModalLabel"
+    aria-hidden="true"
+  >
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h2 class="modal-title fs-5" id="deleteAvisModalLabel">
             Suppression de l'avis ?
           </h2>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
         </div>
         <div class="modal-body">
           <form>
-
             <div class="mb-3">
-              <P>Êtes vous sur de vouloir supprimer ce commentaire ?</p>
+              <p>Êtes vous sur de vouloir supprimer ce commentaire ?</p>
             </div>
 
             <div class="text-center">
-              <button type="button" class="btn btn-danger">
-                Supprimer
-              </button>
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+              <button type="button" class="btn btn-danger">Supprimer</button>
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
                 Annuler
               </button>
             </div>
@@ -338,27 +497,39 @@
   </div>
 
   <!-- Modal add avis -->
-  <div class="modal fade" id="addAvisModal" tabindex="-1" aria-labelledby="addAvisModalLabel" aria-hidden="true">
+  <div
+    class="modal fade"
+    id="addAvisModal"
+    tabindex="-1"
+    aria-labelledby="addAvisModalLabel"
+    aria-hidden="true"
+  >
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h2 class="modal-title fs-5" id="addAvisModalLabel">
             Valider le commentaire ?
           </h2>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
         </div>
         <div class="modal-body">
           <form>
-
             <div class="mb-3">
-              <P>Êtes vous sur de vouloir ajouter ce commentaire ?</p>
+              <p>Êtes vous sur de vouloir ajouter ce commentaire ?</p>
             </div>
 
             <div class="text-center">
-              <button type="button" class="btn btn-secondary">
-                Ajouter
-              </button>
-              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+              <button type="button" class="btn btn-secondary">Ajouter</button>
+              <button
+                type="button"
+                class="btn btn-danger"
+                data-bs-dismiss="modal"
+              >
                 Annuler
               </button>
             </div>
@@ -369,31 +540,59 @@
   </div>
 
   <!-- Modal edition Services -->
-  <div class="modal fade" id="EditionServiceModal" tabindex="-1" aria-labelledby="EditionServiceModalLabel"
-    aria-hidden="true">
+  <div
+    class="modal fade"
+    id="EditionServiceModal"
+    tabindex="-1"
+    aria-labelledby="EditionServiceModalLabel"
+    aria-hidden="true"
+  >
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h2 class="modal-title fs-5" id="EditionServiceModalLabel">
             Edition du Service
           </h2>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
         </div>
         <div class="modal-body">
           <form>
             <div class="mb-3">
               <label for="illustrationInput" class="form-label">Photo</label>
-              <input type="file" class="form-control" id="illustrationInput" name="Image" />
+              <input
+                type="file"
+                class="form-control"
+                id="illustrationInput"
+                name="Image"
+              />
             </div>
 
             <div class="mb-3">
-              <label for="titreServiceInput" class="form-label">Titre du service</label>
-              <input type="text" class="form-control" id="titreServiceInput" placeholder="Visite guidée" />
+              <label for="titreServiceInput" class="form-label"
+                >Titre du service</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="titreServiceInput"
+                placeholder="Visite guidée"
+              />
             </div>
 
             <div class="mb-3">
-              <label for="descriptionServiceInput" class="form-label">Description du Service</label>
-              <input type="text" class="form-control" id="descriptionServiceInput" />
+              <label for="descriptionServiceInput" class="form-label"
+                >Description du Service</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="descriptionServiceInput"
+              />
             </div>
 
             <div class="text-center">
@@ -406,5 +605,4 @@
       </div>
     </div>
   </div>
-
 </section>

@@ -10,34 +10,54 @@
     <h2 class="font-subtitle text-center text-secondary bg-dark p-2 shadow">
       En savoir plus ?
     </h2>
-    <div class="container p-4">
-      <div class="cards-description row align-items-center m-4 rounded-4">
-        <div class="col-12 col-md-8">
-          <p class="text-justify text-primary">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed
-            repellendus accusamus laborum assumenda dicta voluptates nihil quia
-            distinctio enim, odit rem doloribus recusandae neque atque,
-            perferendis tempora nesciunt magni nam. Lorem ipsum dolor sit, amet
-            consectetur adipisicing elit. Quae deserunt quibusdam inventore
-            molestiae odit est magni eveniet voluptatibus nesciunt at veniam
-            voluptatum repellendus maxime facilis, dolor totam debitis dolores
-            nihil?
-          </p>
+    <div class="d-flex align-items-center justify-content-center py-5">
+      <div class="container d-flex cards-description row rounded-4 p-4">
+        <div class="col-12 col-md-4 mb-4 mb-md-0 order-md-2">
+          <img
+            class="w-100 shadow rounded"
+            src="../Images/Zoo/village-bretagne.jpg"
+            alt="Village de Bretagne"
+          />
         </div>
 
-        <div class="col-12 col-md-4">
-          <img class="w-100 shadow rounded" src="../Images/Zoo/terrasse-ruelle.jpg"
-            alt="Ruelle de petit village avec des terrasses de restaurants" />
+        <div class="col-12 col-md-8 order-md-1">
+          <h2 class="font-subtitle text-secondary mb-4">
+            Pour que votre viste soit inoubliable !
+          </h2>
+          <div class="text-justify text-primary">
+            <p class="mb-3">
+              Le Zoo d'Arcadia vous invite à vivre bien plus qu'une simple
+              visite ! En explorant notre parc, vous découvrirez une multitude
+              d'activités et d'espaces conçus pour éveiller votre curiosité et
+              enrichir votre expérience au cœur de la forêt de Brocéliande.
+            </p>
+
+            <p class="mb-3">
+              Chaque service est pensé pour favoriser l'échange, l'apprentissage
+              et l'émerveillement, dans un cadre qui allie nature et magie.
+            </p>
+
+            <p class="mb-0">
+              Que vous soyez passionné d’animaux, amateur de découvertes ou en
+              quête de moments de détente, le Zoo d'Arcadia vous réserve des
+              expériences uniques, adaptées aux envies de chacun et en constante
+              évolution pour vous surprendre à chaque visite.
+            </p>
+          </div>
         </div>
       </div>
     </div>
 
-
-    <button type="button"
+    <button
+      type="button"
       class="btn custom-btn container d-flex justify-content-center align-items-center"
-      style="width: 200px;" data-bs-toggle="modal" data-bs-target="#addServiceModal" data-show="1">
+      style="width: 200px"
+      data-bs-toggle="modal"
+      data-bs-target="#addServiceModal"
+      data-show="1"
+    >
       Ajouter un Service
-      <i class="bi bi-plus ps-2 pe-0" style="font-size: 1.5rem;"></i>
+      <i class="bi bi-plus ps-2 pe-0" style="font-size: 1.5rem"></i>
     </button>
 
     <!-- Line -->
@@ -60,7 +80,6 @@
       </ul>
     </div>
   </article>
-
 </section>
 
 <section class="bg-dark">
@@ -68,49 +87,81 @@
     Nos service en détails :
   </h2>
   <div id="service-container">
-
     <!-- Insertion des services -->
-
   </div>
 </section>
-
 
 <!-- MODAL GESTION DES SERVICES -->
 
 <!-- Modal add Service -->
-<div class="modal fade" id="addServiceModal" tabindex="-1" aria-labelledby="addServiceModalLabel" aria-hidden="true">
+<div
+  class="modal fade"
+  id="addServiceModal"
+  tabindex="-1"
+  aria-labelledby="addServiceModalLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h2 class="modal-title fs-5" id="addServiceModalLabel">
           Création d'un service
         </h2>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
       <div class="modal-body">
         <form id="addServiceForm">
-
           <div class="mb-3" data-show="1">
             <label for="photoServiceInput" class="form-label">Photo</label>
-            <input type="file" class="form-control" id="photoServiceInput" name="Image" accept="image/*" />
+            <input
+              type="file"
+              class="form-control"
+              id="photoServiceInput"
+              name="Image"
+              accept="image/*"
+            />
           </div>
 
           <div class="mb-3" data-show="1">
-            <label for="nomServiceInput" class="form-label">Nom du service</label>
-            <input type="text" class="form-control" id="nomServiceInput" name="name" placeholder="ex: Restauration"
-              required />
+            <label for="nomServiceInput" class="form-label"
+              >Nom du service</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="nomServiceInput"
+              name="name"
+              placeholder="ex: Restauration"
+              required
+            />
           </div>
 
           <div class="mb-3">
-            <label for="descriptionServiceInput" class="form-label">Description du service <span class="small">(utiliser : **votre texte** pour mettre en gras)</span></label>
-            <textarea class="form-control" id="descriptionServiceInput" name="description"></textarea>
+            <label for="descriptionServiceInput" class="form-label"
+              >Description du service
+              <span class="small"
+                >(utiliser : **votre texte** pour mettre en gras)</span
+              ></label
+            >
+            <textarea
+              class="form-control"
+              id="descriptionServiceInput"
+              name="description"
+            ></textarea>
           </div>
 
           <div class="text-center">
-            <button type="submit" class="btn btn-secondary">
-              Ajouter
-            </button>
-            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+            <button type="submit" class="btn btn-secondary">Ajouter</button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              data-bs-dismiss="modal"
+            >
               Annuler
             </button>
           </div>
@@ -120,45 +171,80 @@
   </div>
 </div>
 
-
-
 <!-- Modal edit Service -->
-<div class="modal fade" id="editServiceModal" tabindex="-1" aria-labelledby="editServiceModalLabel" aria-hidden="true">
+<div
+  class="modal fade"
+  id="editServiceModal"
+  tabindex="-1"
+  aria-labelledby="editServiceModalLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h2 class="modal-title fs-5" id="editServiceModalLabel">
           Modification d'un service
         </h2>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
       <div class="modal-body">
         <form id="editServiceForm">
-
           <!-- Ajout d'un champ caché pour l'ID -->
-          <input type="hidden" id="editServiceId" name="id">
+          <input type="hidden" id="editServiceId" name="id" />
 
           <div class="mb-3" data-show="1">
             <label for="editImageInput" class="form-label">Photo</label>
-            <input type="file" class="form-control" id="editImageInput" name="Image" accept="image/*" />
+            <input
+              type="file"
+              class="form-control"
+              id="editImageInput"
+              name="Image"
+              accept="image/*"
+            />
           </div>
 
           <div class="mb-3" data-show="1">
-            <label for="editNameService" class="form-label">Nom du service</label>
-            <input type="text" class="form-control" id="editNameService" name="name" placeholder="ex: Restauration" />
+            <label for="editNameService" class="form-label"
+              >Nom du service</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="editNameService"
+              name="name"
+              placeholder="ex: Restauration"
+            />
           </div>
 
           <div class="mb-3">
-            <label for="editDescriptionService" class="form-label">Description du service <span class="small">(utiliser : **votre texte** pour mettre en gras)</span></label>
-            <textarea type="text" class="form-control" id="editDescriptionService" name="description" style="white-space: pre-line; min-height: 100px;"
-              required></textarea>
+            <label for="editDescriptionService" class="form-label"
+              >Description du service
+              <span class="small"
+                >(utiliser : **votre texte** pour mettre en gras)</span
+              ></label
+            >
+            <textarea
+              type="text"
+              class="form-control"
+              id="editDescriptionService"
+              name="description"
+              style="white-space: pre-line; min-height: 100px"
+              required
+            ></textarea>
           </div>
 
           <div class="text-center">
-            <button type="submit" class="btn btn-secondary">
-              Modifier
-            </button>
-            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+            <button type="submit" class="btn btn-secondary">Modifier</button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              data-bs-dismiss="modal"
+            >
               Annuler
             </button>
           </div>
@@ -168,26 +254,41 @@
   </div>
 </div>
 
-
 <!-- Modal Suppression Service -->
-<div class="modal fade" id="deleteServiceModal" tabindex="-1" aria-labelledby="deleteServiceModalLabel"
-  aria-hidden="true">
+<div
+  class="modal fade"
+  id="deleteServiceModal"
+  tabindex="-1"
+  aria-labelledby="deleteServiceModalLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h2 class="modal-title fs-5" id="deleteServiceModalLabel">
           Supprimer ce Service ?
         </h2>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
       <div class="modal-body">
         <div class="mb-3">
-          <P>Attention cette suppression sera définitive </p>
+          <p>Attention cette suppression sera définitive</p>
         </div>
 
         <div class="text-center">
-          <button type="button" class="btn btn-danger" id="serviceDeleteButton">Supprimer</button>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          <button type="button" class="btn btn-danger" id="serviceDeleteButton">
+            Supprimer
+          </button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
             Annuler
           </button>
         </div>

@@ -7,59 +7,102 @@
 <section class="bg-dark">
   <!-- Présentation des habitats -->
   <article class="article-bg shadow">
-    <h2 class="font-subtitle text-center text-secondary bg-dark p-2 shadow">
+    <!-- En-tête -->
+    <h2
+      class="font-subtitle text-center text-secondary bg-dark p-3 mb-0 shadow"
+    >
       En savoir plus ?
     </h2>
-    <div class="container p-4">
-      <div class="cards-description row align-items-center m-4 rounded-4">
-        <div class="col-12 col-md-8">
-          <p class="text-justify text-primary">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed
-            repellendus accusamus laborum assumenda dicta voluptates nihil quia
-            distinctio enim, odit rem doloribus recusandae neque atque,
-            perferendis tempora nesciunt magni nam. Lorem ipsum dolor sit, amet
-            consectetur adipisicing elit. Quae deserunt quibusdam inventore
-            molestiae odit est magni eveniet voluptatibus nesciunt at veniam
-            voluptatum repellendus maxime facilis, dolor totam debitis dolores
-            nihil?
-          </p>
-        </div>
 
-        <div class="col-12 col-md-4">
-          <img
-            class="d-block w-100 object-fit-cover shadow rounded"
-            style="height: 350px"
-            src="../Images/Savane/giraffes.jpg"
-            alt="Enclot à girafes"
-          />
+    <div class="container py-5">
+      <!-- Section présentation -->
+      <div class="row mb-5">
+        <div class="col-12">
+          <div class="cards-description rounded-4 p-4">
+            <div class="row align-items-center">
+              <div class="col-12 col-md-8 order-md-1 mb-4 mb-md-0">
+                <h3 class="font-subtitle text-secondary mb-4">
+                  Car chaque détail compte
+                </h3>
+                <div class="text-justify text-primary">
+                  <p class="mb-4">
+                    Au Zoo d'Arcadia, chaque habitat est pensé pour offrir aux
+                    animaux un environnement aussi proche que possible de leur
+                    milieu naturel, tout en vous permettant de les observer dans
+                    des conditions idéales. Parcourez les différents espaces, où
+                    des paysages variés recréent des écosystèmes du monde
+                    entier, de la savane africaine aux forêts tropicales, en
+                    passant par les contrées sauvages de la forêt de Brocéliande
+                    elle-même.
+                  </p>
+                  <p class="mb-0">
+                    Laissez-vous surprendre par la diversité des espèces et les
+                    ambiances immersives qui vous transporteront dans les mondes
+                    fascinants de nos pensionnaires. Chaque habitat est une
+                    fenêtre ouverte sur leur quotidien, conçu pour éveiller la
+                    curiosité et susciter l'émerveillement.
+                  </p>
+                </div>
+              </div>
+              <div class="col-12 col-md-4 order-md-2">
+                <img
+                  class="w-100 shadow rounded"
+                  src="../Images/Zoo/plan-Arcadia.webp"
+                  alt="Village de Bretagne"
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <button
-      type="button"
-      class="btn custom-btn container d-flex justify-content-center align-items-center"
-      style="width: 200px"
-      data-bs-toggle="modal"
-      data-bs-target="#addHabitatModal"
-      data-show="1"
-    >
-      Ajouter un Habitat
-      <i class="bi bi-plus ps-2 pe-0" style="font-size: 1.5rem"></i>
-    </button>
+      <!-- Bouton Ajouter -->
+      <div class="row mb-5">
+        <div class="col-12 text-center">
+          <button
+            type="button"
+            class="btn custom-btn"
+            data-bs-toggle="modal"
+            data-bs-target="#addHabitatModal"
+            data-show="1"
+          >
+            Ajouter un Habitat
+            <i class="bi bi-plus ps-2" style="font-size: 1.5rem"></i>
+          </button>
+        </div>
+      </div>
 
-    <!-- Line -->
-    <div class="container d-flex justify-content-center">
-      <div class="line rounded shadow m-4"></div>
-    </div>
+      <!-- Séparateur -->
+      <div class="row mb-4">
+        <div class="col-12">
+          <div class="line rounded shadow mx-auto"></div>
+        </div>
+      </div>
 
-    <!-- Lien -->
-    <div class="container d-flex justify-content-center">
-      <ul class="list-inline text-justify">
-        <li class="list-inline-item me-3"><a href="#savane">Savane</a></li>
-        <li class="list-inline-item ms-3 me-3"><a href="#jungle">Jungle</a></li>
-        <li class="list-inline-item ms-3"><a href="#marais">Marais</a></li>
-      </ul>
+      <!-- Navigation des habitats -->
+      <div class="row">
+        <div class="col-12">
+          <nav class="text-center">
+            <ul class="list-inline mb-0">
+              <li class="list-inline-item">
+                <a href="#savane" class="text-decoration-none text-primary"
+                  >Savane</a
+                >
+              </li>
+              <li class="list-inline-item mx-4">
+                <a href="#jungle" class="text-decoration-none text-primary"
+                  >Jungle</a
+                >
+              </li>
+              <li class="list-inline-item">
+                <a href="#marais" class="text-decoration-none text-primary"
+                  >Marais</a
+                >
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
     </div>
   </article>
 </section>

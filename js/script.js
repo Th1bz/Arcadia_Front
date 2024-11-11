@@ -214,3 +214,38 @@ function setMaxDate() {
   }
 }
 // ---------------------------------------------------------
+
+// Fonction pour charger les horaires
+async function loadHours() {
+  try {
+    const response = await fetch(`${apiUrl}api/hours`);
+    const data = await response.json();
+
+    // Mettre à jour les inputs du formulaire (seulement si on est sur la page admin)
+    const weekOpening = document.getElementById("weekOpening");
+    if (weekOpening) {
+      weekOpening.value = data.hours.week.opening;
+      document.getElementById("weekClosing").value = data.hours.week.closing;
+      document.getElementById("weekendOpening").value =
+        data.hours.weekend.opening;
+      document.getElementById("weekendClosing").value =
+        data.hours.weekend.closing;
+    }
+
+    // Mettre à jour l'affichage des horaires (sur toutes les pages)
+    document.querySelectorAll(".weekHours").forEach((element) => {
+      element.textContent = `Du lundi au vendredi de ${data.hours.week.opening} à ${data.hours.week.closing}`;
+    });
+
+    document.querySelectorAll(".weekendHours").forEach((element) => {
+      element.textContent = `Week-end de ${data.hours.weekend.opening} à ${data.hours.weekend.closing}`;
+    });
+  } catch (error) {
+    console.error("Erreur de chargement:", error);
+  }
+}
+//------------------------------------------
+
+document.addEventListener("DOMContentLoaded", function () {
+  loadHours();
+});
