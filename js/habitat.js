@@ -434,8 +434,14 @@ function generateAnimalCard(animal) {
             <div class="card-body">
                 <ul class="card-text list-group-flush p-0">
                     <li class="list-group-item"><strong>Race : </strong>${animal.race.label}</li>
-                    <li class="list-group-item"><strong>Santé : </strong>${animal.status}</li>
                 </ul>
+                <button type="button" 
+                        class="btn btn-link text-decoration-none"
+                        data-bs-toggle="modal" 
+                        data-bs-target="#vetReportModal" 
+                        data-animal-id="${animal.id}">Rapport du vétérinaire
+                    <i class="bi bi-eye"></i>
+                </button>
             </div>
         </div>
     `;
@@ -444,6 +450,105 @@ function generateAnimalCard(animal) {
 }
 //------------------------------------------
 
+//--------------Fonction pour charger et afficher le rapport vétérinaire--------------
+function initializeVetReportHandlers() {
+  document.addEventListener("click", async function (e) {
+    const vetButton = e.target.closest(".btn-link[data-animal-id]");
+    if (!vetButton) return;
+
+    e.preventDefault();
+    const animalId = vetButton.dataset.animalId;
+    const contentDiv = document.getElementById("vetReportContent");
+
+    // Afficher le spinner
+    contentDiv.innerHTML = `
+      <div class="text-center p-4">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Chargement...</span>
+        </div>
+      </div>
+    `;
+
+    try {
+      const response = await fetch(`${apiUrl}veto-report/last/${animalId}`);
+      const report = await response.json();
+
+      contentDiv.innerHTML = `
+  <div class="bg-primary p-4 pb-2">
+
+    <div class="mb-4">
+      <h5 class="d-flex align-items-center bg-dark font-subtitle text-secondary p-2 rounded-top mb-0">
+        <i class="bi bi-calendar3 me-2"></i>
+        Informations générales
+      </h5>
+      <div class="bg-light p-3 rounded-bottom border">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <div class="d-flex align-items-center">
+              <span class="font-subtitle text-dark me-2">Date de visite:</span>
+              <span>${new Date(report.visitDate).toLocaleDateString(
+                "fr-FR"
+              )}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Alimentation -->
+    <div class="mb-4">
+      <h5 class="d-flex align-items-center bg-dark font-subtitle text-secondary p-2 rounded-top mb-0">
+        <i class="bi bi-cup-hot me-2"></i>
+        Alimentation
+      </h5>
+      <div class="bg-light p-3 rounded-bottom border">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <div class="d-flex align-items-center">
+              <span class="font-subtitle text-dark me-2">Type:</span>
+              <span>${report.feedType || "Non spécifié"}</span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="d-flex align-items-center">
+              <span class="font-subtitle text-dark me-2">Quantité:</span>
+              <span>${report.feedQuantity || "0"} ${
+        report.feedUnit || "unité"
+      }</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Observations -->
+    <div class="mb-3">
+      <h5 class="d-flex align-items-center bg-dark font-subtitle text-secondary p-2 rounded-top mb-0">
+        <i class="bi bi-chat-text me-2"></i>
+        Observations
+      </h5>
+      <div class="bg-light p-3 rounded-bottom border">
+        <p class="mb-0">
+          ${report.comment || "Aucune observation"}
+        </p>
+      </div>
+    </div>
+  </div>
+`;
+    } catch (error) {
+      console.error("Erreur:", error);
+      contentDiv.innerHTML = `
+        <div class="alert alert-warning m-3">
+          <h6 class="alert-heading">Erreur</h6>
+          <p class="mb-0">Une erreur est survenue lors du chargement du rapport vétérinaire.</p>
+        </div>
+      `;
+    }
+  });
+}
+//------------------------------------------
+
+//--------------Fonction pour ajouter les likes au clic sur les animaux--------------
 function initializeAnimalLikeHandlers() {
   document.addEventListener("click", async function (e) {
     if (e.target.closest(".animal-click")) {
@@ -720,6 +825,7 @@ function convertFileToBase64Animal(file) {
     initializeAddAnimalForm();
     loadHabitats();
     initializeAnimalLikeHandlers();
+    initializeVetReportHandlers();
   } else {
     // Sinon attendre le chargement du DOM
     document.addEventListener("DOMContentLoaded", () => {
@@ -728,8 +834,10 @@ function convertFileToBase64Animal(file) {
       initializeAddAnimalForm();
       loadHabitats();
       initializeAnimalLikeHandlers();
+      initializeVetReportHandlers();
     });
   }
   // () -> exucute imédiatement la fonction anonyme
 })();
-//------------------------------------------
+
+//-----------------------------------------

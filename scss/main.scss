@@ -272,7 +272,7 @@ footer.footer {
 
 // Table Likes ----------------------------------------------------
 .table-custom {
-  border: 3px solid $dark;
+  border: 4px solid $dark;
   border-radius: 10px;
   padding-bottom: 5px;
 }
@@ -296,6 +296,13 @@ footer.footer {
   padding: 10px;
 }
 // ---------------------------------------------------------------
+
+.modal-rapport-veto {
+  border: 5px solid $dark;
+  border-radius: 10px;
+  padding-bottom: 5px;
+  background-color: $primary;
+}
 
 // Click Heart Animation ------------------------------------------
 .click-heart {

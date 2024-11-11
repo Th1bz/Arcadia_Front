@@ -12231,7 +12231,7 @@ footer.footer {
 }
 
 .table-custom {
-  border: 3px solid #232826;
+  border: 4px solid #232826;
   border-radius: 10px;
   padding-bottom: 5px;
 }
@@ -12251,6 +12251,13 @@ footer.footer {
 
 .rapport-veto-body {
   padding: 10px;
+}
+
+.modal-rapport-veto {
+  border: 5px solid #232826;
+  border-radius: 10px;
+  padding-bottom: 5px;
+  background-color: #DCDFDA;
 }
 
 .click-heart {
