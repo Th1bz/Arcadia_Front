@@ -20,7 +20,7 @@ function isConnected() {
   return sessionStorage.getItem("user") !== null;
 }
 
-// disconnected, connected (1, vetérinaire ou employe)
+// disconnected, connected (1, 2 ou 3)
 
 function showAndHideElementsForRole() {
   const userConnected = isConnected();

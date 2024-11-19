@@ -64,7 +64,7 @@ function generateAvisCard(avis) {
   return `
       <div class="d-flex flex-column flex-md-row align-items-center bg-avis rounded-4 shadow m-3 p-3 p-md-4 gap-3 gap-md-4">
       <div class="d-flex align-items-center gap-3 gap-md-4">
-          <button type="button" class="btn btn-outline-danger circle-border text-primary" 
+          <button type="button" data-show="3" data-show="1" class="btn btn-outline-danger circle-border text-primary" 
                   onclick="supprimerAvis('${avis.id}')">
               <i class="bi bi-ban"></i>
           </button>
@@ -149,6 +149,7 @@ function loadAvisValides() {
         const card = generateAvisCard(avis);
         avisContainer.insertAdjacentHTML("beforeend", card);
       });
+      showAndHideElementsForRole();
     })
     .catch((error) => console.error("Erreur:", error));
 }
@@ -173,11 +174,13 @@ function loadAvisEnAttente() {
 //---------------------------------------------------------
 
 //--------------Fonction pour soumettre un nouvel avis--------------
+//faille xss sécurisée
 function soumettreAvis(e) {
   e.preventDefault();
   const avis = {
-    nom: document.getElementById("nom").value,
-    commentaire: document.getElementById("commentaire").value,
+    // sanitize dans le front (< = &lt et > = &gt) puis dans le back avec htmlspecialchars dans AvisController.php
+    nom: sanitizeHtml(document.getElementById("nom").value),
+    commentaire: sanitizeHtml(document.getElementById("commentaire").value),
     note: parseInt(document.getElementById("note").value),
   };
 
