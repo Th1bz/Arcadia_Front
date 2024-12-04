@@ -5,6 +5,18 @@ const apiUrl = "http://127.0.0.1:8000/";
 
 signoutBtn.addEventListener("click", signout);
 
+// Fonction pour précharger une image
+async function preloadImage(url) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = () => reject(new Error(`Failed to load image: ${url}`));
+    img.crossOrigin = "anonymous";
+    img.src = url;
+  });
+}
+//------------------------------------------
+
 function getUser() {
   const stringUser = sessionStorage.getItem("user");
   const user = JSON.parse(stringUser);

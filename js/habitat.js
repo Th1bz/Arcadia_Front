@@ -101,8 +101,8 @@ if (editModalHabitat) {
       try {
         const formData = new FormData(this);
         const habitatData = {
-          name: formData.get("name"),
-          description: formData.get("description"),
+          name: sanitizeHtml(formData.get("name")),
+          description: sanitizeHtml(formData.get("description")),
         };
 
         const imageFile = formData.get("Image");
@@ -243,9 +243,9 @@ if (editModalAnimal) {
       try {
         const formData = new FormData(this);
         const animalData = {
-          firstName: formData.get("firstName"),
+          firstName: sanitizeHtml(formData.get("firstName")),
           race: parseInt(formData.get("race")),
-          status: formData.get("status"),
+          status: sanitizeHtml(formData.get("status")),
         };
 
         // Gestion de la photo
@@ -300,10 +300,15 @@ function generateHabitatSection(habitat) {
     /\*\*(.*?)\*\*/g,
     '<strong class="text-important-textarea">$1</strong>'
   );
-  const imageUrl =
-    habitat.pictures && habitat.pictures.length > 0
-      ? `${apiUrl}${habitat.pictures[0].path}`
-      : "../Images/Zoo/mediumBrownArcadia.png";
+
+  let imageUrl = "../Images/Zoo/mediumBrownArcadia.png";
+
+  if (habitat.pictures && habitat.pictures.length > 0) {
+    imageUrl = `${apiUrl}${habitat.pictures[0].path}`;
+    preloadImage(imageUrl).catch(() => {
+      console.warn(`Impossible de charger l'image: ${imageUrl}`);
+    });
+  }
 
   return `
     <article class="article-bg shadow">
@@ -673,8 +678,8 @@ function initializeAddHabitatForm() {
       try {
         const formData = new FormData(this);
         const habitatData = {
-          name: formData.get("name"),
-          description: formData.get("description"),
+          name: sanitizeHtml(formData.get("name")),
+          description: sanitizeHtml(formData.get("description")),
         };
 
         const pictureFile = formData.get("Image");
@@ -739,14 +744,11 @@ function initializeAddAnimalForm() {
         }
 
         const animalData = {
-          firstName: formData.get("firstName"),
+          firstName: sanitizeHtml(formData.get("firstName")),
           race: parseInt(formData.get("race")),
           habitat: parseInt(habitatId), // Assurez-vous que c'est un nombre
-          status: formData.get("status"),
+          status: sanitizeHtml(formData.get("status")),
         };
-
-        // Debug - vérifier les données avant envoi
-        console.log("Données à envoyer:", animalData);
 
         const pictureFile = formData.get("Image");
         if (pictureFile && pictureFile.size > 0) {

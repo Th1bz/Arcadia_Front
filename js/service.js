@@ -141,10 +141,15 @@ function generateServiceSection(service) {
     /\*\*(.*?)\*\*/g,
     '<strong class="text-important-textarea">$1</strong>'
   );
-  const imageUrl =
-    service.pictures && service.pictures.length > 0
-      ? `${apiUrl}${service.pictures[0].path}`
-      : "../Images/Zoo/mediumBrownArcadia.png";
+
+  let imageUrl = "../Images/Zoo/mediumBrownArcadia.png";
+
+  if (service.pictures && service.pictures.length > 0) {
+    imageUrl = `${apiUrl}${service.pictures[0].path}`;
+    preloadImage(imageUrl).catch(() => {
+      console.warn(`Impossible de charger l'image: ${imageUrl}`);
+    });
+  }
 
   return `
   <article class="article-bg shadow">

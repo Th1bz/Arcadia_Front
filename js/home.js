@@ -7,6 +7,10 @@ function generateHabitatCard(habitat) {
 
   if (habitat.pictures && habitat.pictures.length > 0) {
     imageUrl = `${apiUrl}${habitat.pictures[0].path}`;
+    // Préchargement de l'image
+    preloadImage(imageUrl).catch(() => {
+      console.warn(`Impossible de charger l'image: ${imageUrl}`);
+    });
   }
 
   const card = `
