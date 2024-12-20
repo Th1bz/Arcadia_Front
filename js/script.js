@@ -1,7 +1,7 @@
 const tokenCookieName = "accesstoken";
 const RoleCookieName = "role";
 const signoutBtn = document.getElementById("signout-btn");
-const apiUrl = "http://127.0.0.1:8000/";
+const apiUrl = "https://main-bvxea6i-qk7akm57murma.fr-4.platformsh.site/";
 
 signoutBtn.addEventListener("click", signout);
 
@@ -256,6 +256,29 @@ async function loadHours() {
     console.error("Erreur de chargement:", error);
   }
 }
+//------------------------------------------
+
+// Fonction pour gérer la vidéo de fond
+document.addEventListener("DOMContentLoaded", function () {
+  const video = document.getElementById("heroVideo");
+  const container = document.getElementById("heroContainer");
+
+  function switchToImageBackground() {
+    container.classList.remove("hero-scene-video");
+    container.classList.add("hero-scene");
+  }
+
+  // Vérifier si la vidéo peut être lue
+  video.addEventListener("error", switchToImageBackground);
+
+  // Vérifier aussi après un délai si la vidéo n'a pas commencé à jouer
+  setTimeout(() => {
+    if (video.readyState === 0) {
+      // La vidéo n'a pas commencé à charger
+      switchToImageBackground();
+    }
+  }, 2000); // Attendre 2 secondes
+});
 //------------------------------------------
 
 document.addEventListener("DOMContentLoaded", function () {

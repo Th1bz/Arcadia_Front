@@ -248,6 +248,8 @@ if (editModalAnimal) {
           status: sanitizeHtml(formData.get("status")),
         };
 
+        console.log("Données de l'animal à envoyer:", animalData);
+
         // Gestion de la photo
         const pictureFile = formData.get("picture");
 
@@ -270,6 +272,8 @@ if (editModalAnimal) {
           },
           body: JSON.stringify(animalData),
         });
+
+        console.log("Réponse de la requête édition:", response, animalData);
 
         if (!response.ok) {
           throw new Error(`Erreur HTTP: ${response.status}`);
@@ -746,7 +750,7 @@ function initializeAddAnimalForm() {
         const animalData = {
           firstName: sanitizeHtml(formData.get("firstName")),
           race: parseInt(formData.get("race")),
-          habitat: parseInt(habitatId), // Assurez-vous que c'est un nombre
+          habitat: parseInt(habitatId), // s'assurer que c'est un nombre
           status: sanitizeHtml(formData.get("status")),
         };
 
@@ -762,7 +766,7 @@ function initializeAddAnimalForm() {
           animalData.pictureData = base64Picture;
         }
 
-        const response = await fetch(apiUrl + "animal/add", {
+        const response = await fetch(apiUrl + "animal/create", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -770,6 +774,8 @@ function initializeAddAnimalForm() {
           },
           body: JSON.stringify(animalData),
         });
+
+        console.log("Réponse de la création de l'animal:", animalData);
 
         if (!response.ok) {
           const errorData = await response.json();

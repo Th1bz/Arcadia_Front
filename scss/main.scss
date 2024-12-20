@@ -2,6 +2,7 @@
 
 @import "custom";
 
+//Utilisation de Flexbox pour le footer
 html {
   position: relative;
   min-height: 100%;
@@ -9,16 +10,23 @@ html {
   scrollbar-width: none;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+
 main {
   margin-top: 56px;
-  margin-bottom: 263px;
+  flex: 1 0 auto; // Permet au contenu de s'adapter à la taille de la fenêtre
+  width: 100%;
 }
 
 footer.footer {
-  padding: 15px;
-  position: absolute;
-  bottom: 0;
+  flex-shrink: 0;
   width: 100%;
+  padding: 15px;
 }
 
 .font-title {
@@ -51,6 +59,40 @@ footer.footer {
   height: 400px !important;
 }
 
+// Video Background------------------------------------------
+.hero-scene-video {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+  }
+
+  video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero-scene-content {
+    position: relative;
+    z-index: 2;
+  }
+}
+//------------------------------------------
+
+// Image Background default------------------------------------------
 .hero-scene {
   position: relative;
 
@@ -69,6 +111,7 @@ footer.footer {
     position: relative;
   }
 }
+//------------------------------------------
 
 .hero-scene-content {
   height: 900px;
@@ -205,7 +248,7 @@ footer.footer {
 
 .line {
   border: 3px $dark;
-  width: 500px;
+  width: 100%;
   height: 3px;
   background: $dark;
 }
@@ -333,21 +376,82 @@ footer.footer {
 
 // Responsive Design ----------------------------------------------
 
-@media (max-width: 1000px) {
-  main {
-    margin-bottom: 275px;
+@media (min-width: 1200px) {
+  .hero-scene,
+  .hero-scene-video {
+    .hero-scene-content {
+      .font-title {
+        font-size: 5rem; // Taille fixe pour grands écrans
+      }
+    }
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1144px) {
   main {
-    margin-bottom: 572px;
+    // margin-bottom: 275px;
+  }
+}
+
+@media (max-width: 1000px) {
+  main {
+    // margin-bottom: 275px;
   }
 }
 
 @media (max-width: 991.98px) {
   .table-responsive {
     max-height: 400px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  main {
+    // margin-bottom: 572px;
+  }
+
+  .hero-scene,
+  .hero-scene-video {
+    height: 80vh;
+
+    .hero-scene-content {
+      padding: 0.5rem;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  main {
+    // margin-bottom: 600px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-scene,
+  .hero-scene-video {
+    height: 70vh;
+  }
+}
+
+// Pour gérer l'orientation paysage sur mobile
+@media (max-height: 480px) and (orientation: landscape) {
+  .hero-scene {
+    height: 100vh;
+
+    .hero-scene-content {
+      padding: 0.25rem;
+
+      .font-title {
+        font-size: clamp(2rem, 6vw, 4rem);
+        // Minimum: 2rem (32px)
+        // Préféré: 6% de la largeur de l'écran
+        // Maximum: 4rem (64px)
+      }
+
+      .p-font-title {
+        font-size: clamp(0.875rem, 2vw, 1.25rem);
+      }
+    }
   }
 }
 // ---------------------------------------------------------------

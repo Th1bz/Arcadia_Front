@@ -50,13 +50,13 @@ const LoadContentPage = async () => {
 };
 
 //Loader page
-const spinnerLoader = document.querySelector('.spinner-loader');
+const spinnerLoader = document.querySelector(".spinner-loader");
 
-window.addEventListener('load',()=>{
+window.addEventListener("load", () => {
   spinnerLoader.style.opacity = 0;
 
-  setTimeout(()=>{
-    spinnerLoader.style.display = 'none';
+  setTimeout(() => {
+    spinnerLoader.style.display = "none";
   }, 300);
 });
 

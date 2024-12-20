@@ -11973,16 +11973,23 @@ html {
   scrollbar-width: none;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+
 main {
   margin-top: 56px;
-  margin-bottom: 263px;
+  flex: 1 0 auto;
+  width: 100%;
 }
 
 footer.footer {
-  padding: 15px;
-  position: absolute;
-  bottom: 0;
+  flex-shrink: 0;
   width: 100%;
+  padding: 15px;
 }
 
 .font-title {
@@ -12011,6 +12018,35 @@ footer.footer {
 
 .hero-ban {
   height: 400px !important;
+}
+
+.hero-scene-video {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+.hero-scene-video::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+.hero-scene-video video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.hero-scene-video .hero-scene-content {
+  position: relative;
+  z-index: 2;
 }
 
 .hero-scene {
@@ -12169,7 +12205,7 @@ footer.footer {
 
 .line {
   border: 3px #232826;
-  width: 500px;
+  width: 100%;
   height: 3px;
   background: #232826;
 }
@@ -12284,18 +12320,44 @@ footer.footer {
     transform: translate(-50%, -130%) scale(1.5);
   }
 }
-@media (max-width: 1000px) {
-  main {
-    margin-bottom: 275px;
-  }
-}
-@media (max-width: 768px) {
-  main {
-    margin-bottom: 572px;
+@media (min-width: 1200px) {
+  .hero-scene .hero-scene-content .font-title,
+  .hero-scene-video .hero-scene-content .font-title {
+    font-size: 5rem;
   }
 }
 @media (max-width: 991.98px) {
   .table-responsive {
     max-height: 400px !important;
+  }
+}
+@media (max-width: 768px) {
+  .hero-scene,
+  .hero-scene-video {
+    height: 80vh;
+  }
+  .hero-scene .hero-scene-content,
+  .hero-scene-video .hero-scene-content {
+    padding: 0.5rem;
+  }
+}
+@media (max-width: 480px) {
+  .hero-scene,
+  .hero-scene-video {
+    height: 70vh;
+  }
+}
+@media (max-height: 480px) and (orientation: landscape) {
+  .hero-scene {
+    height: 100vh;
+  }
+  .hero-scene .hero-scene-content {
+    padding: 0.25rem;
+  }
+  .hero-scene .hero-scene-content .font-title {
+    font-size: clamp(2rem, 6vw, 4rem);
+  }
+  .hero-scene .hero-scene-content .p-font-title {
+    font-size: clamp(0.875rem, 2vw, 1.25rem);
   }
 }/*# sourceMappingURL=main.css.map */
