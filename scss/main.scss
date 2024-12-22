@@ -29,6 +29,10 @@ footer.footer {
   padding: 15px;
 }
 
+img {
+  isolation: isolate;
+}
+
 .font-title {
   font-family: $font-family-serif;
   font-size: 5rem;
@@ -399,9 +403,35 @@ footer.footer {
   }
 }
 
-@media (max-width: 991.98px) {
+@media (max-width: 992px) {
   .table-responsive {
     max-height: 400px !important;
+  }
+  .card:hover {
+    transform: none !important; // Désactive l'effet de zoom des cards
+  }
+
+  .descritpion-habitat:hover {
+    transform: none !important; // Désactive le zoom des section habitats
+  }
+
+  .img-dezoom-container img {
+    transform: none !important; // Désactive l'état initial zoomé
+  }
+
+  .hero-scene-title:hover {
+    transform: none !important; // Désactive le Zoom du titre
+  }
+
+  .cards-description:hover {
+    transform: none !important;
+  }
+
+  .cards-description {
+    transform: none !important;
+    transition: none !important;
+    background-color: rgba($color: #232826, $alpha: 0.9) !important;
+    box-shadow: 0 10px 7px 0 $dark !important;
   }
 }
 

@@ -146,9 +146,9 @@ function generateServiceSection(service) {
 
   if (service.pictures && service.pictures.length > 0) {
     imageUrl = `${apiUrl}${service.pictures[0].path}`;
-    preloadImage(imageUrl).catch(() => {
-      console.warn(`Impossible de charger l'image: ${imageUrl}`);
-    });
+    // preloadImage(imageUrl).catch(() => {
+    //   console.warn(`Impossible de charger l'image: ${imageUrl}`);
+    // });
   }
 
   return `

@@ -5,18 +5,6 @@ const apiUrl = "https://main-bvxea6i-qk7akm57murma.fr-4.platformsh.site/";
 
 signoutBtn.addEventListener("click", signout);
 
-// Fonction pour précharger une image
-async function preloadImage(url) {
-  return new Promise((resolve, reject) => {
-    const img = new Image();
-    img.onload = () => resolve(img);
-    img.onerror = () => reject(new Error(`Failed to load image: ${url}`));
-    img.crossOrigin = "anonymous";
-    img.src = url;
-  });
-}
-//------------------------------------------
-
 function getUser() {
   const stringUser = sessionStorage.getItem("user");
   const user = JSON.parse(stringUser);
@@ -33,7 +21,6 @@ function isConnected() {
 }
 
 // disconnected, connected (1, 2 ou 3)
-
 function showAndHideElementsForRole() {
   const userConnected = isConnected();
   const user = getUser();
@@ -258,27 +245,6 @@ async function loadHours() {
 }
 //------------------------------------------
 
-// Fonction pour gérer la vidéo de fond
-document.addEventListener("DOMContentLoaded", function () {
-  const video = document.getElementById("heroVideo");
-  const container = document.getElementById("heroContainer");
-
-  function switchToImageBackground() {
-    container.classList.remove("hero-scene-video");
-    container.classList.add("hero-scene");
-  }
-
-  // Vérifier si la vidéo peut être lue
-  video.addEventListener("error", switchToImageBackground);
-
-  // Vérifier aussi après un délai si la vidéo n'a pas commencé à jouer
-  setTimeout(() => {
-    if (video.readyState === 0) {
-      // La vidéo n'a pas commencé à charger
-      switchToImageBackground();
-    }
-  }, 2000); // Attendre 2 secondes
-});
 //------------------------------------------
 
 document.addEventListener("DOMContentLoaded", function () {

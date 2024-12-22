@@ -11992,6 +11992,10 @@ footer.footer {
   padding: 15px;
 }
 
+img {
+  isolation: isolate;
+}
+
 .font-title {
   font-family: "Londrina solid", serif;
   font-size: 5rem;
@@ -12326,9 +12330,30 @@ footer.footer {
     font-size: 5rem;
   }
 }
-@media (max-width: 991.98px) {
+@media (max-width: 992px) {
   .table-responsive {
     max-height: 400px !important;
+  }
+  .card:hover {
+    transform: none !important;
+  }
+  .descritpion-habitat:hover {
+    transform: none !important;
+  }
+  .img-dezoom-container img {
+    transform: none !important;
+  }
+  .hero-scene-title:hover {
+    transform: none !important;
+  }
+  .cards-description:hover {
+    transform: none !important;
+  }
+  .cards-description {
+    transform: none !important;
+    transition: none !important;
+    background-color: rgba(35, 40, 38, 0.9) !important;
+    box-shadow: 0 10px 7px 0 #232826 !important;
   }
 }
 @media (max-width: 768px) {
