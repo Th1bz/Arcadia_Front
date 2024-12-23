@@ -12036,7 +12036,7 @@ img {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(35, 40, 38, 0.4);
   z-index: 1;
 }
 .hero-scene-video video {
@@ -12108,6 +12108,89 @@ img {
   position: relative;
   z-index: 100;
   padding-bottom: 10px;
+}
+
+.weather-card {
+  background: linear-gradient(135deg, rgba(255, 245, 112, 0.2), rgba(158, 202, 248, 0.2));
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  border: 1px solid rgba(35, 40, 38, 0.5);
+  transition: all 0.3s ease;
+}
+.weather-card .weather-icon {
+  width: 64px;
+  height: 64px;
+  filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.3));
+}
+.weather-card .weather-main {
+  min-width: 180px;
+  color: #DCDFDA;
+}
+.weather-card .weather-detail-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 0;
+  color: #DCDFDA;
+}
+.weather-card .weather-detail-item i {
+  font-size: 1.2rem;
+  color: #232826;
+  width: 24px;
+  text-align: center;
+}
+
+.forecast-navigation {
+  position: relative;
+  padding: 0 2rem;
+}
+.forecast-navigation .btn-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 2rem;
+  height: 2rem;
+  font-size: 1.5rem;
+  font-weight: 900;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #8FB43A;
+  background-color: rgba(35, 40, 38, 0.3);
+  border-radius: 50%;
+}
+.forecast-navigation .btn-nav:hover {
+  background-color: rgba(35, 40, 38, 0.7);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+.forecast-navigation .btn-nav.btn-prev {
+  left: 0;
+}
+.forecast-navigation .btn-nav.btn-next {
+  right: 0;
+}
+
+.forecast-scroll-container {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+.forecast-scroll-container #forecastWrapper {
+  transition: transform 0.3s ease;
+}
+
+.forecast-card {
+  flex-shrink: 0;
+  padding: 1rem;
+  color: #DCDFDA;
+}
+.forecast-card .temp-max {
+  color: #DCDFDA;
+  font-weight: bold;
+}
+.forecast-card .temp-min {
+  color: #8FB43A;
 }
 
 .text-justify {
@@ -12388,6 +12471,10 @@ img {
   .hero-scene,
   .hero-scene-video {
     height: 70vh;
+  }
+  .weather-icon {
+    width: 48px;
+    height: 48px;
   }
 }
 @media (max-height: 480px) and (orientation: landscape) {
