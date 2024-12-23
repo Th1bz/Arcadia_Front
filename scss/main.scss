@@ -115,7 +115,6 @@ img {
     position: relative;
   }
 }
-//------------------------------------------
 
 .hero-scene-content {
   height: 900px;
@@ -124,15 +123,17 @@ img {
   align-items: center;
   justify-content: center;
 }
+
 .hero-scene-title {
   transition: all 0.3s;
   overflow: hidden;
+
+  &:hover {
+    transform: scale(200%);
+  }
 }
 
-.hero-scene-title:hover {
-  transform: scale(200%);
-  overflow: hidden;
-}
+//------------------------------------------
 
 .article-bg {
   background-color: $body;

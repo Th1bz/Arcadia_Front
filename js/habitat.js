@@ -335,11 +335,11 @@ function generateHabitatSection(habitat) {
                   habitat.id
                 }" role="button" aria-expanded="false"
                     aria-controls="collapse${habitat.id}">
-                    <img src="${imageUrl}"
-                        class="d-block w-100 object-fit-cover img-cover-bottom shadow rounded" 
-                        style="height: 350px"
-                        alt="${habitat.name}" 
-                        onerror="this.src='../Images/Zoo/mediumBrownArcadia.png'"/>
+                      <img src="${imageUrl}"
+                          class="d-block w-100 object-fit-cover img-cover-bottom shadow rounded" 
+                          style="height: 350px"
+                          alt="${habitat.name}" 
+                          onerror="this.src='../Images/Zoo/mediumBrownArcadia.png'"/> 
                     <h3 class="text-center m-2 mb-0 pb-4">
                         <i class="bi bi-arrow-down-square"></i> Développer
                         <i class="bi bi-arrow-up-square"></i>
