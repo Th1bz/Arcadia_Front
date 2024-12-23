@@ -12198,11 +12198,31 @@ img {
 .p-profile {
   width: 60px;
   height: 60px;
-  border-radius: 50px;
+  min-width: 60px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .bg-avis {
   background-color: #99B5AC;
+}
+
+.min-width-content {
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+}
+
+.stars-container {
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+}
+
+.description-text {
+  height: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 1.2rem;
 }
 
 .line {

@@ -348,13 +348,13 @@ function generateHabitatSection(habitat) {
             </div>
 
             <div class="collapse" id="collapse${habitat.id}">
-                <div class="m-4">
+                <div class="pb-4">
                     <div class="d-flex justify-content-center" data-show="1">
                         <button type="button" data-bs-toggle="modal" data-bs-target="#addAnimalModal" class="btn btn-secondary m-3">
                             Ajouter un Animal
                         </button>
                     </div>
-                    <div class="container text-center text-primary pb-3" style="height: auto; overflow: visible; font-size: 1.2rem">
+                    <div class="container text-center text-primary pb-3 description-text">
                         <p>${description}</p>
                     </div>
                     

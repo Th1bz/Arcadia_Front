@@ -70,15 +70,14 @@ function generateAvisCard(avis) {
           </button>
 
           <img src="../Images/Zoo/person-circle.svg" 
-                class="rounded-circle" 
-                style="width: 60px; height: 60px; min-width: 60px; object-fit: cover" 
+                class="rounded-circle p-profile" 
                 alt="Image de profil" />
 
-            <div class="d-flex flex-column">
-              <div class="text-warning mb-1">
+            <div class="d-flex flex-column min-width-content">
+              <div class="text-warning mb-1 stars-container">
                   ${generateStars(avis.note)}
             </div>
-              <h5 class="mb-0 font-subtitle">${avis.nom}</h5>
+              <h5 class="mb-0 font-subtitle text-truncate">${avis.nom}</h5>
           </div>
         </div>
           
@@ -101,15 +100,14 @@ function generateAvisEnAttenteCard(avis) {
           </button>
 
           <img src="../Images/Zoo/person-circle.svg" 
-                class="rounded-circle" 
-                style="width: 60px; height: 60px; min-width: 60px; object-fit: cover" 
+                class="rounded-circle p-profile" 
                 alt="Image de profil" />
 
-            <div class="d-flex flex-column">
-              <div class="text-warning mb-1">
+            <div class="d-flex flex-column min-width-content">
+              <div class="text-warning mb-1 stars-container">
                   ${generateStars(avis.note)}
             </div>
-              <h5 class="mb-0 font-subtitle">${avis.nom}</h5>
+              <h5 class="mb-0 font-subtitle text-truncate">${avis.nom}</h5>
           </div>
         </div>
           

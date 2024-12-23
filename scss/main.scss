@@ -241,15 +241,35 @@ img {
   background-color: $secondary;
 }
 
+// Commentaires------------------------------------------
 .p-profile {
   width: 60px;
   height: 60px;
-  border-radius: 50px;
+  min-width: 60px;
+  object-fit: cover;
 }
 
 .bg-avis {
   background-color: $tertiary;
 }
+
+.min-width-content {
+  min-width: fit-content;
+}
+
+.stars-container {
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+}
+
+.description-text {
+  height: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 1.2rem;
+}
+//------------------------------------------
 
 .line {
   border: 3px $dark;
