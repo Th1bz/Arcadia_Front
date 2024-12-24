@@ -12202,9 +12202,9 @@ img {
 }
 
 .cards-description:hover {
-  transform: scale(105%);
-  background-color: rgba(35, 40, 38, 0.9);
-  box-shadow: 0 10px 7px 0 #232826;
+  transform: scale(102%);
+  background-color: rgba(35, 40, 38, 0.7);
+  box-shadow: 0 6px 6px 0 #232826;
 }
 
 .descritpion-habitat {
@@ -12456,6 +12456,10 @@ img {
     background-color: rgba(35, 40, 38, 0.9) !important;
     box-shadow: 0 10px 7px 0 #232826 !important;
   }
+  .weather-icon {
+    width: 48px;
+    height: 48px;
+  }
 }
 @media (max-width: 768px) {
   .hero-scene,
@@ -12471,10 +12475,6 @@ img {
   .hero-scene,
   .hero-scene-video {
     height: 70vh;
-  }
-  .weather-icon {
-    width: 48px;
-    height: 48px;
   }
 }
 @media (max-height: 480px) and (orientation: landscape) {

@@ -36,14 +36,14 @@ export const allRoutes = [
     "Espace Vétérinaire",
     "/pages/veto.html",
     "./js/auth/veto.js",
-    ["2"]
+    ["1", "2"]
   ),
   new Route(
     "/employe",
     "Espace Employé",
     "/pages/employe.html",
     "./js/auth/employe.js",
-    ["3"]
+    ["1", "3"]
   ),
   new Route(
     "/signin",

@@ -4,6 +4,38 @@ import { allRoutes, websiteName } from "./allRoutes.js";
 // Création d'une route pour la page 404 (page introuvable)
 const route404 = new Route("404", "Page introuvable", "/pages/404.html");
 
+//access pages by URL secure------------------------------------------
+// Fonction pour vérifier si l'utilisateur a les droits d'accès
+const checkAuthorization = (route) => {
+  const user = JSON.parse(sessionStorage.getItem("user"));
+
+  // Si la route nécessite d'être déconnecté
+  if (route.roles.includes("disconnected")) {
+    return !user;
+  }
+
+  // Si la route nécessite d'être connecté
+  if (route.roles.includes("connected")) {
+    return !!user;
+  }
+
+  // Si la route nécessite un rôle spécifique
+  if (
+    route.roles.includes("1") ||
+    route.roles.includes("2") ||
+    route.roles.includes("3")
+  ) {
+    if (!user) return false;
+
+    // Vérifier si l'utilisateur a le rôle requis
+    return route.roles.includes(user.roleId.toString());
+  }
+
+  // Si aucun rôle n'est requis, accès autorisé
+  return true;
+};
+//------------------------------------------
+
 // Fonction pour récupérer la route correspondant à une URL donnée
 const getRouteByUrl = (url) => {
   let currentRoute = null;
@@ -26,6 +58,16 @@ const LoadContentPage = async () => {
   const path = window.location.pathname;
   // Récupération de l'URL actuelle
   const actualRoute = getRouteByUrl(path);
+
+  // access pages------------------------------------------
+  // Vérification des droits d'accès
+  if (!checkAuthorization(actualRoute)) {
+    // Rediriger vers la page d'accueil si non autorisé
+    window.location.replace("/");
+    return;
+  }
+  //------------------------------------------
+
   // Récupération du contenu HTML de la route
   const html = await fetch(actualRoute.pathHtml).then((data) => data.text());
   // Ajout du contenu HTML à l'élément avec l'ID "main-page"
@@ -33,12 +75,9 @@ const LoadContentPage = async () => {
 
   // Ajout du contenu JavaScript
   if (actualRoute.pathJS != "") {
-    // Création d'une balise script
     const scriptTag = document.createElement("script");
     scriptTag.setAttribute("type", "text/javascript");
     scriptTag.setAttribute("src", actualRoute.pathJS);
-
-    // Ajout de la balise script au corps du document
     document.querySelector("body").appendChild(scriptTag);
   }
 
